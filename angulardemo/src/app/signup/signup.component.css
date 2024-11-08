@@ -69,12 +69,3 @@ img{
     gap: 20px;
     justify-content: center;
 }
-.forget{
-    font-size: 20px;
-}
-.link{
-    cursor: pointer;
-}
-.link:hover {
-    color: blue;
-}
