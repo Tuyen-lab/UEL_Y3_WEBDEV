@@ -1,0 +1,61 @@
+* {
+    box-sizing: border-box; /* Thay đổi cách tính toán kích thước */
+}
+
+html, body {
+    height: 100%;
+    width: 100vw;
+    margin: 0; /* Xóa margin mặc định */
+    padding: 0; /* Xóa padding mặc định */
+}
+div div {
+    background-color: rgba(255, 255, 255, 0); 
+    color: white;}
+div.container {
+    text-align: center;
+    vertical-align: middle;
+    display: flex;
+    height: 100vh; /* Chiều cao */
+    width: 100vw; /* Chiều rộng */
+    max-width: none; /* Không có giới hạn chiều rộng tối đa */
+    background-repeat: no-repeat; 
+    background-size: 100% 100%; 
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto; /* Căn giữa trong phần tử cha */
+    background-color: black;
+}
+
+.form-container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+form {
+    width: 300px; /* Đặt chiều rộng cho form */
+    margin: 0 auto; /* Căn giữa form */
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input {
+    width: 100%; /* Chiều rộng 100% của input */
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
