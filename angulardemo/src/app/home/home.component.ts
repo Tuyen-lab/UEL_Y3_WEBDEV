@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import {ActivatedRoute, Router , RouterOutlet } from '@angular/router';
 import { ExampleService } from '../service/sp.service';
 
 import { CommonModule } from '@angular/common';
@@ -16,12 +16,23 @@ import { CommonModule } from '@angular/common';
 export class HomeComponent implements OnInit {
   SP : any
   errMsg=''
- 
-  constructor(private _service: ExampleService){}
+  selectedId: any
+  constructor(private _service: ExampleService, private router: Router, private active: ActivatedRoute){}
   ngOnInit(): void {
     this._service.getSP().subscribe({
       next: (data) => {this.SP = data},
       error: (err) => (this.errMsg= err.message)
       
     })
-}}
+    this.active.paramMap.subscribe((param) => {
+      let id = param.get('id')
+      if (id != null) this.selectedId = parseInt(id);
+    })
+}
+onActive(p:any){
+  return p.id == this.selectedId;
+}
+OnitemClick(p: any){
+  this.router.navigate (['/home',p.ma])
+}
+}

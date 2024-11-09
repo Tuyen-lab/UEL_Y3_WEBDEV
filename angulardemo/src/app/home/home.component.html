@@ -63,106 +63,39 @@
             </a>
         </div>
         <div class="container">
-            <div class="product-card">
-                <img src="assets/images/house1.png" alt="" class="product-img">
-                <div class="card-info">
+            <div class=" product-card " *ngFor="let i of SP"  (click)="OnitemClick(i)">
+                
+                <img src={{i.thumnail}} class="card-img-top product-img" alt="Room Image">
+                
+            <div class="card-info">
+                <div class="card-info-content">
+                    <img src="assets/images/location.svg" alt="">
+                    <p class="loaction-name">{{i.provin}}, {{i.country}}</p>
+                </div>
 
-                    <div class="card-info-content">
-                        <img src="assets/images/location.svg" alt="">
-                        <p class="loaction-name">jakarta barat indonesia</p>
-                    </div>
-                    <div class="card-info-content">
-                        <div class="content">
-                            <img src="assets/images/bed.svg" alt="">
-                            <p>4 Bed</p>
+                <div class="card-info-content">
+                        <div >
+                            <p class="card-text">
+                                <small class="text-muted">Cách 3 km</small><br>
+                                Ngày {{i.ngaynhan}}-{{i.ngaytra}}
+                            </p>
                         </div>
-                        <div class="content">
-                            <img src="assets/images/size.svg" alt="">
-                            <p>10x10m</p>
-                        </div>
-                        <div class="content">
-                            <img src="assets/images/area.svg" alt="">
-                            <p>14000M</p>
-                        </div>
+                   
                     </div>
                     <div class="price">
-                        <p>$540000</p>
+                        
+                        <p style="margin-left: 0;">{{i.gia}}đ</p>
                         <a href="" class="booking-btn">Book Now</a>
+                    </div> 
+                  
+                            
+                        </div>
                     </div>
-
                 </div>
-            </div>
-            <div class="product-card">
-                <img src="assets/images/house2.png" alt="" class="product-img">
-                <div class="card-info">
-
-                    <div class="card-info-content">
-                        <img src="assets/images/location.svg" alt="">
-                        <p class="loaction-name">jakarta barat indonesia</p>
-                    </div>
-                    <div class="card-info-content">
-                        <div class="content">
-                            <img src="assets/images/bed.svg" alt="">
-                            <p>4 Bed</p>
-                        </div>
-                        <div class="content">
-                            <img src="assets/images/size.svg" alt="">
-                            <p>10x10m</p>
-                        </div>
-                        <div class="content">
-                            <img src="assets/images/area.svg" alt="">
-                            <p>14000M</p>
-                        </div>
-                    </div>
-                    <div class="price">
-                        <p>$540000</p>
-                        <a href="" class="booking-btn">Book Now</a>
-                    </div>
-
-                </div>
-            </div>
-            <div class="product-card">
-                <img src="assets/images/house3.png" alt="" class="product-img">
-                <div class="card-info">
-
-                    <div class="card-info-content">
-                        <img src="assets/images/location.svg" alt="">
-                        <p class="loaction-name">jakarta barat indonesia</p>
-                    </div>
-                    <div class="card-info-content">
-                        <div class="content">
-                            <img src="assets/images/bed.svg" alt="">
-                            <p>4 Bed</p>
-                        </div>
-                        <div class="content">
-                            <img src="assets/images/size.svg" alt="">
-                            <p>10x10m</p>
-                        </div>
-                        <div class="content">
-                            <img src="assets/images/area.svg" alt="">
-                            <p>14000M</p>
-                        </div>
-                    </div>
-                    <div class="price">
-                        <p>$540000</p>
-                        <a href="" class="booking-btn">Book Now</a>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-    </section>
-    <div *ngFor="let i of SP">
-        <p>{{i.name}}</p>
-        <p>{{i.price}}<p>
         
-    </div>
-    <!-- product  -->
-
-    <!-- gsap link  -->
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js" integrity="sha512-VEBjfxWUOyzl0bAwh4gdLEaQyDYPvLrZql3pw1ifgb6fhEvZl9iDDehwHZ+dsMzA0Jfww8Xt7COSZuJ/slxc4Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
+           
+           
 
    
-</body>
 
-</html>
+
