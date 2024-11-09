@@ -1,0 +1,41 @@
+[
+    {
+        "country": "Việt Nam",
+        "provin": "Đà Lạt",
+        "ngaynhan": "8/11",
+        "ngaytra": "13/12",
+        "gia": "1.917.389",
+        "thumnail": "https://static-4.happynest.vn/storage/uploads/2022/04/65ee87db6413ffa4d21e8398f36601cc.jpeg",
+        "anh": [
+            "https://static-5.happynest.vn/storage/uploads/2022/04/9367c4f88583bf3ccc3f9f81f5040605.jpg",
+            "https://static-3.happynest.vn/storage/uploads/2022/04/988deb8f91881f1919a4f4255fe456d3.jpg",
+            "https://static-5.happynest.vn/storage/uploads/2022/04/82fe5bbceddd57af45ea55079c768049.jpg"
+        ]
+    },
+    {
+        "country": "Việt Nam",
+        "provin": "Hà Nội",
+        "ngaynhan": "10/11",
+        "ngaytra": "15/12",
+        "gia": "2.500.000",
+        "thumnail": "https://example.com/image2.jpeg",
+        "anh": [
+            "https://example.com/photo1.jpg",
+            "https://example.com/photo2.jpg",
+            "https://example.com/photo3.jpg"
+        ]
+    },
+    {
+        "country": "Việt Nam",
+        "provin": "Hồ Chí Minh",
+        "ngaynhan": "12/11",
+        "ngaytra": "18/12",
+        "gia": "3.000.000",
+        "thumnail": "https://example.com/image3.jpeg",
+        "anh": [
+            "https://example.com/photo4.jpg",
+            "https://example.com/photo5.jpg",
+            "https://example.com/photo6.jpg"
+        ]
+    }
+]

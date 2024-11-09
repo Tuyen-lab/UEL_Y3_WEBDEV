@@ -1,0 +1,105 @@
+
+
+
+
+  <!-- Property Header -->
+  <div class="container">
+    <div class="property-header">
+      <h1>{{SP[this.id-1].country}}</h1>
+      <p>Nhà nhỏ xinh tại Tarlac, Philippines</p>
+
+
+
+
+  <div class="container gallery">
+    <!-- Large Image -->
+    <div>
+      <img [src]="image1" alt="Large Image" class="large"  (click)="openImage(image1)">
+    </div>
+
+    <!-- Small Images on the right side -->
+    <div class="small-container">
+      <img [src]="image2" alt="Small Image 1"  (click)="openImage(image2)" >
+      <div class="small-container">
+      <img [src]="image3" alt="Small Image 2" (click)="openImage(image3)"> 
+      <img [src]="image4" alt="Small Image 3"  (click)="openImage(image4)">
+      <img [src]="image5" alt="Small Image 4" (click)="openImage(image5)" >
+      <img [src]="image6" alt="Small Image 4" (click)="openImage(image6)">
+    </div>
+    </div>
+    <div *ngIf="isPopupOpen" class="popup" (click)="closeImage()">
+        <span class="close" (click)="closeImage()">&times;</span>
+        <img class="popup-content" [src]="selectedImage" alt="Popup Image" />
+      </div>
+  </div>
+
+  </div>
+
+  <!-- Price and Booking Box -->
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8">
+        <p>Ngôi nhà xinh xắn, tiện nghi ở một địa điểm tuyệt đẹp. Chúng tôi chào đón bạn đến trải nghiệm cuộc sống hòa mình vào thiên nhiên.</p>
+      </div>
+      <div class="col-md-4">
+        <div class="price-box">
+          <h4>₫3,495,265 / đêm</h4>
+          <form>
+            <div class="mb-3">
+              <label for="checkin" class="form-label">Ngày nhận phòng</label>
+              <input type="date" class="form-control" id="checkin">
+            </div>
+            <div class="mb-3">
+              <label for="checkout" class="form-label">Ngày trả phòng</label>
+              <input type="date" class="form-control" id="checkout">
+            </div>
+            <button type="submit" class="btn btn-primary w-100">Đặt phòng</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Reviews Section -->
+  <div class="container reviews">
+    <h3>Nhận xét</h3>
+    <div class="d-flex mb-3">
+      <div>
+        <img src="https://via.placeholder.com/50" alt="Avatar" class="rounded-circle">
+      </div>
+      <div class="ms-3">
+        <h6>James Patrick</h6>
+        <p>Rất đẹp và tiện nghi. Không gian xanh mát và yên tĩnh, hoàn hảo để nghỉ dưỡng.</p>
+      </div>
+    </div>
+    <div class="d-flex mb-3">
+      <div>
+        <img src="https://via.placeholder.com/50" alt="Avatar" class="rounded-circle">
+      </div>
+      <div class="ms-3">
+        <h6>Erika</h6>
+        <p>Chủ nhà thân thiện và chỗ ở tuyệt vời, sạch sẽ và đầy đủ tiện nghi.</p>
+      </div>
+    </div>
+    <button class="btn btn-secondary">Hiển thị tất cả nhận xét</button>
+  </div>
+
+  <!-- Host Information -->
+  <div class="container host-info">
+    <div class="d-flex align-items-center">
+      <img src="https://via.placeholder.com/50" alt="Host Avatar" class="rounded-circle">
+      <div class="ms-3">
+        <h6>Erica Mendoza</h6>
+        <p>Top Rated Host</p>
+      </div>
+    </div>
+    <button class="btn btn-primary w-100 mt-3">Chat với chủ nhà</button>
+  </div>
+
+  <!-- Map Section -->
+  <div class="container map">
+    <h3>Nơi bạn sẽ đến</h3>
+    <img src="https://via.placeholder.com/600x300" alt="Map" class="img-fluid">
+  </div>
+
+
