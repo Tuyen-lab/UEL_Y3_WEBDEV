@@ -24,8 +24,13 @@ export class DetailComponent implements OnInit {
   selectedImage: string | null = null;
   errMsg: string | null = null;
   selectedId: any
-  constructor(private _service: ExampleService,private activate: ActivatedRoute) {}
+  isCollapsed: boolean = true;
+  showLimit: number = 500; 
+  constructor(private _service: ExampleService,private activate: ActivatedRoute) {
+   ;
+  }
   id: any
+  mota=''
   ngOnInit(): void {
     this._service.getSP().subscribe({
       next: (data) => {this.SP = data
@@ -35,9 +40,14 @@ export class DetailComponent implements OnInit {
           this.image3 = this.SP[this.id-1].anh[1];
           this.image4 = this.SP[this.id-1].anh[2];
           this.image5 = this.SP[this.id-1].anh[3];
-          this.image6 = this.SP[this.id-1].thumbnail;
+          this.image6 = this.SP[this.id-1].anh[4];
         } 
+      
+      var formattedText = this.SP[this.id-1].mota.replace(/\n/g, ". ");
+      this.mota=formattedText
+      this.updateDisplayText();
       },
+      
       error: (err) => (this.errMsg= err.message)
     });
   
@@ -56,5 +66,21 @@ export class DetailComponent implements OnInit {
   closeImage(): void {
     this.isPopupOpen = false;
     this.selectedImage = null;
+  }
+  
+  
+  
+
+  toggleCollapse() {
+    this.isCollapsed = !this.isCollapsed;
+    this.updateDisplayText();
+  }
+
+  updateDisplayText() {
+    if (this.isCollapsed) {
+      this.mota = this.SP[this.id-1].mota.slice(0, this.showLimit) + '...';
+    } else {
+      this.mota = this.SP[this.id-1].mota;
+    }
   }
 }

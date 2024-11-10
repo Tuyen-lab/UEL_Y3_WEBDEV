@@ -3,14 +3,10 @@
 
 
   <!-- Property Header -->
+ 
   <div class="container">
     <div class="property-header">
-      <h1>{{SP[this.id-1].country}}</h1>
-      <p>Nhà nhỏ xinh tại Tarlac, Philippines</p>
-
-
-
-
+      <h1>{{SP[this.id-1].ten}}</h1>
   <div class="container gallery">
     <!-- Large Image -->
     <div>
@@ -21,12 +17,21 @@
     <div class="small-container">
       <img [src]="image2" alt="Small Image 1"  (click)="openImage(image2)" >
       <div class="small-container">
-      <img [src]="image3" alt="Small Image 2" (click)="openImage(image3)"> 
+      <img [src]="image3" alt="Small Image 2" (click)="openImage(image3)">
       <img [src]="image4" alt="Small Image 3"  (click)="openImage(image4)">
       <img [src]="image5" alt="Small Image 4" (click)="openImage(image5)" >
       <img [src]="image6" alt="Small Image 4" (click)="openImage(image6)">
     </div>
+    
+    
     </div>
+    <div class="property-header">
+      <h2>{{SP[this.id-1].title}} tại {{SP[this.id-1].city}}, {{SP[this.id-1].provin}} </h2>
+      <p style="color: lightgray;">
+        {{SP[this.id-1].soluong}} &#8901; {{SP[this.id-1].giuong}} giường &#8901; {{SP[this.id-1].phongtam}} phòng tắm
+      </p>
+      <p>★ 4.8 &#8901; <a href="#" style="color: lightgray;">30 đánh giá</a> </p>
+  </div>
     <div *ngIf="isPopupOpen" class="popup" (click)="closeImage()">
         <span class="close" (click)="closeImage()">&times;</span>
         <img class="popup-content" [src]="selectedImage" alt="Popup Image" />
@@ -39,7 +44,20 @@
   <div class="container">
     <div class="row">
       <div class="col-md-8">
-        <p>Ngôi nhà xinh xắn, tiện nghi ở một địa điểm tuyệt đẹp. Chúng tôi chào đón bạn đến trải nghiệm cuộc sống hòa mình vào thiên nhiên.</p>
+        <h2>Mô tả của chủ phòng</h2>
+        <p [innerHTML]="mota" style="display: inline;"></p>
+        <a style="text-decoration: underline;" (click)="toggleCollapse()">
+          {{ isCollapsed ? 'Xem thêm' : 'Thu gọn' }}
+        </a>
+        <hr style="font-weight: bolder;">
+        <h2>Tiện Nghi</h2>
+        <div style="display: flex; flex-direction: row; width: 500px; flex-wrap: wrap;" >
+          <p style="margin-right: 50px;">&#8226; {{SP[this.id-1].tiennghi[0]}}</p>
+          <p style="margin-right: 50px;">&#8226; {{SP[this.id-1].tiennghi[1]}}</p>
+          <p style="margin-right: 50px;">&#8226; {{SP[this.id-1].tiennghi[2]}}</p>
+          <p style="margin-right: 50px;">&#8226; {{SP[this.id-1].tiennghi[3]}}</p>
+          <p style="margin-right: 50px;">&#8226; {{SP[this.id-1].tiennghi[4]}}</p>
+        </div>
       </div>
       <div class="col-md-4">
         <div class="price-box">
@@ -101,5 +119,6 @@
     <h3>Nơi bạn sẽ đến</h3>
     <img src="https://via.placeholder.com/600x300" alt="Map" class="img-fluid">
   </div>
+  
 
 
