@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ExampleService } from '../service/sp.service';
-import { ActivatedRoute, Route } from '@angular/router';
+import { ActivatedRoute, Route, Router } from '@angular/router';
 
 @Component({
   selector: 'app-detail',
@@ -26,7 +26,7 @@ export class DetailComponent implements OnInit {
   selectedId: any
   isCollapsed: boolean = true;
   showLimit: number = 500; 
-  constructor(private _service: ExampleService,private activate: ActivatedRoute) {
+  constructor(private _service: ExampleService,private activate: ActivatedRoute, private router: Router) {
    ;
   }
   id: any
@@ -83,4 +83,11 @@ export class DetailComponent implements OnInit {
       this.mota = this.SP[this.id-1].mota;
     }
   }
+
+  navigateToBooking() {
+    this.router.navigate(['/home/:id/book']); // Chuyển đến trang đăng ký
+  } 
+
 }
+
+
