@@ -1,5 +1,6 @@
 [{
   "ma":"1",
+  "toado": [11.9450, 108.4339],
   "chuho":"HS1",
   "title": "Homestay Đà Lạt Màu Đen",
   "style": "modern",
@@ -28,6 +29,7 @@
 },
 {
   "ma":"2",
+  "toado": [21.0285, 105.8542],
   "chuho":"HS2",
   "title": "Homestay Phố Cổ Hà Nội",
   "style": "modern",
@@ -55,6 +57,7 @@
 },
 {
   "ma":"3",
+  "toado": [10.762622, 106.660172],
   "chuho":"HS3",
   "title": "Homestay Quận 1",
   "style": "traditional",
@@ -81,6 +84,7 @@
 },
 {
   "ma":"4",
+  "toado": [21.0460, 107.0856],
   "chuho":"HS4",
   "title": "Homestay Biển Hạ Long",
   "style": "beach",
@@ -108,6 +112,7 @@
 },
 {
   "ma":"5",
+  "toado": [12.2388, 109.1967],
   "chuho":"HS5",
   "title": "Homestay Trung tâm Nha Trang",
   "style": "couple",
@@ -134,6 +139,7 @@
 },
 {
   "ma":"6",
+  "toado": [21.8544, 106.7637],
   "chuho":"HS6",
   "title": "Homestay Lạng Sơn",
   "style": "modern",
@@ -159,6 +165,7 @@
 },
 {
   "ma":"7",
+  "toado": [16.4637, 107.5909],
   "chuho":"HS7",
   "title": "Homestay Thành Phố Huế",
   "style": "natural",
@@ -185,6 +192,7 @@
 },
 {
   "ma":"8",
+  "toado": [10.2899, 103.9840],
   "chuho":"HS8",
   "title": "Homestay Biển Phú quốc",
   "style": "beach",
@@ -211,6 +219,7 @@
 },
 {
   "ma":"9",
+  "toado": [13.7820, 109.2195],
   "chuho":"HS9",
   "title": "Homestay Biển Quy Nhơn",
   "style": "beach",
@@ -237,6 +246,7 @@
 },
 {
   "ma":"10",
+  "toado": [13.0801, 109.3053],
   "chuho":"HS10",
   "title": "Homestay Tuy Hòa, Phú Yên",
   "style": "natural",
