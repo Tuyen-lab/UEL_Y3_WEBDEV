@@ -1,0 +1,31 @@
+.booking-content {
+    color: #ffffff;
+    background-color: #1A2B3C;
+    /* border-radius: 10px; */
+    padding: 20px;
+    margin-bottom: 60px;
+    
+  }
+  
+  .homestay-details img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+  }
+  
+  .payment-method img {
+    width: 50px;
+    height: auto;
+  }
+  
+  .pricing-details p {
+    margin-bottom: 10px;
+  }
+  
+  .text-muted {
+    color: #adb5bd !important;
+  }
+  hr{
+    border: solid 1px;
+    border-color: #ffffff;
+  }

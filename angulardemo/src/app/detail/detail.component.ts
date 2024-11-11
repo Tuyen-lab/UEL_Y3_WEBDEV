@@ -1,7 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ExampleService } from '../service/sp.service';
-import { ActivatedRoute, Route } from '@angular/router';
+
+import { ActivatedRoute,Router } from '@angular/router';
 import * as L from 'leaflet';
 
 @Component({
@@ -26,7 +27,7 @@ export class DetailComponent implements OnInit {
   selectedId: any
   isCollapsed: boolean = true;
   showLimit: number = 500; 
-  constructor(private _service: ExampleService,private activate: ActivatedRoute) {
+  constructor(private _service: ExampleService,private activate: ActivatedRoute, private router: Router) {
    ;
   }
   id: any
@@ -102,4 +103,11 @@ export class DetailComponent implements OnInit {
     const marker = L.marker([this.SP[this.id-1].toado[0], this.SP[this.id-1].toado[1]]).addTo(this.map);
     marker.bindPopup(this.SP[this.id-1].ten + " xin chào <br>"+ this.SP[this.id-1].city +', '+ this.SP[this.id-1].provin).openPopup();
   }
+
+  navigateToBooking() {
+    this.router.navigate(['/home/:id/book']); // Chuyển đến trang đăng ký
+  } 
+
 }
+
+

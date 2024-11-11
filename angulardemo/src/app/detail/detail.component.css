@@ -14,7 +14,7 @@ body {
     color: #ffffff;
   }
   .price-box {
-    background-color: #333;
+    background-color: #1b2a41;
     color: #ffffff;
     padding: 20px;
     border-radius: 8px;
@@ -23,7 +23,7 @@ body {
     font-size: 24px;
   }
   .host-info {
-    background-color: #333;
+    background-color: #1b2a41;
     padding: 20px;
     border-radius: 8px;
     color: #ffffff;
@@ -31,7 +31,7 @@ body {
   }
   .reviews {
     margin-top: 20px;
-    background-color: #333;
+    background-color: #1b2a41;
     padding: 20px;
     border-radius: 8px;
     color: #ffffff;
