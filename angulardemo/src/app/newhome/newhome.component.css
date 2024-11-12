@@ -1,0 +1,192 @@
+/* CSS for the header banner */
+.header-banner {
+    background-size: cover;
+    background-position: center;
+    height: 100vh; /* Chiều cao đầy màn hình */
+    color: white;
+  }
+  
+  .header-banner h1 {
+    font-size: 3rem;
+    font-weight: bold;
+  }
+  
+  .header-banner p {
+    font-size: 1.25rem;
+  }
+  
+  .header-banner button {
+    font-size: 1rem;
+    padding: 10px 20px;
+    border-radius: 5px;
+  }
+  .border-nav {
+    border-radius: 50px;
+    border: 1px solid white;
+    width: fit-content;
+  }
+  .main{
+    background-color:#1A2B3C;
+    margin-right: 0;
+  }
+  /* Code phần dưới */
+  .card {
+    border: none;
+  }
+  
+  .card-body {
+    text-align: center;
+  }
+  
+  h3 {
+    color: #fff;
+  }
+  #bg div{
+    background-color: #1A2B3C;
+    color: white;
+  }
+  .amenity-btn {
+    border: 1px solid #ffffff; /* White border */
+    background-color: transparent;
+    color: #ffffff;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 500;
+    text-align: center;
+    width: 120px; /* Fixed width to ensure consistent button size */
+    transition: background-color 0.3s;
+    width: 200px;
+  }
+  
+  .amenity-btn:hover {
+    background-color: #ffffff; /* White background on hover */
+    color: #000000; /* Dark text color on hover */
+  }
+
+  /*Phần tiếp theo mấy cái ảnh xếp tùm lum*/
+  .destination-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+  }
+  
+  .destination-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+  }
+  
+  .destination-card:hover img {
+    transform: scale(1.05); /* Slight zoom effect on hover */
+  }
+  
+  .overlay {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: bold;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8); /* Text shadow for readability */
+  }
+  .trend{
+    padding: 50px;
+    background-color: #1A2B3C;
+      
+  }
+
+/* Set fixed heights for the large and small cards */
+.large-card {
+  height: 300px; /* Adjust height as needed for larger images */
+}
+
+.small-card {
+  height: 200px; /* Adjust height as needed for smaller images */
+}
+
+/*Tiếp theo*/
+.icon-option i {
+  color: #ffffff; /* Icon color */
+}
+
+.icon-option p {
+  color: #ffffff; /* Text color */
+  font-weight: 500;
+  margin-top: 5px;
+}
+
+.destination-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.destination-card img {
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.destination-card:hover img {
+  transform: scale(1.05); /* Zoom effect on hover */
+}
+
+.destination-overlay {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: bold;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8); /* Text shadow for readability */
+}
+#mode img{
+  width: 300px;
+  height: 150px
+}
+/*Tiếp theo*/
+  
+.hotel-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+  background-color: #1A2B3C;
+  padding-bottom: 10px;
+  transition: transform 0.3s ease;
+}
+
+.hotel-card img {
+  width: 100%;
+  height: 200px; /* Adjust height based on preference */
+  object-fit: cover;
+  border-radius: 8px 8px 0 0;
+}
+
+.hotel-info {
+  padding: 15px;
+  background-color: #1A2B3C;
+}
+
+.hotel-info h5 {
+  font-size: 16px;
+  color: white;
+  font-weight: bold;
+  margin: 0;
+}
+
+.discount {
+  font-size: 14px;
+  color: #ff4a4a;
+  font-weight: bold;
+}
+
+.price {
+  font-size: 14px;
+  color: white;
+  font-weight: bold;
+}
+

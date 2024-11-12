@@ -74,7 +74,7 @@ body{
     
 }
 
-@media (max-width:600px) {
+
     .navbar {
         position: absolute;
         display: flex;
@@ -189,8 +189,3 @@ body{
         bottom: 16px;
 
     }
-
-   
-
-    
-}
