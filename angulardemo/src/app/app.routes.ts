@@ -6,9 +6,10 @@ import { SignupComponent } from './signup/signup.component';
 
 import { DetailComponent } from './detail/detail.component';
 import { BookComponent } from './book/book.component';
+import { NewhomeComponent } from './newhome/newhome.component';
 export const routes: Routes = [
     {path:'',redirectTo:'/home', pathMatch:'full'},
-    {path: "home",component:HomeComponent},
+    {path: "home",component:NewhomeComponent},
     {path: "login",component:LoginComponent},
 
     {path: "signup",component:SignupComponent},
