@@ -9,6 +9,7 @@ app.use(express.urlencoded({ extended: true }));
 
 const db = require('./config/db')
 const product = require('./models/product')
+const Rented = require('./models/rented_home')
 db.connect()
 //API
 app.get("/product",cors(), (req, res)=>(
@@ -17,7 +18,31 @@ app.get("/product",cors(), (req, res)=>(
     .catch(err => res.status(500).json({error:err.message}))
     )
 )
-
+app.get("/rented",cors(), (req, res)=>(
+    Rented.find({})
+    .then(rental => res.json(rental))
+    .catch(err => res.status(500).json({error:err.message}))
+    )
+)
+app.post("/rented",cors(), async(req, res)=> {
+    // console.log(req.body);
+    console.log('Received request to add product:', req.body)
+    const rental = new Rented ({
+        manha: req.body.manha,
+        gia: req.body.gia,
+        host: req.body.host,
+        ngaythue: req.body.ngaythue,
+        ngaytra:  req.body.ngaytra,
+        detail:  req.body.detail,
+    });
+    try {
+        await rental.save()
+        res.send("Success!")
+    } catch (err){
+        res.json({message: err.message})
+    }
+    
+})
 app.post("/product",cors(), async(req, res)=> {
     // console.log(req.body);
     console.log('Received request to add product:', req.body)

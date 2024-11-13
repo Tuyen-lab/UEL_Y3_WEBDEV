@@ -61,17 +61,18 @@
       </div>
       <div class="col-md-4">
         <div class="price-box">
-          <h4>₫3,495,265 / đêm</h4>
+          <h4>₫{{SP[this.id-1].gia}} / đêm</h4>
           <form>
             <div class="mb-3">
-              <label for="checkin" class="form-label">Ngày nhận phòng</label>
-              <input type="date" class="form-control" id="checkin">
+              <label for="checkin" class="form-label" >Ngày nhận phòng</label>
+              <input #nhan type="date"  class="form-control" >
+              <p *ngIf="dateError" style="color: red;">Ngày không đã được đặt, chọn lại!</p>
             </div>
             <div class="mb-3">
-              <label for="checkout" class="form-label">Ngày trả phòng</label>
-              <input type="date" class="form-control" id="checkout">
+              <label for="checkout" class="form-label" >Ngày trả phòng</label>
+              <input #tra  type="date" class="form-control" id="checkout">
             </div>
-            <button type="submit" class="btn btn-primary w-100" (click)="navigateToBooking()">Đặt phòng</button>
+            <button type="submit" class="btn btn-primary w-100" (click)="submitData(nhan,tra)">Đặt phòng</button>
           </form>
         </div>
       </div>

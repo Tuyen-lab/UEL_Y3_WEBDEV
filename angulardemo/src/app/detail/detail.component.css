@@ -124,3 +124,7 @@ gap: 10px;
   #map {
     height: 100%;
   }
+  input[type="date"]:invalid {
+    background-color: red;
+    color: white;
+  }

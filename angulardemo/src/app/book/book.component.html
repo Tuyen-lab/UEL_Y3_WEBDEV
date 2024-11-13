@@ -7,7 +7,7 @@
       <div class="col-md-6 mb-4">
         <h5>Chuyến đi của bạn</h5>
         <p class="mb-1">Ngày</p>
-        <p class="text-muted">Ngày 09 - Ngày 14 tháng 11</p>
+        <p class="text-muted">{{ngaynhan}} đến {{ngaytra}}</p>
         <p class="mb-1">Khách</p>
         <p class="text-muted">1 khách</p>
 
@@ -49,10 +49,10 @@
         </div>
         <div class="pricing-details border p-3 rounded">
           <h5>Chi tiết giá</h5>
-          <p>Giá 7.506 x 5 đêm <span class="float-end">₫3.537.840</span></p>
-          <p>Phí dịch vụ <span class="float-end">₫580.206</span></p>
+          <p>Giá {{gia}} x {{ngayo}} đêm <span class="float-end">₫{{tien}}</span></p>
+          <p>Phí dịch vụ <span class="float-end">₫{{dv}}</span></p>
           <hr>
-          <p class="fw-bold">Tổng (VND) <span class="float-end">₫4.118.046</span></p>
+          <p class="fw-bold">Tổng (VND) <span class="float-end">₫{{tong}}</span></p>
         </div>
       </div>
     </div>

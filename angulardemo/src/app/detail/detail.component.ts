@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ExampleService } from '../service/sp.service';
+import { FormsModule } from '@angular/forms';
 
 import { ActivatedRoute,Router } from '@angular/router';
 import * as L from 'leaflet';
@@ -8,7 +9,7 @@ import * as L from 'leaflet';
 @Component({
   selector: 'app-detail',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, FormsModule],
   templateUrl: './detail.component.html',
   styleUrl: './detail.component.css'
 })
@@ -21,19 +22,40 @@ export class DetailComponent implements OnInit {
   image5='';
   image6='';
   SP: any
+  rental: any
   isPopupOpen = false;
   selectedImage: string | null = null;
   errMsg: string | null = null;
   selectedId: any
   isCollapsed: boolean = true;
   showLimit: number = 500; 
+  ngaynhan='';
+
+  ngaytra ='';
+  rental1={manha: '',
+    gia:'',
+    host: '',
+    ngaythue: '',
+    ngaytra: '',
+    detail: {}}
+    startDate='2024-11-01'
+  endDate='2024-11-30'
+  dateError: boolean = false;
   constructor(private _service: ExampleService,private activate: ActivatedRoute, private router: Router) {
    ;
   }
   id: any
   mota=''
   map: L.Map | undefined;
+  
+
   ngOnInit(): void {
+    this._service.getSP().subscribe({
+      next: (data) => {this.rental = data;
+      },
+      error: (err) => (this.errMsg= err.message)
+      
+    })
     this._service.getSP().subscribe({
       next: (data) => {this.SP = data
         if (this.SP && this.SP.length > 1) { 
@@ -72,8 +94,6 @@ export class DetailComponent implements OnInit {
   }
   
   
-  
-
   toggleCollapse() {
     this.isCollapsed = !this.isCollapsed;
     this.updateDisplayText();
@@ -103,11 +123,35 @@ export class DetailComponent implements OnInit {
     const marker = L.marker([this.SP[this.id-1].toado[0], this.SP[this.id-1].toado[1]]).addTo(this.map);
     marker.bindPopup(this.SP[this.id-1].ten + " xin chào <br>"+ this.SP[this.id-1].city +', '+ this.SP[this.id-1].provin).openPopup();
   }
-
-  navigateToBooking() {
-    this.router.navigate(['/home/:id/book']); // Chuyển đến trang đăng ký
-  } 
+  
+ 
+  submitData(date1: HTMLInputElement,date2:HTMLInputElement) {
+      this.rental1.manha=this.SP[this.id-1].ma
+      this.rental1.gia=this.SP[this.id-1].gia
+      this.rental1.host=this.SP[this.id-1].chuho
+      this.rental1.ngaythue=date1.value
+      this.rental1.ngaytra=date2.value
+      this.rental1.detail=this.SP[this.id-1]
+      
+    
+      
+      
+    this._service.addrental(this.rental1).subscribe({
+        
+        next: (response) =>{
+          
+          alert('Product added successfully');
+        },
+        error: (err) => (this.errMsg= err.message)
+      })
+      this.router.navigate([`/home/${this.id}/book`]); // Chuyển đến trang đăng ký
+      alert(this.ngaynhan)
+      alert(this.rental[this.id].ngaynhan)
+    }
+    
+  
 
 }
+
 
 

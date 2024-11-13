@@ -20,9 +20,25 @@ api: string='http://localhost:3000'
       retry(2),
       catchError(this.handleError))
   }
+  getrental(): Observable<any> {
+    return this._http.get<any>(`${this.api}/rented`).pipe(
+      retry(2),
+      catchError(this.handleError))
+  }
   addSP(product: { name: string; price: number }): Observable<any>{
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     return this._http.post<any>( `${this.api}/product`,product, { headers }).pipe(
+      catchError(this.handleError))
+  }
+  addrental(
+    rental: { manha: string,
+      gia: string,
+      host: string,
+      ngaythue: string,
+      ngaytra:  string,
+      detail: any }): Observable<any>{
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    return this._http.post<any>( `${this.api}/rented`,rental, { headers}).pipe(
       catchError(this.handleError))
   }
   deleteBeer(id: string): Observable<any> {
