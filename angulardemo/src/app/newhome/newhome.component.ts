@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-newhome',
@@ -8,5 +9,13 @@ import { Component } from '@angular/core';
   styleUrl: './newhome.component.css'
 })
 export class NewhomeComponent {
+
+  constructor(private router: Router) {}
+
+  navigateSearch() {
+    this.router.navigate(['/search']); // Chuyển đến trang đăng ký
+  }
+
+
 
 }

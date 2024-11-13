@@ -7,6 +7,7 @@ import { SignupComponent } from './signup/signup.component';
 import { DetailComponent } from './detail/detail.component';
 import { BookComponent } from './book/book.component';
 import { NewhomeComponent } from './newhome/newhome.component';
+import { SearchComponent } from './search/search.component';
 export const routes: Routes = [
     {path:'',redirectTo:'/home', pathMatch:'full'},
     {path: "home",component:NewhomeComponent},
@@ -15,7 +16,8 @@ export const routes: Routes = [
     {path: "signup",component:SignupComponent},
 
     {path: "home/:id",component:DetailComponent},
-    {path: "home/:id/book", component: BookComponent}
+    {path: "home/:id/book", component: BookComponent},
+    {path: "search", component: SearchComponent}
 
     
 ];

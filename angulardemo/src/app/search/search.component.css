@@ -1,0 +1,94 @@
+.border-nav {
+    border-radius: 50px;
+    border: 1px solid white;
+    width: fit-content;
+  }
+
+/* Căn chỉnh container */
+.container {
+    background-color: #1A2B3C; /* Màu nền tối */
+    color: #ffffff; /* Màu chữ sáng */
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 0;
+  }
+  
+  /* Card của homestay */
+  .card {
+    background-color: #1A2B3C; /* Màu nền cho card */
+    border: none; /* Loại bỏ viền của card */
+    border-radius: 8px; /* Góc bo tròn */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Hiệu ứng đổ bóng */
+    margin-top: 30px;
+  }
+
+  .price{
+    text-align: right;
+    font-weight: bold;
+    font-size: 30px;
+
+  }
+  
+  .card-img-top {
+    border-top-left-radius: 8px; /* Bo góc cho ảnh */
+    border-top-right-radius: 8px;
+    height: 180px; /* Chiều cao ảnh để đồng nhất */
+    object-fit: cover; /* Đảm bảo ảnh không bị méo */
+    border-radius: 8px;
+    background-color: #1A2B3C;
+  }
+  
+  /* Tiêu đề card */
+  .card-title {
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  /* Văn bản thông tin */
+  .card-text {
+    font-size: 0.9rem;
+    margin-bottom: 5px;
+  }
+  
+  /* Khu vực bản đồ */
+  .map-container {
+    border-radius: 8px; /* Góc bo tròn cho khu vực bản đồ */
+    overflow: hidden; /* Giữ các nội dung trong phạm vi khu vực bản đồ */
+  }
+  
+  /* Khoảng cách giữa các thẻ homestay */
+  .row > .col-md-4 {
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+  
+  /* Khoảng cách giữa các hàng */
+  .mb-4 {
+    margin-bottom: 1.5rem !important;
+  }
+  
+  /* Đảm bảo chiều cao tối thiểu cho card */
+  .card-body {
+    min-height: 100px;
+    background-color: #1A2B3C;
+    color: white;
+  }
+  
+  /* Hiệu ứng hover cho card */
+  .card:hover {
+    transform: translateY(-5px);
+    transition: transform 0.2s ease;
+  }
+  
+  /* Hiển thị hình ảnh bản đồ cho khu vực map-container */
+  .map-container img {
+    border-radius: 8px;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
+  .main{
+    background-color: #1A2B3C;
+    margin-bottom: 0;
+  }
