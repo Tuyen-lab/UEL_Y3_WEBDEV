@@ -29,6 +29,13 @@
     background-color:#1A2B3C;
     margin-right: 0;
   }
+  .butmode{
+    height: 100px;
+    width: 150px;
+    font-size: 25px;
+    font-weight: bold;
+    
+  }
   /* Code phần dưới */
   .card {
     border: none;

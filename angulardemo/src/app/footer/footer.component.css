@@ -1,6 +1,23 @@
-.bottom-promotion{
-    position: fixed;
-    bottom: 0px;
-    width: 100%;
-    z-index: 9999; 
-}
+.footer a {
+    color: #adb5bd;
+    text-decoration: none;
+  }
+  
+  .footer a:hover {
+    color: #ffffff;
+    text-decoration: underline;
+  }
+  
+  .footer h6 {
+    font-weight: bold;
+  }
+  
+  .footer i {
+    color: #adb5bd;
+    font-size: 1.2rem;
+  }
+  
+  .footer i:hover {
+    color: #ffffff;
+  }
+  

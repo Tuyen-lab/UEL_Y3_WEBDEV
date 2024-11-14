@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,14 +10,20 @@
         <img src="assets/images/logo.png" (click)="gohome()" alt="">
     </div>
 
-    <ul class="nav-list-big">
-        <li><a href="#property" class="list-item ">Property</a></li>
-        <li><a href="#service" class="list-item  ">Service</a></li>
-        <li><a href="#product" class="list-item product">Product</a></li>
-        <li><a href="login" class="list-item" >Login</a></li>
-        <li><a href="#aboutus  " class="list-item">About us</a></li>
-        <li><a href=" #contact" class="list-item contact ">Contact us</a></li>
-    </ul>
+    <!-- <ul class="nav-list-big text-left">
+        <li><a href="#property" class="list-item ">Tin nhắn</a></li>
+        <li><a href="#service" class="list-item  ">Thông báo</a></li>
+        <li><a href="#product" class="list-item product">Danh sách yêu thích</a></li>
+        <hr>
+        <li><a href="login" class="list-item" >Chuyển đổi vai trò chủ nhà</a></li>
+        <li><a href="#aboutus  " class="list-item">Giới thiệu chủ nhà</a></li>
+        <li><a href=" #contact" class="list-item contact ">Tài khoản</a></li>
+        <hr>
+        <li><a href="#property" class="list-item ">Tin nhắn</a></li>
+        <li><a href="#service" class="list-item  ">Thông báo</a></li>
+
+
+    </ul> -->
     <nav class="navbar">
         <div class="container" >
             
@@ -33,12 +38,16 @@
         </div>
     </nav>
     <ul *ngIf="isListVisible" class="nav-list-small" >
-        <li><a href="#property" class="list-item ">Property</a></li>
-        <li><a href="#service" class="list-item  ">Service</a></li>
-        <li><a href="#product" class="list-item product">Product</a></li>
-        <li><a href="login" class="list-item" >Login</a></li>
-        <li><a href="#aboutus  " class="list-item">About us</a></li>
-        <li><a href=" #contact" class="list-item  ">Contact us</a></li>
-    </ul>
+        <li><a href="#property" class="list-item ">Tin nhắn</a></li>
+        <li><a href="#service" class="list-item  ">Thông báo</a></li>
+        <li><a href="#product" class="list-item product">Danh sách yêu thích</a></li>
+        <hr class="text-light">
+        <li><a href="login" class="list-item" >Chuyển đổi vai trò chủ nhà</a></li>
+        <li><a href="#aboutus  " class="list-item">Giới thiệu chủ nhà</a></li>
+        <li><a href=" #contact" class="list-item contact ">Tài khoản</a></li>
+        <hr class="border-light">
+        <li><a href="#property" class="list-item ">Tin nhắn</a></li>
+        <li><a href="#service" class="list-item  ">Thông báo</a></li>
+    </ul>   
 </body>
 </html>
