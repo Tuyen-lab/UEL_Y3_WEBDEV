@@ -10,33 +10,32 @@ img{
     margin: 0px;
     width: 80px;
 }
-.nav-list-big {
+/* .nav-list-big {
     position: absolute;
     /* flex-direction: column; */
-    align-items: start;
-
+    /* align-items: start;
     gap: 2rem;
     top:0%;
     margin-top: 10px;
     right: 0%;
     padding-right: 10px;
     transition: opacity 200ms ease-in-out;
-    background-color:rgba(6, 156, 176, 0);
+    background-color:rgba(6, 156, 176, 0); */
     /* width: 100%; */
-    justify-content: right;
-    list-style: none;
-    
-}
+   /* justify-content: right;
+    list-style: none; 
+} */
 body{
     background-repeat: no-repeat;
     background-size: cover;
+    height: 80px;
 }
-.contact {
+/* .contact {
     background-color: #505050;
     padding: 0.5rem 0.8rem;
     border-radius: 5px;
-}
-.nav-list-big :last-child {
+} */
+/* .nav-list-big :last-child {
     padding-bottom: 1rem;
     
 }
@@ -55,7 +54,7 @@ body{
     display: flex;
     justify-content: space-between;
     align-items: center;
-}
+} */
 
 .list-item {
     display: flex;
@@ -69,11 +68,6 @@ body{
     opacity: 0.8;
     cursor: pointer;
 }
-body{
-    height: 80px;
-    
-}
-
 
     .navbar {
         position: absolute;
@@ -93,27 +87,25 @@ body{
     .logo {
         color: #fff;
     }
-    .nav-list-big{
-        display: none;
-    }
+
     .nav-list-small {
         display: flex;
         position:absolute;
         flex-direction: column;
-        align-items: center;
+        align-items: flex-start;
         background-color: rgba(0, 0, 0, 0.7);
-        justify-content: center;
+        justify-content: flex-start;
         
         margin-top: 0;
         right: 0%;
-        padding-right: 0;
+        padding: 20px;
         list-style: none;       /* Bỏ dấu đầu dòng */
         border-radius: 8px;   
-        padding: 0;             /* Bỏ khoảng cách bên trong */
+                   
         margin: 0;              /* Bỏ khoảng cách bên ngoài */
  /* Màu nền cho danh sách */
         border: 1px solid #ccc;  /* Viền cho danh sách */
-        width: 200px;     
+        width: 270px;     
         z-index: 999;
         cursor: pointer;
 
@@ -134,10 +126,10 @@ body{
     }
 
 
-    .contact {
+    /* .contact {
         background-color: transparent;
         padding-left: 0;
-    }
+    } */
 
     .mobile-menu {
         display: flex;
@@ -188,4 +180,8 @@ body{
         transform: rotate(-49deg);
         bottom: 16px;
 
+    }
+    hr{
+        border: 1px solid;
+        width: 100%;
     }
