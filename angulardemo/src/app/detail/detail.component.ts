@@ -30,7 +30,7 @@ export class DetailComponent implements OnInit {
   isCollapsed: boolean = true;
   showLimit: number = 500; 
   ngaynhan='';
-
+  isLoggedIn: boolean = false;
   ngaytra ='';
   rental1={manha: '',
     gia:'',
@@ -48,6 +48,7 @@ export class DetailComponent implements OnInit {
   
 
   ngOnInit(): void {
+    this.isLoggedIn=this._service.isLoggedIn()
     this._service.getSP().subscribe({
       next: (data) => {this.rental = data;
       },
@@ -124,6 +125,10 @@ export class DetailComponent implements OnInit {
   
  
   submitData(date1: HTMLInputElement,date2:HTMLInputElement) {
+    if(this.isLoggedIn==false){
+      alert('Bạn cần đăng nhập để thanh toán')
+    }
+    else{
       this.rental1.manha=this.SP[this.id-1].ma
       this.rental1.gia=this.SP[this.id-1].gia
       this.rental1.host=this.SP[this.id-1].chuho
@@ -144,7 +149,7 @@ export class DetailComponent implements OnInit {
       })
       this.router.navigate([`/home/${this.id}/book`]); // Chuyển đến trang đăng ký
   
-    }
+    }}
     
   
 

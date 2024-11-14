@@ -20,6 +20,11 @@ api: string='http://localhost:3000'
       retry(2),
       catchError(this.handleError))
   }
+  getuser(): Observable<any> {
+    return this._http.get<any>(`${this.api}/user`).pipe(
+      retry(2),
+      catchError(this.handleError))
+  }
   getrental(): Observable<any> {
     return this._http.get<any>(`${this.api}/rented`).pipe(
       retry(2),
@@ -28,6 +33,11 @@ api: string='http://localhost:3000'
   addSP(product: { name: string; price: number }): Observable<any>{
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     return this._http.post<any>( `${this.api}/product`,product, { headers }).pipe(
+      catchError(this.handleError))
+  }
+  adduser(user: { username: string; pass: string; phone:string; email: string }): Observable<any>{
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    return this._http.post<any>( `${this.api}/user`,user, { headers }).pipe(
       catchError(this.handleError))
   }
   addrental(
@@ -53,4 +63,13 @@ api: string='http://localhost:3000'
     return this._http.patch(url, updateData); 
   }
 
+  logout(): void {
+    localStorage.removeItem('user'); // Xóa token khỏi localStorage để đăng xuất
+  }
+
+  // Phương thức kiểm tra trạng thái đăng nhập
+  isLoggedIn(): boolean {
+    return !!localStorage.getItem('user'); // Kiểm tra token để xác định đăng nhập
+    
+  }
 }

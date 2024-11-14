@@ -10,6 +10,7 @@ app.use(express.urlencoded({ extended: true }));
 const db = require('./config/db')
 const product = require('./models/product')
 const Rented = require('./models/rented_home')
+const User  = require('./models/user')
 db.connect()
 //API
 app.get("/product",cors(), (req, res)=>(
@@ -21,6 +22,12 @@ app.get("/product",cors(), (req, res)=>(
 app.get("/rented",cors(), (req, res)=>(
     Rented.find({})
     .then(rental => res.json(rental))
+    .catch(err => res.status(500).json({error:err.message}))
+    )
+)
+app.get("/user",cors(), (req, res)=>(
+    User.find({})
+    .then(user => res.json(user))
     .catch(err => res.status(500).json({error:err.message}))
     )
 )
@@ -41,7 +48,23 @@ app.post("/rented",cors(), async(req, res)=> {
     } catch (err){
         res.json({message: err.message})
     }
-    
+
+})
+app.post("/user",cors(), async(req, res)=> {
+    console.log('Received request to add product:', req.body)
+    const user  = new User ({
+    username: req.body.username,
+    pass: req.body.pass,
+    phone: req.body.phone,
+    email: req.body.email,
+    });
+    try {
+        await user.save()
+        res.send("Success!")
+    } catch (err){
+        res.json({message: err.message})
+    }
+
 })
 app.post("/product",cors(), async(req, res)=> {
     // console.log(req.body);
@@ -84,6 +107,8 @@ app.delete('/:id', async(req, res) =>{
         }
     }
 })
+
+  
 app.listen(port, () =>{
     console.log(`Server listening on port: ${port}`)
 })

@@ -11,18 +11,18 @@
             <h2>ĐĂNG KÝ</h2>
             <form>
                 <label for="username">Tên đăng nhập:</label>
-                <input type="text" id="username" name="username" required>
+                <input type="text" #username name="username" required>
 
                 <label for="password">Mật khẩu:</label>
-                <input type="password" id="password" name="password" required>
+                <input type="password" id="password" #password required>
 
                 <label for="password">Số điện thoại</label>
-                <input type="password" id="password" name="password" required>
+                <input type="password" #phone name="password" required>
 
                 <label for="password">Địa chỉ Email</label>
-                <input type="password" id="password" name="password" required>
+                <input type="password" #email name="password" required>
 
-                <button type="submit">Đăng ký</button>
+                <button type="submit" (click)="submit(username,password,phone,email)">Đăng ký</button>
             </form>
             <div class="logo">
             <a href="https://www.facebook.com/yourpage" target="_blank">
@@ -37,6 +37,4 @@
   
 </body>
 </html>
-=======
-<p>signup works!</p>
->>>>>>> 4e9cc2a498583d4c36c4a58355e10d87e55f50b3
+

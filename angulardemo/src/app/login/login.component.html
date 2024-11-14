@@ -11,12 +11,12 @@
             <h2>ĐĂNG NHẬP</h2>
             <form>
                 <label for="username">Tên đăng nhập:</label>
-                <input type="text" id="username" name="username" required>
+                <input type="text" #username name="username" required>
 
                 <label for="password">Mật khẩu:</label>
-                <input type="password" id="password" name="password" required>
+                <input type="password" #password name="password" required>
 
-                <button type="submit">Đăng nhập</button>
+                <button type="submit" (click)="submit(username,password)">Đăng nhập</button>
             </form>
             <div class="logo">
             <a href="https://www.facebook.com/yourpage" target="_blank">
