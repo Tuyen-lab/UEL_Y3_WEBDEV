@@ -1,0 +1,51 @@
+
+<div class="header-banner d-flex flex-column justify-content-center align-items-center text-white text-center" style="background-image: url(assets/images/banner1.png)">
+    <h1 class="display-4">Your Perfect Home Waiting For You</h1>
+    <p class="lead">We Help You Get Your Dream House With Us. We Are Professional House Consultant</p>
+  
+  </div>
+  <div class="container-fluid p-5 text-light main" style="height: 300vh;">
+    <!-- Navbar -->
+    <div class="d-flex justify-content-between align-items-center mb-4 border-nav text-center ">
+      <nav class="nav">
+        <a class="nav-link text-light" href="#">Hướng biển</a>
+        <a class="nav-link text-light" href="#">Được ưa chuộng</a>
+        <a class="nav-link text-light" href="#">Công viên</a>
+        <a class="nav-link text-light" href="#">Nông thôn</a>
+        <a class="nav-link text-light" href="#">Nhà nhỏ</a>
+        <a class="nav-link text-light" href="#">Biệt thự</a>
+        <a class="nav-link text-light" href="#">Hồ bơi</a>
+        <a class="nav-link text-light" href="#">Phục vụ bữa sáng</a>
+        <a class="nav-link text-light" href="#">&#10140;</a>
+      </nav>
+    </div>
+
+
+<div class="container-fluid full-height-div width=100vw" >
+    <!-- Khu Vực Hiển Thị Danh Sách Homestay và Bản Đồ -->
+    <div class="row main ">
+      <!-- Danh Sách Homestay -->
+      <div class="col-md-9 main mb-4 ml-4 cahai">
+        <div class="row" >
+          <div *ngIf="notification" class="notification">{{ notification }} </div>
+          <!-- Homestay 1 -->
+          <div class="col-md-4 mb-4" *ngFor="let i of searchResult" style="width: 200px;">
+            <div class="card h-100"  (click)="navigateSearch(i.ma)">
+              <img src={{i.thumnail}} class="card-img-top" alt="Homestay Đà Lạt Màu Đen">
+              <div class="card-body">
+                <h5 class="card-title">{{i.title}}</h5>
+                <p class="card-text">{{i.city}}, {{i.provin}}, {{i.country}}</p>
+                <p class="card-text price ">1,917,389 VND</p>
+              </div>
+            </div>
+          </div>
+          
+        </div>
+      <!-- Khu Vực Bản Đồ -->
+       <div >
+      <div id="map" *ngIf="!notification" class="col-md-3 mt-4 sticky-top map-container  bg-light" style="height: 500px; width: 400px; float: right;margin-left: 50px;" ></div></div>
+      
+    </div>
+    
+  </div>
+  

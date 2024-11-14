@@ -1,41 +1,29 @@
 [
     {
+        "ma":"11",
+        "toado": [13.0801, 109.3053],
+        "chuho":"HS11",
+        "title": "Homestay Đà Nẵng",
+        "style": "natural",
+        "ten": "Homestay DaNang Life",
         "country": "Việt Nam",
-        "provin": "Đà Lạt",
-        "ngaynhan": "8/11",
-        "ngaytra": "13/12",
-        "gia": "1.917.389",
-        "thumnail": "https://static-4.happynest.vn/storage/uploads/2022/04/65ee87db6413ffa4d21e8398f36601cc.jpeg",
+        "provin": "Đà Nẵng",
+        "city": "Đà Nẵng",
+        "ngaynhan": "25/02",
+        "ngaytra": "02/03",
+        "gia": "1.800.000",
+        "thumnail": "https://a0.muscache.com/im/pictures/3a20fc14-1d5a-4a57-8ff5-2baf0affe03d.jpg?im_w=960",
         "anh": [
-            "https://static-5.happynest.vn/storage/uploads/2022/04/9367c4f88583bf3ccc3f9f81f5040605.jpg",
-            "https://static-3.happynest.vn/storage/uploads/2022/04/988deb8f91881f1919a4f4255fe456d3.jpg",
-            "https://static-5.happynest.vn/storage/uploads/2022/04/82fe5bbceddd57af45ea55079c768049.jpg"
-        ]
-    },
-    {
-        "country": "Việt Nam",
-        "provin": "Hà Nội",
-        "ngaynhan": "10/11",
-        "ngaytra": "15/12",
-        "gia": "2.500.000",
-        "thumnail": "https://example.com/image2.jpeg",
-        "anh": [
-            "https://example.com/photo1.jpg",
-            "https://example.com/photo2.jpg",
-            "https://example.com/photo3.jpg"
-        ]
-    },
-    {
-        "country": "Việt Nam",
-        "provin": "Hồ Chí Minh",
-        "ngaynhan": "12/11",
-        "ngaytra": "18/12",
-        "gia": "3.000.000",
-        "thumnail": "https://example.com/image3.jpeg",
-        "anh": [
-            "https://example.com/photo4.jpg",
-            "https://example.com/photo5.jpg",
-            "https://example.com/photo6.jpg"
-        ]
-    }
+          "https://a0.muscache.com/im/pictures/hosting/Hosting-746560326589278301/original/aac6989d-670b-40da-9b6b-19f059c270ce.jpeg?im_w=480",
+          "https://a0.muscache.com/im/pictures/hosting/Hosting-746560326589278301/original/384e156b-33d8-41dc-9501-bc643bbb506c.jpeg?im_w=480",
+          "https://a0.muscache.com/im/pictures/hosting/Hosting-746560326589278301/original/df7dfab5-28e5-4678-bdd9-7dcfa98bbb70.jpeg?im_w=480",
+          "https://a0.muscache.com/im/pictures/hosting/Hosting-746560326589278301/original/df7dfab5-28e5-4678-bdd9-7dcfa98bbb70.jpeg?im_w=480",
+          "https://a0.muscache.com/im/pictures/hosting/Hosting-746560326589278301/original/aac6989d-670b-40da-9b6b-19f059c270ce.jpeg?im_w=480"
+        ],
+        "phongngu": 1,
+        "giuong": 1,
+        "phongtam": 1,
+        "tiennghi": ["Wi-Fi miễn phí", "Bãi đậu xe", "TV màn hình phẳng", "Điều hòa", "Tủ lạnh"],
+        "mota": "Căn hộ tại Phú Yên mang đến không gian sống thư giãn và yên bình, gần gũi với thiên nhiên và các bãi biển nổi tiếng. Đây là nơi lý tưởng cho những ai yêu thích sự tĩnh lặng, hòa mình vào thiên nhiên và khám phá vẻ đẹp hoang sơ của Phú Yên.\n\nThông tin chi tiết:\n\n- Vị trí: Căn hộ tọa lạc tại thành phố Tuy Hòa, gần các bãi biển đẹp như Bãi Xép, Bãi Môn, và Đầm Ô Loan.\n- Diện tích: Căn hộ có diện tích 45m², 1 phòng ngủ với nội thất đầy đủ tiện nghi.\n- Nội thất: Căn hộ được trang bị đầy đủ tiện nghi hiện đại như giường ngủ êm ái, sofa, tủ lạnh, máy giặt, TV màn hình phẳng và Wifi miễn phí.\n- Tiện nghi:\n  - Phòng tắm hiện đại, nước nóng 24/7\n  - Bếp đầy đủ dụng cụ nấu ăn cơ bản\n  - Wifi miễn phí, TV màn hình phẳng\n  - Chỗ đỗ xe miễn phí trong khuôn viên\n\nTiện ích xung quanh:\n- Các nhà hàng, quán cà phê gần bãi biển\n- Dịch vụ cho thuê xe máy và ô tô\n- Các khu du lịch như Đầm Ô Loan, Gành Đá Đĩa, và Bãi Xép\n\nLưu ý:\n- Xe hơi có thể đậu cách căn hộ 200m\n- Check-in tự động qua mã số\n- Chỗ để hành lý miễn phí và dịch vụ hỗ trợ khách hàng 24/7\n\nChúng tôi cam kết mang đến cho bạn một kỳ nghỉ tuyệt vời tại Phú Yên, với không gian sống yên tĩnh và dịch vụ chuyên nghiệp!"
+      }
 ]

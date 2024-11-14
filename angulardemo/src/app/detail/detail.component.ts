@@ -41,9 +41,7 @@ export class DetailComponent implements OnInit {
     startDate='2024-11-01'
   endDate='2024-11-30'
   dateError: boolean = false;
-  constructor(private _service: ExampleService,private activate: ActivatedRoute, private router: Router) {
-   ;
-  }
+  constructor(private _service: ExampleService,private activate: ActivatedRoute, private router: Router) {}
   id: any
   mota=''
   map: L.Map | undefined;
@@ -145,8 +143,7 @@ export class DetailComponent implements OnInit {
         error: (err) => (this.errMsg= err.message)
       })
       this.router.navigate([`/home/${this.id}/book`]); // Chuyển đến trang đăng ký
-      alert(this.ngaynhan)
-      alert(this.rental[this.id].ngaynhan)
+  
     }
     
   
