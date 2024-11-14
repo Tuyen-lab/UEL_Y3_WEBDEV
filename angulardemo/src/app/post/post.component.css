@@ -1,0 +1,55 @@
+.container {
+    background-color: #112C3D; /* Màu nền tối */
+    color: #FFFFFF; /* Màu chữ trắng */
+    padding: 30px;
+    border-radius: 8px; /* Bo góc */
+  }
+  
+  .form-label {
+    font-weight: bold;
+  }
+  
+  .form-check-label, .form-control {
+    color: #FFFFFF; /* Màu chữ cho checkbox và ô nhập liệu */
+  }
+  
+  .form-control {
+    background-color: #1E3A50; /* Màu nền cho ô nhập liệu */
+    border: none; /* Bỏ viền mặc định */
+    border-radius: 5px; /* Bo góc cho ô nhập liệu */
+    color: #FFFFFF; /* Màu chữ trong ô nhập liệu */
+    padding: 10px;
+  }
+  
+  .form-control::placeholder {
+    color: #B0B0B0; /* Màu chữ cho placeholder */
+  }
+  /* img{
+    width: 200px;
+    height: 1rem;
+  } */
+   /* .form-check-input{
+    width: 30px;
+    height: 30px;
+    margin: 10px;
+   } */
+/*Ảnh*/
+.upload-section {
+    margin-top: 20px;
+  }
+  
+  .image-preview {
+    margin-top: 15px;
+    width: 200px; /* Đặt kích thước khung ảnh */
+    height: 200px;
+    overflow: hidden;
+    border-radius: 8px;
+    border: 2px solid #ddd;
+  }
+  
+  .image-preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Giúp ảnh căn chỉnh gọn trong khung */
+  }
+  

@@ -8,6 +8,8 @@ import { DetailComponent } from './detail/detail.component';
 import { BookComponent } from './book/book.component';
 import { NewhomeComponent } from './newhome/newhome.component';
 import { SearchComponent } from './search/search.component';
+import { HostComponent } from './host/host.component';
+import { PostComponent } from './post/post.component';
 export const routes: Routes = [
     {path:'',redirectTo:'/home', pathMatch:'full'},
     {path: "home",component:NewhomeComponent},
@@ -18,7 +20,10 @@ export const routes: Routes = [
     {path: "home/:id",component:DetailComponent},
     {path: "home/:id/book", component: BookComponent},
     {path: "home/search/:key", component: SearchComponent},
-    {path: "all", component: HomeComponent}
+    {path: "host", component: HostComponent},
+    {path: "all", component: HomeComponent},
+    {path: "post", component: PostComponent}
+    
 
     
 ];
