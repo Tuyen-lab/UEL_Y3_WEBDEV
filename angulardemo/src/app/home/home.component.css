@@ -461,3 +461,17 @@ form .container{
     flex-basis: 100%;
 }
 }
+/*Css trái tym*/
+.card {
+    position: relative;
+  }
+  
+  .bi-heart {
+    font-size: 2rem;
+    color: white; /* Màu trắng khi chưa hover */
+    transition: color 0.3s ease; /* Hiệu ứng chuyển màu mượt mà */
+  }
+  
+  .bi-heart:hover {
+    color: red; /* Màu đỏ khi hover */
+  }

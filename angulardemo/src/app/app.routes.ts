@@ -10,6 +10,7 @@ import { NewhomeComponent } from './newhome/newhome.component';
 import { SearchComponent } from './search/search.component';
 import { HostComponent } from './host/host.component';
 import { PostComponent } from './post/post.component';
+import { ManageComponent } from './manage/manage.component';
 export const routes: Routes = [
     {path:'',redirectTo:'/home', pathMatch:'full'},
     {path: "home",component:NewhomeComponent},
@@ -22,7 +23,8 @@ export const routes: Routes = [
     {path: "home/search/:key", component: SearchComponent},
     {path: "host", component: HostComponent},
     {path: "all", component: HomeComponent},
-    {path: "post", component: PostComponent}
+    {path: "post", component: PostComponent},
+    {path: "manage", component: ManageComponent}
     
 
     

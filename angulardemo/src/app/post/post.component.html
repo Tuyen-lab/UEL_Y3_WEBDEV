@@ -165,13 +165,100 @@
 
   <div>
     <h4>Bổ sung một số bức ảnh chụp ở chỗ của bạn</h4>
-    <div class="upload-section">
+
+    <!-- <div class="upload-section">
         <input type="file" (change)="onImageSelected($event)" accept="image/*" />
         <div class="image-preview" *ngIf="selectedImage">
           <img [src]="selectedImage" alt="Ảnh đã chọn" />
         </div>
+      </div> -->
+
+         <div class="container my-5">
+  <div class="row">
+    <!-- Ảnh lớn bên trái -->
+    <div class="col-md-6 mb-4">
+      <div class="image-upload-wrapper">
+        <div class="image-container" *ngIf="images[0]">
+          <img [src]="images[0]" alt="Uploaded Image" class="uploaded-image "/>
+        </div>
+        <div class="upload-button" *ngIf="!images[0]">
+          <label for="fileInput0" class="btn btn-outline-secondary">
+            Tải ảnh lên
+          </label>
+          <input type="file" id="fileInput0" (change)="onImageSelected($event, 0)" accept="image/*" hidden>
+        </div>
       </div>
+    </div>
+
+    <!-- Bố cục ảnh nhỏ bên phải -->
+    <div class="col-md-6">
+      <div class="row">
+        <div class="col-6 mb-4 align-items-center ">
+          <div class="image-upload-wrapper h-50 mode">
+            <div class="image-container" *ngIf="images[3]">
+              <img [src]="images[3]" alt="Uploaded Image" class="uploaded-image"/>
+            </div>
+            <div class="upload-button" *ngIf="!images[3]">
+              <label for="fileInput3" class="btn btn-outline-secondary">
+                Tải ảnh lên
+              </label>
+              <input type="file" id="fileInput3" (change)="onImageSelected($event, 3)" accept="image/*" hidden>
+            </div>
+          </div>
+        </div>
+
+        
+
+        <div class="col-6 mb-4">
+          <div class="image-upload-wrapper">
+            <div class="image-container" *ngIf="images[1]">
+              <img [src]="images[1]" alt="Uploaded Image" class="uploaded-image"/>
+            </div>
+            <div class="upload-button" *ngIf="!images[1]">
+              <label for="fileInput1" class="btn btn-outline-secondary">
+                Tải ảnh lên
+              </label>
+              <input type="file" id="fileInput1" (change)="onImageSelected($event, 1)" accept="image/*" hidden>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-6 mb-4">
+          <div class="image-upload-wrapper">
+            <div class="image-container" *ngIf="images[2]">
+              <img [src]="images[2]" alt="Uploaded Image" class="uploaded-image"/>
+            </div>
+            <div class="upload-button" *ngIf="!images[2]">
+              <label for="fileInput2" class="btn btn-outline-secondary">
+                Tải ảnh lên
+              </label>
+              <input type="file" id="fileInput2" (change)="onImageSelected($event, 2)" accept="image/*" hidden>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-6 mb-4">
+          <div class="image-upload-wrapper">
+            <div class="image-container" *ngIf="images[1]">
+              <img [src]="images[1]" alt="Uploaded Image" class="uploaded-image"/>
+            </div>
+            <div class="upload-button" *ngIf="!images[4]">
+              <label for="fileInput1" class="btn btn-outline-secondary">
+                Tải ảnh lên
+              </label>
+              <input type="file" id="fileInput1" (change)="onImageSelected($event, 1)" accept="image/*" hidden>
+            </div>
+          </div>
+        </div>
+      
+      </div>
+    </div>
   </div>
+</div>
+    
+  </div>
+
+  <!---->
 </form>
   </div>
   

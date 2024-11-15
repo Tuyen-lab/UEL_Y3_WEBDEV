@@ -40,4 +40,11 @@ toHost() {
   this.router.navigate(['/host'])
 }
 
+
+toManage() {
+  this.router.navigate(['/manage'])
+}
+
+
+
 }

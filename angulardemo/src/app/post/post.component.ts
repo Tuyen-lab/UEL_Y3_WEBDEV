@@ -10,9 +10,27 @@ import { Component } from '@angular/core';
 })
 export class PostComponent {
 
-  selectedImage: any | ArrayBuffer | null = null;
+  // selectedImage: any | ArrayBuffer | null = null;
 
-  onImageSelected(event: Event): void {
+  // onImageSelected(event: Event): void {
+  //   const fileInput = event.target as HTMLInputElement;
+
+  //   if (fileInput.files && fileInput.files[0]) {
+  //     const file = fileInput.files[0];
+  //     const reader = new FileReader();
+
+  //     reader.onload = (e) => {
+  //       this.selectedImage = e.target?.result;
+  //     };
+
+  //     reader.readAsDataURL(file);
+  //   }
+  // }
+
+  
+  images: (any | ArrayBuffer | null)[] = [null, null, null, null, null];
+
+  onImageSelected(event: Event, index: number): void {
     const fileInput = event.target as HTMLInputElement;
 
     if (fileInput.files && fileInput.files[0]) {
@@ -20,11 +38,13 @@ export class PostComponent {
       const reader = new FileReader();
 
       reader.onload = (e) => {
-        this.selectedImage = e.target?.result;
+        this.images[index] = e.target?.result;
       };
 
       reader.readAsDataURL(file);
     }
   }
+
+
 
 }
