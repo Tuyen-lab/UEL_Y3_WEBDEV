@@ -43,9 +43,9 @@
       <!-- Phần Chi tiết giá và Homestay -->
       <div class="col-md-6">
         <div class="homestay-details border p-3 rounded mb-4">
-          <img src="https://mangdenkontum.com/wp-content/uploads/2023/06/Soc-House-8-1024x768.jpg.webp" alt="Homestay" class="img-fluid rounded mb-3"> <!-- Thay bằng link hình ảnh homestay -->
-          <h4>Homestay Hạ Long Lily - Phòng 203</h4>
-          <p class="text-muted">Phòng tắm có nghỉ phục vụ bữa sáng</p>
+          <img src={{anh}} alt="Homestay" class="img-fluid rounded mb-3"> <!-- Thay bằng link hình ảnh homestay -->
+          <h4>{{title}}</h4>
+          <p class="text-muted">{{name}}</p>
         </div>
         <div class="pricing-details border p-3 rounded">
           <h5>Chi tiết giá</h5>
@@ -59,7 +59,7 @@
   
     <!-- Nút xác nhận -->
     <div class="text-center mt-4">
-      <button class="btn btn-light btn-lg w-50">Xác nhận và thanh toán</button>
+      <button class="btn btn-light btn-lg w-50" (click)="submitData()">Xác nhận và thanh toán</button>
     </div>
   </div>
   

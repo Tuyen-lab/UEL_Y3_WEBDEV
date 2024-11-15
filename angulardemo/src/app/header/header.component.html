@@ -9,34 +9,26 @@
     <div class="logo">
         <img src="assets/images/logo.png" (click)="gohome()" alt="">
     </div>
-
-    <!-- <ul class="nav-list-big text-left">
-        <li><a href="#property" class="list-item ">Tin nhắn</a></li>
-        <li><a href="#service" class="list-item  ">Thông báo</a></li>
-        <li><a href="#product" class="list-item product">Danh sách yêu thích</a></li>
-        <hr>
-        <li><a href="login" class="list-item" >Chuyển đổi vai trò chủ nhà</a></li>
-        <li><a href="#aboutus  " class="list-item">Giới thiệu chủ nhà</a></li>
-        <li><a href=" #contact" class="list-item contact ">Tài khoản</a></li>
-        <hr>
-        <li><a href="#property" class="list-item ">Tin nhắn</a></li>
-        <li><a href="#service" class="list-item  ">Thông báo</a></li>
-
-
-    </ul> -->
-    <nav class="navbar">
-        <div class="container" >
+    
+    <nav class="navbar" style="margin-top: 0px;padding-top:0px">
+        
+        <div class="container" style="display: flex; flex-direction: row;top:0%">
             
             
-            <div class="mobile-menu" [ngClass]="{'active': isActive}" 
+            <div class="mobile-menu" [ngClass]="{'active': isActive} " style="margin-top: 0px; padding-top: 0" 
             (mousedown)="toggleActive()">
                 <div class="line line1 "></div>
                 <div class="line line2 "></div>
                 <div class="line line3 "></div>     
             </div>
-            
+            <div style="margin-top: 0px; padding-top: 0; top:0%" >
+                <img style="width: 50px; height: 50px;" src="assets/images/avata.svg" alt="" (click)="toUser()">
+                <div *ngIf="username!=null " class="user">{{username}}</div>
+            </div>
         </div>
+        
     </nav>
+
     <ul *ngIf="isListVisible" class="nav-list-small" >
         <li><a href="#property" class="list-item ">Tin nhắn</a></li>
         <li><a href="#service" class="list-item  ">Thông báo</a></li>
@@ -48,6 +40,7 @@
         <hr class="border-light">
         <li><a href="#property" class="list-item ">Tin nhắn</a></li>
         <li><a href="#service" class="list-item  ">Thông báo</a></li>
+        <li><a  class="list-item " *ngIf="islogin" (click)="toLogOut()">Đăng xuất</a></li>
     </ul>   
 </body>
 </html>

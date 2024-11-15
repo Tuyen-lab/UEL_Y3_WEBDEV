@@ -10,19 +10,25 @@
         <div class="form-container">
             <h2>ĐĂNG KÝ</h2>
             <form>
-                <label for="username">Tên đăng nhập:</label>
-                <input type="text" #username name="username" required>
+                <label for="username" >Tên đăng nhập:</label>
+                <input type="text"  #username name="username" required  [ngClass]="{ 'invalid-input': !name || !nameagain }">
+                <p *ngIf="!name" class="error-message">nhập tên người dùng</p>
+                <p *ngIf="!nameagain" class="error-message">Tên đăng nhập đã được sử dụng</p>
 
-                <label for="password">Mật khẩu:</label>
-                <input type="password" id="password" #password required>
+                <label for="password"  >Mật khẩu:</label>
+                <input type="password" id="password" #password required [ngClass]="{ 'invalid-input': !pass }">
+                <p *ngIf="!pass" class="error-message">nhập  mật khẩu</p>
+                <label for="phone">Số điện thoại</label>
+                <input type="text" #phone  required [ngClass]="{ 'invalid-input': !phone1 }" name="phone">
+                <p *ngIf="!phone1" style="color: red;">nhập số điện thoại</p>
 
-                <label for="password">Số điện thoại</label>
-                <input type="password" #phone name="password" required>
-
-                <label for="password">Địa chỉ Email</label>
-                <input type="password" #email name="password" required>
-
-                <button type="submit" (click)="submit(username,password,phone,email)">Đăng ký</button>
+                <label for="password" >Địa chỉ Email</label>
+                <input type="password" #email name="password" required [formControl]="emailFormControl" [ngClass]="{'invalid-input': emailFormControl.invalid && emailFormControl.touched || !email1}">
+             
+                <div *ngIf="emailFormControl.invalid && emailFormControl.touched || !email1" style="color: red;">
+                    Địa chỉ email không hợp lệ.
+                  </div>
+                <button type="button" (click)="submit(username,password,phone,email)">Đăng ký</button>
             </form>
             <div class="logo">
             <a href="https://www.facebook.com/yourpage" target="_blank">

@@ -155,7 +155,13 @@ body{
         position: absolute;
         transition: transform 300ms ease-in-out;
     }
-
+    .user{
+        color: white;
+        font-weight: bold;
+        text-align: center;
+        margin-top: 0px;
+        padding: 0;
+    }
     .line1 {
         top: 3px;
     }

@@ -38,8 +38,8 @@ export class DetailComponent implements OnInit {
     ngaythue: '',
     ngaytra: '',
     detail: {}}
-    startDate='2024-11-01'
-  endDate='2024-11-30'
+  day1= true
+  day2= true
   dateError: boolean = false;
   constructor(private _service: ExampleService,private activate: ActivatedRoute, private router: Router) {}
   id: any
@@ -49,12 +49,7 @@ export class DetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.isLoggedIn=this._service.isLoggedIn()
-    this._service.getSP().subscribe({
-      next: (data) => {this.rental = data;
-      },
-      error: (err) => (this.errMsg= err.message)
-      
-    })
+  
     this._service.getSP().subscribe({
       next: (data) => {this.SP = data
         if (this.SP && this.SP.length > 1) { 
@@ -129,25 +124,31 @@ export class DetailComponent implements OnInit {
       alert('Bạn cần đăng nhập để thanh toán')
     }
     else{
-      this.rental1.manha=this.SP[this.id-1].ma
-      this.rental1.gia=this.SP[this.id-1].gia
-      this.rental1.host=this.SP[this.id-1].chuho
-      this.rental1.ngaythue=date1.value
-      this.rental1.ngaytra=date2.value
-      this.rental1.detail=this.SP[this.id-1]
-      
-    
-      
-      
-    this._service.addrental(this.rental1).subscribe({
-        
-        next: (response) =>{
-          
-          alert('Product added successfully');
-        },
-        error: (err) => (this.errMsg= err.message)
-      })
-      this.router.navigate([`/home/${this.id}/book`]); // Chuyển đến trang đăng ký
+      if(date1.value!='' && date2.value !=''){
+        // Chuyển đến trang đăng ký
+      const d1 = new Date(date1.value);
+    const d2 = new Date(date2.value);
+      if (d1.getTime() < d2.getTime()) {
+        localStorage.setItem('ngaynhan',date1.value)
+        localStorage.setItem('ngaytra',date2.value)
+        this.router.navigate([`/home/${this.id}/book`]);
+    } else if (d1.getTime() > d2.getTime()) {
+        alert("ngày trả phải sau ngày nhận")
+    } else {
+      alert("ngày trả phải khác ngày nhận")
+    }
+      }
+      else if(date1.value!=''){ 
+        this.day1= false
+      }
+      else if(date2.value!=''){ 
+        this.day2= false
+      }
+      else{
+        this.day1= false
+        this.day2= false
+      }
+     
   
     }}
     

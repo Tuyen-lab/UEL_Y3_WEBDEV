@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ExampleService } from '../service/sp.service';
-import { ActivatedRoute, Route } from '@angular/router';
+import { ActivatedRoute, Route, Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -23,18 +23,30 @@ export class BookComponent implements OnInit {
   tien=0
   dv=580206
   tong=0
-  constructor(private _service: ExampleService,  private active: ActivatedRoute){}
+  anh=''
+  title=''
+  name=''
+  rental1={manha: '',
+    gia:'',
+    host: '',
+    ngaythue: '',
+    ngaytra: '',
+    detail: {}}
+  constructor(private _service: ExampleService,  private active: ActivatedRoute, private router: Router){}
   ngOnInit(): void {
-    this._service.getrental().subscribe({
+    this._service.getSP().subscribe({
       next: (data) => {this.SP = data;
         this.id = this.active.snapshot.paramMap.get('id')!;
         for (let i of this.SP){
          
-          if (this.id== i.manha){
+          if (this.id== i.ma){
          
-          this.ngaynhan= i.ngaythue
-          this.ngaytra= i.ngaytra
+          this.ngaynhan= localStorage.getItem('ngaynhan')||''
+          this.ngaytra= localStorage.getItem('ngaytra')||''
           this.gia=i.gia
+          this.title=i.title
+          this.name=i.ten
+          this.anh=i.thumnail
           this.chunha= i.host}}
           this.ngayo=this.calculateDaysDifference(this.ngaynhan,this.ngaytra)
           this.tien=this.ngayo* parseInt(this.gia)*1000000
@@ -47,15 +59,8 @@ export class BookComponent implements OnInit {
     this.active.paramMap.subscribe((param) => {
       let id = param.get('id')
       if (id != null) this.selectedId = parseInt(id);
-    })
-    
-    
-    
-    
-    
-    
-
-  }
+    })}
+  
   calculateDaysDifference(date1: string, date2: string): number {
     // Chuyển đổi các chuỗi ngày thành đối tượng Date
     const d1 = new Date(date1);
@@ -69,4 +74,27 @@ export class BookComponent implements OnInit {
   
     return dayDiff;
   }
+  submitData() {
+      
+    
+    this.rental1.manha=this.SP[this.id-1].ma
+    this.rental1.gia=this.SP[this.id-1].gia
+    this.rental1.host=this.SP[this.id-1].chuho
+    this.rental1.ngaythue=this.ngaynhan
+    this.rental1.ngaytra=this.ngaytra
+    this.rental1.detail=this.SP[this.id-1]
+   
+    
+  this._service.addrental(this.rental1).subscribe({
+  
+      next: (response) =>{
+        alert('Product added successfully');
+      },
+      error: (err) => (this.errMsg= err.message)
+    })
+    alert('Đặt phòng thành công')
+    this.router.navigate([`/home`])
+  }
+  
 }
+

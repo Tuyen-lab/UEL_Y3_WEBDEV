@@ -65,12 +65,13 @@
           <form>
             <div class="mb-3">
               <label for="checkin" class="form-label" >Ngày nhận phòng</label>
-              <input #nhan type="date"  class="form-control" >
-              <p *ngIf="dateError" style="color: red;">Ngày không đã được đặt, chọn lại!</p>
+              <input #nhan type="date"  class="form-control"  [ngClass]="{ 'error': !day1 }">
+              <p *ngIf="!day1" style="color: red;">Hãy nhập ngày</p>
             </div>
             <div class="mb-3">
               <label for="checkout" class="form-label" >Ngày trả phòng</label>
-              <input #tra  type="date" class="form-control" id="checkout">
+              <input #tra  type="date" class="form-control" [ngClass]="{ 'error': !day2 }"  id="checkout">
+              <p *ngIf="!day2" style="color: red;">Hãy nhập ngày</p>
             </div>
             <button type="submit" class="btn btn-primary w-100" (click)="submitData(nhan,tra)">Đặt phòng</button>
           </form>

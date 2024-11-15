@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { ExampleService } from '../service/sp.service';
+import { flush } from '@angular/core/testing';
 
 @Component({
   selector: 'app-login',
@@ -13,8 +14,8 @@ export class LoginComponent {
   logininfo={username:'',pass:''}
   userlist: any
   errMsg=''
-  userlogin=false
-  passlogin=false
+  userlogin=true
+  passlogin=true
   login=''
   isLoggedIn: boolean = false;
   constructor(private _service: ExampleService,private router: Router) {}
@@ -29,20 +30,22 @@ export class LoginComponent {
     this.router.navigate(['/signup']); // Chuyển đến trang đăng ký
   }
   submit(username: HTMLInputElement, pass:HTMLInputElement){
-
     this.logininfo.username=username.value
     this.logininfo.pass=pass.value
     for(let u of this.userlist){
-      if(u.username!= this.logininfo.username){
+      if(u.username!= username.value){
         this.userlogin=false
+        
       }
       else{
         this.userlogin=true
-        if(u.pass!=this.logininfo.pass){
+        if(u.pass!=pass.value){
           this.passlogin=false
+          break
         }
         else{
           this.passlogin=true
+          break
         }
       }
     }
@@ -54,10 +57,15 @@ export class LoginComponent {
         alert('sai mật khẩu')
       }
       else{
-        alert('Đăng nhập thành công')
-        this.login='yes'
         localStorage.setItem('user',username.value)
-        alert(localStorage.getItem('user'))
+       
+        alert('Đăng nhập thành công')
+       
+        this.login='yes'
+        window.location.href = '/home';
+        this.router.navigate(['/home'])
+ 
+        
       }
     }
   }

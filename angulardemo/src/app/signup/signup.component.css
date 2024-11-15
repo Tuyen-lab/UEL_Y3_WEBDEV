@@ -37,7 +37,15 @@ form {
     width: 300px; /* Đặt chiều rộng cho form */
     margin: 0 auto; /* Căn giữa form */
 }
-
+.invalid-input {
+    border: 2px solid red;
+  }
+  
+.error-message {
+    color: red;
+    font-size: 0.9em;
+    margin-top: 4px;
+  }
 label {
     display: block;
     margin-bottom: 5px;
