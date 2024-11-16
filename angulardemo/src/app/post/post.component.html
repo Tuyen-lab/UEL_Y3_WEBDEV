@@ -166,15 +166,8 @@
   <div>
     <h4>Bổ sung một số bức ảnh chụp ở chỗ của bạn</h4>
 
-    <!-- <div class="upload-section">
-        <input type="file" (change)="onImageSelected($event)" accept="image/*" />
-        <div class="image-preview" *ngIf="selectedImage">
-          <img [src]="selectedImage" alt="Ảnh đã chọn" />
-        </div>
-      </div> -->
-
-         <div class="container my-5">
-  <div class="row">
+         <div class="container mt-5">
+    <div class="row">
     <!-- Ảnh lớn bên trái -->
     <div class="col-md-6 mb-4">
       <div class="image-upload-wrapper">
@@ -194,7 +187,7 @@
     <div class="col-md-6">
       <div class="row">
         <div class="col-6 mb-4 align-items-center ">
-          <div class="image-upload-wrapper h-50 mode">
+          <div class="image-upload-wrapper">
             <div class="image-container" *ngIf="images[3]">
               <img [src]="images[3]" alt="Uploaded Image" class="uploaded-image"/>
             </div>
@@ -239,14 +232,14 @@
 
         <div class="col-6 mb-4">
           <div class="image-upload-wrapper">
-            <div class="image-container" *ngIf="images[1]">
-              <img [src]="images[1]" alt="Uploaded Image" class="uploaded-image"/>
+            <div class="image-container" *ngIf="images[4]">
+              <img [src]="images[4]" alt="Uploaded Image" class="uploaded-image"/>
             </div>
             <div class="upload-button" *ngIf="!images[4]">
-              <label for="fileInput1" class="btn btn-outline-secondary">
+              <label for="fileInput4" class="btn btn-outline-secondary">
                 Tải ảnh lên
               </label>
-              <input type="file" id="fileInput1" (change)="onImageSelected($event, 1)" accept="image/*" hidden>
+              <input type="file" id="fileInput4" (change)="onImageSelected($event, 4)" accept="image/*" hidden>
             </div>
           </div>
         </div>
@@ -257,6 +250,90 @@
 </div>
     
   </div>
+
+  <!--Tiếp theo-->
+ 
+    
+      <h5 class="mb-3">Bây giờ, hãy đặt tiêu đề cho chỗ ở thuộc danh mục căn hộ của bạn</h5>
+      <div class="mb-3">
+        <input type="text" class="form-control" placeholder="Tiêu đề" />
+      </div>
+
+      <h5 class="mb-3">Mô tả phòng của bạn</h5>
+      <div class="mb-3">
+        <textarea class="form-control" rows="5" placeholder="Tạo mô tả chi tiết cho phòng của bạn"></textarea>
+      </div>
+  
+  
+      <h5 class="mt-4">Hoàn thiện và đăng</h5>
+      <p>Cuối cùng, bạn sẽ chọn cài đặt phòng, thiết lập giá và đăng mục cho thuê.</p>
+      <div class="mb-3">
+        <label for="priceInput" class="form-label">Bây giờ, hãy đặt mức giá mà bạn muốn</label>
+        <input type="number" id="priceInput" class="form-control" placeholder="2.000.000" value="2000000"/>
+      </div>
+  
+      <div class="d-flex justify-content-between bg-secondary p-3 rounded">
+        <div>Giá cho thuê</div>
+        <div>2.000.000</div>
+      </div>
+      <div class="d-flex justify-content-between bg-secondary p-3 rounded mt-2">
+        <div>Phí dịch vụ</div>
+        <div>200.000</div>
+      </div>
+      <div class="d-flex justify-content-between bg-secondary p-3 rounded mt-2">
+        <div>Bạn kiếm được</div>
+        <div>1.800.000</div>
+      </div>
+  
+      <div class="mt-4">
+        <h6>Thêm ưu đãi giảm giá</h6>
+        <div class="form-check">
+          <input
+            type="checkbox"
+            class="form-check-input"
+            id="newUserDiscount"
+          />
+          <label for="newUserDiscount" class="form-check-label">
+            20% Cho nhà/phòng cho thuê mới
+          </label>
+        </div>
+        <div class="form-check">
+          <input type="checkbox" class="form-check-input" id="weeklyDiscount" />
+          <label for="weeklyDiscount" class="form-check-label">
+            15% Giảm giá theo tháng
+          </label>
+        </div>
+        <div class="form-check">
+          <input type="checkbox" class="form-check-input" id="dailyDiscount" />
+          <label for="dailyDiscount" class="form-check-label">
+            5% Giảm giá theo tuần
+          </label>
+        </div>
+      </div>
+  
+      <div class="mt-4">
+          <strong>Những điều quan trọng cần biết</strong><br />
+          <p>Không được phép lắp đặt camera an ninh giám sát các không gian trong nhà, ngay cả khi không bật. Phải cho biết rõ về tất cả các camera an ninh ngoài nhà.</p>
+          <p>Lưu ý tuân thủ <a href=""> luật pháp địa phương </a> và xem lại <a href="">chính sách chống phân biệt</a> cũng như <a href="">các loại phí cho chủ nhà và khách</a></p>
+        
+        <div class="form-check">
+          <input
+            type="checkbox"
+            class="form-check-input"
+            id="termsAndConditions"
+          />
+          <label for="termsAndConditions" class="form-check-label">
+            Tôi đồng ý với các điều khoản và điều kiện
+          </label>
+        </div>
+      </div>
+  
+      <div class="mt-4 text-center">
+        <button class="btn btn-primary w-100">Hoàn tất và đăng phòng</button>
+      </div>
+  
+ 
+  
 
   <!---->
 </form>

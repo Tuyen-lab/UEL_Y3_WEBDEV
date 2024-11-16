@@ -24,35 +24,6 @@
   .form-control::placeholder {
     color: #B0B0B0; /* Màu chữ cho placeholder */
   }
-  /* img{
-    width: 200px;
-    height: 1rem;
-  } */
-   /* .form-check-input{
-    width: 30px;
-    height: 30px;
-    margin: 10px;
-   } */
-/*Ảnh*/
- /* .upload-section {
-    margin-top: 20px;
-  }
-  
-  .image-preview {
-    margin-top: 15px;
-    width: 200px; /* Đặt kích thước khung ảnh */
-  /*  height: 200px;
-    overflow: hidden;
-    border-radius: 8px;
-    border: 2px solid #ddd;
-  }
-  
-  .image-preview img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* Giúp ảnh căn chỉnh gọn trong khung */
-  /* }
-  */
 
   .image-upload-wrapper {
     position: relative;
@@ -96,21 +67,18 @@
     cursor: pointer;
   }
 
-  .large-image {
-    /* width: 100%; */
-    height: auto;
-    object-fit: cover;
-}
+  .mode{
+    background-color: #112C3D;
+  }
 
-.small-image {
+  .desc{
     width: 100%;
-    height: 150px; /* Chiều cao cố định cho các ảnh nhỏ */
-    object-fit: cover;
-}
+    height: 100px;
+  }
 
-.half-height-image {
-  width: 100%;
-  height: 50%; /* Chiều cao bằng một nửa so với ảnh lớn bên trái */
- /* Điều chỉnh giới hạn chiều cao theo ý muốn */
-  /* object-fit: cover; */
-}
+  a{
+    color: white;
+  }
+  
+  
+  
