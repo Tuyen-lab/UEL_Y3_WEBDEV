@@ -1,0 +1,264 @@
+<div class="container my-5">
+    <h3>Hân hạnh chào đón Hân!</h3>
+    <p class="lead">Chia sẻ thông tin về chỗ ở của bạn cho chúng tôi</p>
+    <p>Chúng tôi sẽ hỏi xem bạn cho thuê loại chỗ ở nào và bạn muốn cho khách đặt toàn bộ nhà hay chỉ một phòng cụ thể. Sau đó, hãy cho chúng tôi biết vị trí và số lượng khách có thể ở tại đó.</p>
+    
+    <!-- Form bắt đầu từ đây -->
+    <form>
+        <div class="row">
+      <!-- Loại chỗ ở -->
+      <div class="mb-4 col-md-6">
+        <label class="form-label">Chỗ ở của bạn là?</label>
+        <div class="form-check">
+          <input type="checkbox" class="form-check-input" id="apartment">
+          <label class="form-check-label" for="apartment">Căn hộ</label>
+        </div>
+        <div class="form-check">
+          <input type="checkbox" class="form-check-input" id="house">
+          <label class="form-check-label" for="house">Nhà</label>
+        </div>
+        <div class="form-check">
+          <input type="checkbox" class="form-check-input" id="villa">
+          <label class="form-check-label" for="villa">Biệt thự</label>
+        </div>
+        <div class="form-check">
+          <input type="checkbox" class="form-check-input" id="hotel">
+          <label class="form-check-label" for="hotel">Khách sạn</label>
+        </div>
+        <div class="form-check">
+          <input type="checkbox" class="form-check-input" id="guestHouse">
+          <label class="form-check-label" for="guestHouse">Nhà khách</label>
+        </div>
+        <div class="form-check">
+          <input type="checkbox" class="form-check-input" id="rv">
+          <label class="form-check-label" for="rv">Xe cắm trại/RV</label>
+        </div>
+      </div>
+  
+      <!-- Loại chỗ được sử dụng -->
+      <div class="mb-4 col-md-6">
+        <label class="form-label">Khách sẽ được sử dụng loại chỗ nào?</label>
+        <div class="form-check">
+          <input type="checkbox" class="form-check-input" id="entireHome">
+          <label class="form-check-label" for="entireHome">Toàn bộ nhà</label>
+        </div>
+        <div class="form-check">
+          <input type="checkbox" class="form-check-input" id="oneRoom">
+          <label class="form-check-label" for="oneRoom">Một căn phòng</label>
+        </div>
+        <div class="form-check">
+          <input type="checkbox" class="form-check-input" id="privateRoom">
+          <label class="form-check-label" for="privateRoom">Phòng riêng trong khách sạn</label>
+        </div>
+      </div>
+
+    </div>
+  
+      <!-- Địa chỉ chỗ ở -->
+      <div class="mb-4">
+        <label class="form-label" for="address">Chỗ ở của bạn nằm ở đâu?</label>
+        <input type="text" class="form-control" id="address" placeholder="Nhập địa chỉ của bạn">
+
+        <div>
+            <img src="assets/images/ggmap.jpg" alt="">
+        </div>
+      </div>
+
+       <!-- Xác nhận địa chỉ của bạn -->
+    <label class="form-label">Xác nhận địa chỉ của bạn</label>
+    <div class="mb-3">
+      <label for="country" class="form-label">Quốc gia</label>
+      <input type="text" class="form-control" id="country" placeholder="Nhập quốc gia">
+    </div>
+    <div class="mb-3">
+      <label for="address" class="form-label">Địa chỉ đường/phố</label>
+      <input type="text" class="form-control" id="address" placeholder="Nhập địa chỉ đường/phố">
+    </div>
+    <div class="mb-3">
+      <label for="subAddress" class="form-label">Căn hộ, tầng, tòa nhà (nếu có)</label>
+      <input type="text" class="form-control" id="subAddress" placeholder="Nhập căn hộ, tầng, tòa nhà">
+    </div>
+    <div class="mb-3">
+      <label for="city" class="form-label">Thành phố/Quận/Thị xã</label>
+      <input type="text" class="form-control" id="city" placeholder="Nhập thành phố">
+    </div>
+    <div class="mb-3">
+      <label for="state" class="form-label">Tỉnh</label>
+      <input type="text" class="form-control" id="state" placeholder="Nhập tỉnh">
+    </div>
+  
+
+  <!-- Chia sẻ một số thông tin cơ bản về chỗ ở của bạn -->
+  <h4>Chia sẻ một số thông tin cơ bản về chỗ ở của bạn</h4>
+  <div class="mb-3">
+    <label class="form-label">Khách</label>
+    <div>
+      <input type="number" min="1" max="10" step="1" value="1" class="form-control small-input">
+    </div>
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Giường</label>
+    <div>
+      <input type="number" min="1" max="10" step="1" value="1" class="form-control small-input">
+    </div>
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Phòng tắm</label>
+    <div>
+      <input type="number" min="1" max="10" step="1" value="1" class="form-control small-input">
+    </div>
+  </div>
+
+  <!-- Làm cho chỗ ở của bạn trở nên nổi bật -->
+  <h4>Làm cho chỗ ở của bạn trở nên nổi bật</h4>
+  <p>Bạn sẽ thêm một số tiện nghi được cung cấp tại chỗ ở của bạn, cùng với 5 bức ảnh trở lên. Sau đó, bạn sẽ được tiếp tục với nội dung mô tả.</p>
+  
+  <!-- Cho khách biết chỗ ở của bạn có những gì -->
+  <h4>Cho khách biết chỗ ở của bạn có những gì</h4>
+  <div class="row">
+    <div class="col-md-4">
+        <h6>Những tiện nghi yêu thích của khách?</h6>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" id="wifi">
+        <label class="form-check-label" for="wifi">Wifi</label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" id="tv">
+        <label class="form-check-label" for="tv">TV</label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" id="kitchen">
+        <label class="form-check-label" for="kitchen">Bếp</label>
+      </div>
+    </div>
+    <div class="col-md-4">
+        <h6>Những tiện nghi nổi bật</h6>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" id="airConditioning">
+        <label class="form-check-label" for="airConditioning">Điều hòa</label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" id="dryer">
+        <label class="form-check-label" for="dryer">Máy sấy</label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" id="freeParking">
+        <label class="form-check-label" for="freeParking">Đỗ xe miễn phí</label>
+      </div>
+    </div>
+    <div class="col-md-4">
+        <h6>Tiện nghi đảm bảo an toàn</h6>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" id="pool">
+        <label class="form-check-label" for="pool">Bể bơi</label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" id="gym">
+        <label class="form-check-label" for="gym">Phòng tập thể thao</label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" id="spa">
+        <label class="form-check-label" for="spa">Spa</label>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <h4>Bổ sung một số bức ảnh chụp ở chỗ của bạn</h4>
+
+    <!-- <div class="upload-section">
+        <input type="file" (change)="onImageSelected($event)" accept="image/*" />
+        <div class="image-preview" *ngIf="selectedImage">
+          <img [src]="selectedImage" alt="Ảnh đã chọn" />
+        </div>
+      </div> -->
+
+         <div class="container my-5">
+  <div class="row">
+    <!-- Ảnh lớn bên trái -->
+    <div class="col-md-6 mb-4">
+      <div class="image-upload-wrapper">
+        <div class="image-container" *ngIf="images[0]">
+          <img [src]="images[0]" alt="Uploaded Image" class="uploaded-image "/>
+        </div>
+        <div class="upload-button" *ngIf="!images[0]">
+          <label for="fileInput0" class="btn btn-outline-secondary">
+            Tải ảnh lên
+          </label>
+          <input type="file" id="fileInput0" (change)="onImageSelected($event, 0)" accept="image/*" hidden>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bố cục ảnh nhỏ bên phải -->
+    <div class="col-md-6">
+      <div class="row">
+        <div class="col-6 mb-4 align-items-center ">
+          <div class="image-upload-wrapper h-50 mode">
+            <div class="image-container" *ngIf="images[3]">
+              <img [src]="images[3]" alt="Uploaded Image" class="uploaded-image"/>
+            </div>
+            <div class="upload-button" *ngIf="!images[3]">
+              <label for="fileInput3" class="btn btn-outline-secondary">
+                Tải ảnh lên
+              </label>
+              <input type="file" id="fileInput3" (change)="onImageSelected($event, 3)" accept="image/*" hidden>
+            </div>
+          </div>
+        </div>
+
+        
+
+        <div class="col-6 mb-4">
+          <div class="image-upload-wrapper">
+            <div class="image-container" *ngIf="images[1]">
+              <img [src]="images[1]" alt="Uploaded Image" class="uploaded-image"/>
+            </div>
+            <div class="upload-button" *ngIf="!images[1]">
+              <label for="fileInput1" class="btn btn-outline-secondary">
+                Tải ảnh lên
+              </label>
+              <input type="file" id="fileInput1" (change)="onImageSelected($event, 1)" accept="image/*" hidden>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-6 mb-4">
+          <div class="image-upload-wrapper">
+            <div class="image-container" *ngIf="images[2]">
+              <img [src]="images[2]" alt="Uploaded Image" class="uploaded-image"/>
+            </div>
+            <div class="upload-button" *ngIf="!images[2]">
+              <label for="fileInput2" class="btn btn-outline-secondary">
+                Tải ảnh lên
+              </label>
+              <input type="file" id="fileInput2" (change)="onImageSelected($event, 2)" accept="image/*" hidden>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-6 mb-4">
+          <div class="image-upload-wrapper">
+            <div class="image-container" *ngIf="images[1]">
+              <img [src]="images[1]" alt="Uploaded Image" class="uploaded-image"/>
+            </div>
+            <div class="upload-button" *ngIf="!images[4]">
+              <label for="fileInput1" class="btn btn-outline-secondary">
+                Tải ảnh lên
+              </label>
+              <input type="file" id="fileInput1" (change)="onImageSelected($event, 1)" accept="image/*" hidden>
+            </div>
+          </div>
+        </div>
+      
+      </div>
+    </div>
+  </div>
+</div>
+    
+  </div>
+
+  <!---->
+</form>
+  </div>
+  

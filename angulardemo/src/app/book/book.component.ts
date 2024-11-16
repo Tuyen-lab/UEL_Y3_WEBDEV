@@ -29,9 +29,11 @@ export class BookComponent implements OnInit {
   rental1={manha: '',
     gia:'',
     host: '',
+    cus:'',
     ngaythue: '',
     ngaytra: '',
     detail: {}}
+    nhathue: any
   constructor(private _service: ExampleService,  private active: ActivatedRoute, private router: Router){}
   ngOnInit(): void {
     this._service.getSP().subscribe({
@@ -40,7 +42,7 @@ export class BookComponent implements OnInit {
         for (let i of this.SP){
          
           if (this.id== i.ma){
-         
+            this.nhathue=i
           this.ngaynhan= localStorage.getItem('ngaynhan')||''
           this.ngaytra= localStorage.getItem('ngaytra')||''
           this.gia=i.gia
@@ -77,12 +79,13 @@ export class BookComponent implements OnInit {
   submitData() {
       
     
-    this.rental1.manha=this.SP[this.id-1].ma
-    this.rental1.gia=this.SP[this.id-1].gia
-    this.rental1.host=this.SP[this.id-1].chuho
+    this.rental1.manha=this.nhathue.ma
+    this.rental1.gia=this.nhathue.gia
+    this.rental1.host=this.nhathue.chuho
+    this.rental1.cus=localStorage.getItem('user')||''
     this.rental1.ngaythue=this.ngaynhan
     this.rental1.ngaytra=this.ngaytra
-    this.rental1.detail=this.SP[this.id-1]
+    this.rental1.detail=this.nhathue
    
     
   this._service.addrental(this.rental1).subscribe({
@@ -92,9 +95,21 @@ export class BookComponent implements OnInit {
       },
       error: (err) => (this.errMsg= err.message)
     })
+    this._service.deleteSP(this.nhathue.ma).subscribe({
+      
+      next: (response) =>{
+        alert('Product delete successfully');
+      },
+      error: (err) => (this.errMsg= err.message)
+    })
+  
+  
     alert('Đặt phòng thành công')
+    localStorage.removeItem('ngaynhan')
+    localStorage.removeItem('ngaytra')
     this.router.navigate([`/home`])
   }
+
   
 }
 

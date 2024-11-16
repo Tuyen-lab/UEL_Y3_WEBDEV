@@ -40,6 +40,7 @@ export class DetailComponent implements OnInit {
     detail: {}}
   day1= true
   day2= true
+  nha: any
   dateError: boolean = false;
   constructor(private _service: ExampleService,private activate: ActivatedRoute, private router: Router) {}
   id: any
@@ -53,18 +54,27 @@ export class DetailComponent implements OnInit {
     this._service.getSP().subscribe({
       next: (data) => {this.SP = data
         if (this.SP && this.SP.length > 1) { 
-          this.image1 = this.SP[this.id-1].thumnail;
-          this.image2 = this.SP[this.id-1].anh[0];
-          this.image3 = this.SP[this.id-1].anh[1];
-          this.image4 = this.SP[this.id-1].anh[2];
-          this.image5 = this.SP[this.id-1].anh[3];
-          this.image6 = this.SP[this.id-1].anh[4];
+          for(let i of this.SP){
+            if(i.ma==this.id){
+
+          this.image1 = i.thumnail;
+          this.image2 = i.anh[0];
+          this.image3 = i.anh[1];
+          this.image4 = i.anh[2];
+          this.image5 = i.anh[3];
+          this.image6 = i.anh[4];
+          this.nha=i
+          console.log(this.nha)
           this.initMap()
-        } 
-      
-      var formattedText = this.SP[this.id-1].mota.replace(/\n/g, ". ");
+          var formattedText = i.mota.replace(/\n/g, ". ");
       this.mota=formattedText
       this.updateDisplayText();
+            }
+          }
+          
+        } 
+      
+      
       },
       
       error: (err) => (this.errMsg= err.message)
@@ -95,15 +105,15 @@ export class DetailComponent implements OnInit {
 
   updateDisplayText() {
     if (this.isCollapsed) {
-      this.mota = this.SP[this.id-1].mota.slice(0, this.showLimit) + '...';
+      this.mota = this.nha.mota.slice(0, this.showLimit) + '...';
     } else {
-      this.mota = this.SP[this.id-1].mota;
+      this.mota = this.nha.mota;
     }
   }
   initMap(): void {
 
     this.map = L.map('map', {
-      center: [this.SP[this.id-1].toado[0], this.SP[this.id-1].toado[1]], // Vị trí ban đầu (latitude, longitude)
+      center: [this.nha.toado[0], this.nha.toado[1]], // Vị trí ban đầu (latitude, longitude)
       zoom: 13,
       scrollWheelZoom: false // Tắt zoom bằng cuộn chuột
     });
@@ -114,8 +124,8 @@ export class DetailComponent implements OnInit {
     }).addTo(this.map);
 
     // Thêm marker tại vị trí cụ thể
-    const marker = L.marker([this.SP[this.id-1].toado[0], this.SP[this.id-1].toado[1]]).addTo(this.map);
-    marker.bindPopup(this.SP[this.id-1].ten + " xin chào <br>"+ this.SP[this.id-1].city +', '+ this.SP[this.id-1].provin).openPopup();
+    const marker = L.marker([this.nha.toado[0], this.nha.toado[1]]).addTo(this.map);
+    marker.bindPopup(this.nha.ten + " xin chào <br>"+ this.nha.city +', '+ this.nha.provin).openPopup();
   }
   
  

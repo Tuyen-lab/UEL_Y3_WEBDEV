@@ -6,7 +6,7 @@
  
   <div class="container">
     <div class="property-header">
-      <h1>{{nha.ten}}</h1>
+      <h1>{{this.nha.ten}}</h1>
   <div class="container gallery">
     <!-- Large Image -->
     <div>
@@ -26,9 +26,9 @@
     
     </div>
     <div class="property-header">
-      <h2>{{nha.title}} tại {{nha.city}}, {{nha.provin}} </h2>
+      <h2>{{this.nha.title}} tại {{this.nha.city}}, {{this.nha.provin}} </h2>
       <p style="color: lightgray;">
-        {{nha.soluong}} &#8901; {{nha.giuong}} giường &#8901; {{nha.phongtam}} phòng tắm
+        {{this.nha.soluong}} &#8901; {{this.nha.giuong}} giường &#8901; {{this.nha.phongtam}} phòng tắm
       </p>
       <p>★ 4.8 &#8901; <a href="#" style="color: lightgray;">30 đánh giá</a> </p>
   </div>
@@ -52,28 +52,29 @@
         <hr style="font-weight: bolder;">
         <h2>Tiện Nghi</h2>
         <div style="display: flex; flex-direction: row; width: 500px; flex-wrap: wrap;" >
-          <p style="margin-right: 50px;">&#8226; {{nha.tiennghi[0]}}</p>
-          <p style="margin-right: 50px;">&#8226; {{nha.tiennghi[1]}}</p>
-          <p style="margin-right: 50px;">&#8226; {{nha.tiennghi[2]}}</p>
-          <p style="margin-right: 50px;">&#8226; {{nha.tiennghi[3]}}</p>
-          <p style="margin-right: 50px;">&#8226; {{nha.tiennghi[4]}}</p>
+          <p style="margin-right: 50px;">&#8226; {{this.nha.tiennghi[0]}}</p>
+          <p style="margin-right: 50px;">&#8226; {{this.nha.tiennghi[1]}}</p>
+          <p style="margin-right: 50px;">&#8226; {{this.nha.tiennghi[2]}}</p>
+          <p style="margin-right: 50px;">&#8226; {{this.nha.tiennghi[3]}}</p>
+          <p style="margin-right: 50px;">&#8226; {{this.nha.tiennghi[4]}}</p>
         </div>
       </div>
       <div class="col-md-4">
         <div class="price-box">
-          <h4>₫{{nha.gia}} / đêm</h4>
+          <h4>₫{{this.nha.gia}} / đêm</h4>
           <form>
-            <div class="mb-3">
+            <div class="mb-3" *ngIf="chixem==''">
               <label for="checkin" class="form-label" >Ngày nhận phòng</label>
-              <input #nhan type="date"  class="form-control"  [ngClass]="{ 'error': !day1 }">
-              <p *ngIf="!day1" style="color: red;">Hãy nhập ngày</p>
+              <input #nhan type="text"  class="form-control"  [value]="ngaynhan" >
+              
             </div>
-            <div class="mb-3">
+            <div class="mb-3" *ngIf="chixem==''">
               <label for="checkout" class="form-label" >Ngày trả phòng</label>
-              <input #tra  type="date" class="form-control" [ngClass]="{ 'error': !day2 }"  id="checkout">
+              <input #tra  type="text" class="form-control"[value]='ngaytra'  id="checkout">
               <p *ngIf="!day2" style="color: red;">Hãy nhập ngày</p>
             </div>
-            <button type="submit" class="btn btn-primary w-100" (click)="submitData(nhan,tra)">Đặt phòng</button>
+            <button type="submit" *ngIf="chixem==''" class="btn btn-primary w-100" (click)="cancel()">Hủy đặt phòng</button>
+          
           </form>
         </div>
       </div>

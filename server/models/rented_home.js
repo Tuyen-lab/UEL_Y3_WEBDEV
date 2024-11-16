@@ -5,6 +5,7 @@ const Product = new Schema({
     manha: {type: String},
     gia: {type: String},
     host: {type: String},
+    cus:{type:String},
     ngaythue: {type: String},
     ngaytra:  {type: String}, 
     detail: {type: Schema.Types.Mixed}

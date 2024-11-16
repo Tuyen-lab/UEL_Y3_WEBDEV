@@ -36,7 +36,8 @@ toggleActive() {
 toLogOut(){
 this.service.logout()
 alert('Đăng xuất thành công')
-window.location.reload()
+window.location.href = '/home';
+this.router.navigate(['/home'])
 }
 toUser(){
   if(this.username==null){
@@ -44,7 +45,26 @@ toUser(){
     this.router.navigate(['/login'])
   }
   else{
-    this.router.navigate(['/home'])
+    this.router.navigate(['/manage'])
   }
 }
+
+
+toHost() {
+  if(this.username==null){
+    alert("Hãy Đăng nhập trước")
+    this.router.navigate(['/login'])
+  }
+  else{
+  this.router.navigate(['/host'])
+}
+}
+
+
+toManage() {
+  this.router.navigate(['/manage'])
+}
+
+
+
 }

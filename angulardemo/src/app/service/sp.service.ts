@@ -44,6 +44,7 @@ api: string='http://localhost:3000'
     rental: { manha: string,
       gia: string,
       host: string,
+      cus:string,
       ngaythue: string,
       ngaytra:  string,
       detail: any }): Observable<any>{
@@ -51,9 +52,15 @@ api: string='http://localhost:3000'
     return this._http.post<any>( `${this.api}/rented`,rental, { headers}).pipe(
       catchError(this.handleError))
   }
-  deleteBeer(id: string): Observable<any> {
+  deleteSP(id: string): Observable<any> {
     
     const url = `${this.api}/${id}`;
+    console.log(url)
+    return this._http.delete(url);
+  }
+  deleteRented(id: string): Observable<any> {
+    
+    const url = `${this.api}/rented/${id}`;
     console.log(url)
     return this._http.delete(url);
   }
