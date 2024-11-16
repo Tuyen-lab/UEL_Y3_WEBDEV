@@ -111,4 +111,9 @@
    
   }
   
+  .active {
+    color: red; /* Màu trái tim chuyển sang đỏ khi hover */
+    
+    cursor: pointer;
    
+  }

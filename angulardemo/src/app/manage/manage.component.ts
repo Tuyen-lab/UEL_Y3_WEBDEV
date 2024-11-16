@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { ExampleService } from '../service/sp.service';
+import { flatMap } from 'rxjs';
 
 @Component({
   selector: 'app-manage',
@@ -16,8 +17,45 @@ export class ManageComponent {
   rented: any[]=[]
   errMsg=''
   currentView: string = 'myRooms';
+  isActive=false
+  wish={cus:'loc',manha:'2'}
   constructor (private router: Router, private _service:ExampleService){}
+  house: any
+  wishlist: any
+  wished: any[]=[]
+  wishhouse: any[]=[]
+
   ngOnInit(): void {
+    
+    this._service.getrWish().subscribe({
+      next: (data) => {this.wishlist = data;
+        for(let i of this.wishlist){
+          if (i.cus==localStorage.getItem('user')){
+              this.wished.push(i)
+          }
+        }
+        console.log(this.wishlist)
+        console.log(this.wished)
+      },
+      error: (err) => (this.errMsg= err.message)
+      
+    })
+    this._service.getSP().subscribe({
+      next: (data) => {
+        this.house = data
+        for(let i of this.wished){
+          console.log(i.manha+'sfdfa')
+          for(let p of this.house){
+            if(i.manha==p.ma){
+              this.wishhouse.push(p)
+            }
+          }
+        }
+       
+      },
+      error: (err) => (this.errMsg= err.message)
+      
+    })
     this._service.getrental().subscribe({
       next: (data) => {this.SP = data;
         for(let i of this.SP){
@@ -33,25 +71,7 @@ export class ManageComponent {
     this.router.navigate(['/post'])
   }
 
-  // Lấy phần tử biểu tượng trái tim
-
- heartIcon = document.getElementById('heart-icon');
-
-// Kiểm tra nếu phần tử tồn tại
-if (heartIcon: any) {
-  // Thêm sự kiện mouseenter (khi di chuột vào)
-  heartIcon.addEventListener('mouseenter', () => {
-    heartIcon.classList.remove('bi-heart'); // Xóa lớp bi-heart (trái tim rỗng)
-    heartIcon.classList.add('bi-heart-fill'); // Thêm lớp bi-heart-fill (trái tim đầy)
-    
-  });
-
-  // Thêm sự kiện mouseleave (khi chuột rời khỏi)
-  heartIcon.addEventListener('mouseleave', () => {
-    heartIcon.classList.remove('bi-heart-fill'); // Xóa lớp bi-heart-fill
-    heartIcon.classList.add('bi-heart'); // Thêm lại lớp bi-heart (trái tim rỗng)
-  });
-}
+ 
 OnitemClick(p: any){
   for(let i of this.SP){
     if( i.ma==p.manha){
@@ -63,5 +83,27 @@ OnitemClick(p: any){
   
   this.router.navigate (['/manage',p.ma])
 }
-
+toggleActive() {
+  this.isActive = !this.isActive; // Đảo ngược trạng thái khi nhấn
+  if(this.isActive)
+    {
+      this._service.addwish(this.wish).subscribe({
+  
+        next: (response) =>{
+          alert('Product added successfully');
+        },
+        error: (err) => (this.errMsg= err.message)
+      })
+    }
+    else{
+      this._service.deleteWish(this.wish.cus,this.wish.manha).subscribe({
+    
+        next: (response) =>{
+          alert('Product delete successfully');
+      
+        },
+        error: (err) => (this.errMsg= err.message)
+      })
+    }
+}
 }

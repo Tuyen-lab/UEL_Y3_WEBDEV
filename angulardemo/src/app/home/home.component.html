@@ -41,15 +41,24 @@
             </a>
         </div>
         <div class="container">
-            <div class=" product-card " *ngFor="let i of SP"  (click)="OnitemClick(i)">
-                
-                <img src={{i.thumnail}} class="card-img-top product-img" alt="Room Image">
-                  <!-- Biểu tượng trái tim -->
-    <i class="bi bi-heart position-absolute top-0 end-0 p-2 text-white" style="font-size: 2rem;"></i>
+            <div class=" product-card " *ngFor="let i of SP"  >
+                <p style="position: relative;text-align: right; width: 320px; color: red;">
+                    
+                    <i  [ngClass]="{'active': check(i)}" class=" bi-heart position-absolute "
+                    (click)="toggleActive2(i)"  [ngClass]="{'active': check(i)} " ></i>
+                  
+                    
+                </p>
+             
+                <img src={{i.thumnail}} class="card-img-top product-img" alt="Room Image" (click)="OnitemClick(i)">
+               
+               
+             
 
-            <div class="card-info">
+            <div class="card-info" (click)="OnitemClick(i)">
                 <div class="card-info-content">
                     <img src="assets/images/location.svg" alt="">
+                   
                     <p class="loaction-name">{{i.provin}}, {{i.country}}</p>
                 </div>
 
@@ -60,7 +69,8 @@
                                 Ngày {{i.ngaynhan}}-{{i.ngaytra}}
                             </p>
                         </div>
-                   
+                    <!-- Biểu tượng trái tim -->
+                
                     </div>
                     <div class="price">
                         

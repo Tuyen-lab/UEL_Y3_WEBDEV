@@ -15,11 +15,19 @@ export class SearchComponent {
   SP : any
   errMsg=''
   id=''
+  isActive=false
+  wish={cus:'loc',manha:'2'}
   searchResult: any[]=[]
+  wishlist: any
   notification: string = '';
   constructor(private _service: ExampleService, private router: Router, private active: ActivatedRoute){}
   map: L.Map | undefined;
   ngOnInit(): void {
+    this._service.getrWish().subscribe({
+      next: (data) => {this.wishlist = data},
+      error: (err) => (this.errMsg= err.message)
+      
+    })
     this._service.getSP().subscribe({
       next: (data) => {this.SP = data
         this.key = this.active.snapshot.paramMap.get('key')||''; // Lấy giá trị tham số `city` từ URL
@@ -105,4 +113,52 @@ export class SearchComponent {
     
    
   }
+  check(p: any): boolean {
+    this.wish.cus=localStorage.getItem('user')||''
+    this.wish.manha=p.ma
+    for (let i of this.wishlist) {
+      console.log(i.manha + i._id)
+      console.log(p.ma)
+        if (i.manha == p.ma && i.cus == localStorage.getItem('user')) {
+            return true;
+        } 
+     
+    }
+    return false;
+   
+   
+  
+  }
+  toggleActive(p: any) {
+    if(localStorage.getItem('user')==null){
+      alert('bạn phải đăng nhập trước')
+    }
+    else{
+    this.wish.cus=localStorage.getItem('user')||''
+    this.wish.manha=p.ma
+    this.isActive = !this.isActive; // Đảo ngược trạng thái khi nhấn
+    if(!this.check(p))
+      {
+        this._service.addwish(this.wish).subscribe({
+    
+          next: (response) =>{
+            alert('Product added successfully');
+          },
+          error: (err) => (this.errMsg= err.message)
+        })
+      }
+      else{
+        this._service.deleteWish(this.wish.cus,this.wish.manha).subscribe({
+      
+          next: (response) =>{
+            alert('Product delete successfully');
+        
+          },
+          error: (err) => (this.errMsg= err.message)
+        })
+      }
+  
+  
+      window.location.reload();
+  }}
 }

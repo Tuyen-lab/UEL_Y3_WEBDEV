@@ -18,27 +18,15 @@
         <!-- Nội dung cho "Phòng của bạn" -->
         <div class="row">
           <!-- Card 1 -->
-          <div class="col-md-3 mb-4">
+          <div *ngIf="wishhouse.length==0" style="color: red; font-weight: bolder;">Bạn chưa thích phòng nào cả</div>
+          <div class="col-md-3 mb-4" *ngFor="let i of wishhouse">
             <div class="card">
-              <img src="assets\images\tphcm.jpg" class="card-img-top" alt="Homestay Đà Lạt Màu Đen">
+              <img src={{i.thumnail}} class="card-img-top" alt="Homestay Đà Lạt Màu Đen">
               <div class="card-body">
-                <h5 class="card-title">Homestay Đà Lạt Màu Đen</h5>
-                <p class="card-text">Đà Lạt, Lâm Đồng, Việt Nam</p>
+                <h5 class="card-title">{{i.title}}</h5>
+                <p class="card-text">{{i.city}}, {{i.provin}}, {{i.contry}}</p>
                 <p class="card-text">⭐ 4.8 (30)</p>
-                <p class="card-text"><strong>1.917.389 VND</strong></p>
-              </div>
-            </div>
-          </div>
-  
-          <!-- Card 2 -->
-          <div class="col-md-3 mb-4">
-            <div class="card">
-              <img src="assets\images\tphcm.jpg" class="card-img-top" alt="Homestay Phố Cổ Hà Nội">
-              <div class="card-body">
-                <h5 class="card-title">Homestay Phố Cổ Hà Nội</h5>
-                <p class="card-text">Hoàn Kiếm, Hà Nội, Việt Nam</p>
-                <p class="card-text">⭐ 4.8 (30)</p>
-                <p class="card-text"><strong>2.500.000 VND</strong></p>
+                <p class="card-text"><strong>{{i.gia}} VND</strong></p>
               </div>
             </div>
           </div>
@@ -92,7 +80,8 @@
           <!-- Hình ảnh trong card -->
           <img src="assets\images\tphcm.jpg" class="card-img-top" alt="Image">
           <!-- Biểu tượng trái tim -->
-          <i class="bi bi-heart position-absolute top-0 end-0 p-2" id="heart-icon" ></i>
+          <i class=" bi-heart position-absolute top-0 end-0 p-2" id="heart-icon" [ngClass]="{'active': isActive} " 
+          (click)="toggleActive()" ></i>
         </div>
         <div class="card-body">
           <h5 class="card-title">Tiêu đề Card</h5>

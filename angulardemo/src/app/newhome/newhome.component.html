@@ -106,10 +106,13 @@
       
       
       <div class="col" *ngFor="let p of SP"  >
-        <div class="card h-100 destination-card" (click)="OnitemClick(p)">
-          <img style="max-height: 300px;" src={{p.thumnail}} class="card-img-top" alt="">
-           
-          <div class="card-body">
+        <div class="card h-100 destination-card" >
+          <img (click)="OnitemClick(p)" style="max-height: 300px;" src={{p.thumnail}} class="card-img-top" alt="">
+            <!-- Biểu tượng trái tim -->
+          <i class=" bi-heart position-absolute top-0 end-0 p-2" id="heart-icon" [ngClass]="{'active': check(p)} " 
+          (click)="toggleActive(p)" ></i>
+
+          <div class="card-body" (click)="OnitemClick(p)">
             <h5 class="card-title">{{p.title}}</h5>
             <p class="card-text">{{p.city}}, {{p.provin}}</p>
           </div>

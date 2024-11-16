@@ -1,7 +1,9 @@
 
 <div class="header-banner d-flex flex-column justify-content-center align-items-center text-white text-center" style="background-image: url(assets/images/banner1.png)">
     <h1 class="display-4">Your Perfect Home Waiting For You</h1>
-    <p class="lead">We Help You Get Your Dream House With Us. We Are Professional House Consultant</p>
+    <p class="lead">We Help You Get Your Dream House With Us. We Are Professional House Consultant
+   
+    </p>
   
   </div>
   <div class="container-fluid p-5 text-light main" >
@@ -24,7 +26,7 @@
       </nav>
     </div>
 
-
+    
 <div class="container-fluid full-height-div " >
     <!-- Khu Vực Hiển Thị Danh Sách Homestay và Bản Đồ -->
     <div class="row main ">
@@ -34,10 +36,15 @@
           <div *ngIf="notification" class="notification">{{ notification }} </div>
           <!-- Homestay 1 -->
           <div class="col-md-4 mb-4" *ngFor="let i of searchResult" style="width: 200px;">
-            <div class="card h-100"  (click)="navigateSearch(i.ma)">
-              <img src={{i.thumnail}} class="card-img-top" alt="Homestay Đà Lạt Màu Đen">
-              <div class="card-body">
-                <h5 class="card-title">{{i.title}}</h5>
+            <div class="card h-100"  >
+              <img src={{i.thumnail}} class="card-img-top" alt="Homestay Đà Lạt Màu Đen" (click)="navigateSearch(i.ma)">
+               <!-- Biểu tượng trái tim -->
+               <i class=" bi-heart position-absolute top-0 end-0 p-2" id="heart-icon" [ngClass]="{'active': check(i)} " 
+               (click)="toggleActive(i)" ></i>
+              <div class="card-body" (click)="navigateSearch(i.ma)">
+           
+            
+                <h5  class="card-title">{{i.title}}</h5>
                 <p class="card-text">{{i.city}}, {{i.provin}}, {{i.country}}</p>
                 <p class="card-text price ">1,917,389 VND</p>
               </div>

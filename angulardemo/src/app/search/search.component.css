@@ -109,3 +109,27 @@
     color: red;
     font-size: 25px;
   }
+  .bi-heart {
+    font-size: 2rem;
+    color: white;
+    transition: color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease; /* Thêm hiệu ứng động cho màu, kích thước và bóng */
+    z-index: 1000;
+    position: relative;
+    width: 50px;
+    height: 50px;
+
+  }
+
+  
+  .bi-heart:hover {
+    color: red; /* Màu trái tim chuyển sang đỏ khi hover */
+    transform: scale(1.2); /* Tăng kích thước trái tim khi hover */
+    cursor: pointer;
+   
+  }
+
+  .bi-heart.active {
+    color: red; 
+    
+   
+  }

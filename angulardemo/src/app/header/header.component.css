@@ -95,7 +95,7 @@ body{
         align-items: flex-start;
         background-color: rgba(0, 0, 0, 0.7);
         justify-content: flex-start;
-        
+        z-index: 1000000;
         margin-top: 0;
         right: 0%;
         padding: 20px;

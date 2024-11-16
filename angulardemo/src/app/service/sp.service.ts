@@ -30,9 +30,19 @@ api: string='http://localhost:3000'
       retry(2),
       catchError(this.handleError))
   }
+  getrWish(): Observable<any> {
+    return this._http.get<any>(`${this.api}/wish`).pipe(
+      retry(2),
+      catchError(this.handleError))
+  }
   addSP(product: { name: string; price: number }): Observable<any>{
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     return this._http.post<any>( `${this.api}/product`,product, { headers }).pipe(
+      catchError(this.handleError))
+  }
+  addwish(product: { cus: string; manha: string }): Observable<any>{
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    return this._http.post<any>( `${this.api}/wish`,product, { headers }).pipe(
       catchError(this.handleError))
   }
   adduser(user: { username: string; pass: string; phone:string; email: string }): Observable<any>{
@@ -55,6 +65,12 @@ api: string='http://localhost:3000'
   deleteSP(id: string): Observable<any> {
     
     const url = `${this.api}/${id}`;
+    console.log(url)
+    return this._http.delete(url);
+  }
+  deleteWish(cus: string, nha: string): Observable<any> {
+    
+    const url = `${this.api}/wish/${cus}/${nha}`;
     console.log(url)
     return this._http.delete(url);
   }

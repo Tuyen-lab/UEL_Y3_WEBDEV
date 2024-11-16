@@ -11,6 +11,7 @@ const db = require('./config/db')
 const product = require('./models/product')
 const Rented = require('./models/rented_home')
 const User  = require('./models/user')
+const Wish  = require('./models/wishlist')
 db.connect()
 //API
 app.get("/product",cors(), (req, res)=>(
@@ -28,6 +29,12 @@ app.get("/rented",cors(), (req, res)=>(
 app.get("/user",cors(), (req, res)=>(
     User.find({})
     .then(user => res.json(user))
+    .catch(err => res.status(500).json({error:err.message}))
+    )
+)
+app.get("/wish",cors(), (req, res)=>(
+    Wish.find({})
+    .then(wish => res.json(wish))
     .catch(err => res.status(500).json({error:err.message}))
     )
 )
@@ -51,16 +58,14 @@ app.post("/rented",cors(), async(req, res)=> {
     }
 
 })
-app.post("/user",cors(), async(req, res)=> {
+app.post("/wish",cors(), async(req, res)=> {
     console.log('Received request to add product:', req.body)
-    const user  = new User ({
-    username: req.body.username,
-    pass: req.body.pass,
-    phone: req.body.phone,
-    email: req.body.email,
+    const wish  = new Wish ({
+    cus: req.body.cus,
+    manha: req.body.manha
     });
     try {
-        await user.save()
+        await wish.save()
         res.send("Success!")
     } catch (err){
         res.json({message: err.message})
@@ -117,6 +122,32 @@ app.patch(":id", async(req,res)=>{
 })
 
 //Delete product
+app.delete('/:ma', async(req, res) =>{
+    if (req.params.ma){
+        try{
+            await Product.deleteOne({ma: req.params.ma})
+            res.json({status: 'success'});
+        } catch (err) {
+            res.json({message: err.message})
+        }
+    }
+})
+app.delete('/wish/:cus/:manha', async(req, res) =>{
+    
+    if (req.params.manha && req.params.cus ){
+        try{
+            console.log(req.params.cus, req.params.manha);
+            await Wish.deleteOne({
+                cus: req.params.cus,
+                manha: req.params.manha
+                })
+            res.json({status: 'success'});
+    
+        } catch (err) {
+            res.json({message: err.message})
+        }
+    }
+})
 app.delete('/:ma', async(req, res) =>{
     if (req.params.ma){
         try{

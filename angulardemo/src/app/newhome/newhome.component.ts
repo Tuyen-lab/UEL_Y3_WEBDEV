@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ExampleService } from '../service/sp.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import e from 'cors';
 
 @Component({
   selector: 'app-newhome',
@@ -16,12 +17,20 @@ export class NewhomeComponent {
   constructor(private router: Router, private _service: ExampleService,  private active: ActivatedRoute) {}
   keyword=''
   SP : any
+  wishlist: any
+  isActive=false
+  wish={cus:'loc',manha:'2'}
   errMsg=''
   selectedId: any
   giamgia=0
   ngOnInit(): void {
     this._service.getSP().subscribe({
       next: (data) => {this.SP = data.slice(0, 4)},
+      error: (err) => (this.errMsg= err.message)
+      
+    })
+    this._service.getrWish().subscribe({
+      next: (data) => {this.wishlist = data},
       error: (err) => (this.errMsg= err.message)
       
     })}
@@ -52,5 +61,52 @@ export class NewhomeComponent {
   all(){
     this.router.navigate (['/all'])
   }
+  check(p: any): boolean {
+    this.wish.cus=localStorage.getItem('user')||''
+    this.wish.manha=p.ma
+    for (let i of this.wishlist) {
+      console.log(i.manha + i._id)
+      console.log(p.ma)
+        if (i.manha == p.ma && i.cus == localStorage.getItem('user')) {
+            return true;
+        } 
+     
+    }
+    return false;
+   
+   
 
+  }
+  toggleActive(p: any) {
+    if(localStorage.getItem('user')==null){
+      alert('bạn phải đăng nhập trước')
+    }
+    else{
+    this.wish.cus=localStorage.getItem('user')||''
+    this.wish.manha=p.ma
+    this.isActive = !this.isActive; // Đảo ngược trạng thái khi nhấn
+    if(!this.check(p))
+      {
+        this._service.addwish(this.wish).subscribe({
+    
+          next: (response) =>{
+            alert('Product added successfully');
+          },
+          error: (err) => (this.errMsg= err.message)
+        })
+      }
+      else{
+        this._service.deleteWish(this.wish.cus,this.wish.manha).subscribe({
+      
+          next: (response) =>{
+            alert('Product delete successfully');
+        
+          },
+          error: (err) => (this.errMsg= err.message)
+        })
+      }
+  
+  
+      window.location.reload();
+  }}
 }
