@@ -65,6 +65,9 @@ toManage() {
   this.router.navigate(['/manage'])
 }
 
+toReport() {
+  this.router.navigate(['/report'])
+}
 
 
 }
