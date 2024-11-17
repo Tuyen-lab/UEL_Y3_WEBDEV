@@ -1,3 +1,4 @@
+
 const express = require('express')
 const cors= require("cors")
 const app= express()
@@ -6,12 +7,13 @@ const Product = require('./models/product')
 app.use(cors())
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }));
-
+const multer = require('multer');
 const db = require('./config/db')
 const product = require('./models/product')
 const Rented = require('./models/rented_home')
 const User  = require('./models/user')
 const Wish  = require('./models/wishlist')
+const Image = require('./models/images');
 db.connect()
 //API
 app.get("/product",cors(), (req, res)=>(
@@ -20,6 +22,28 @@ app.get("/product",cors(), (req, res)=>(
     .catch(err => res.status(500).json({error:err.message}))
     )
 )
+const storage = multer.memoryStorage();
+const upload = multer({ storage: storage });
+app.post('/upload', upload.single('image'), async (req, res) => {
+
+    const { file } = req;
+  
+    if (!file) {
+      return res.status(400).send({ message: 'Không có file nào được chọn!' });
+    }
+    console.log('sdfsdfsf')
+    const newImage = new Image({
+      filename: file.originalname,
+      contentType: file.mimetype,
+      data: file.buffer,
+      description: req.body.description || ''
+    
+    });
+  
+    await newImage.save();
+  
+    res.status(200).send({ message: 'Ảnh tải lên thành công!', imageId: newImage._id });
+  });
 app.get("/rented",cors(), (req, res)=>(
     Rented.find({})
     .then(rental => res.json(rental))
@@ -38,6 +62,25 @@ app.get("/wish",cors(), (req, res)=>(
     .catch(err => res.status(500).json({error:err.message}))
     )
 )
+app.get("/upload",cors(), (req, res)=>(
+    Image.find({})
+    .then(image => res.json(image))
+    .catch(err => res.status(500).json({error:err.message}))
+    )
+)
+app.get('/upload/:id', async (req, res) => {
+    try {
+      const image = await Image.findById(req.params.id);
+      if (!image) {
+        return res.status(404).send('Image not found');
+      }
+      
+      res.set('Content-Type', image.contentType);  // Đặt Content-Type cho file
+      res.send(image.data);  // Trả về binary data của ảnh
+    } catch (err) {
+      res.status(500).send('Error fetching image');
+    }
+  });
 app.post("/rented",cors(), async(req, res)=> {
     // console.log(req.body);
     console.log('Received request to add product:', req.body)
@@ -52,6 +95,24 @@ app.post("/rented",cors(), async(req, res)=> {
     });
     try {
         await rental.save()
+        res.send("Success!")
+    } catch (err){
+        res.json({message: err.message})
+    }
+
+})
+app.post("/user",cors(), async(req, res)=> {
+    // console.log(req.body);
+    console.log('Received request to add product:', req.body)
+    const user = new User ({
+        username: req.body.username,
+        pass: req.body.pass,
+        phone: req.body.phone,
+        email: req.body.email,
+
+    });
+    try {
+        await user.save()
         res.send("Success!")
     } catch (err){
         res.json({message: err.message})
@@ -107,13 +168,16 @@ app.post("/product",cors(), async(req, res)=> {
     
 })
 //Update product
-app.patch(":id", async(req,res)=>{
-    
-    if(req.params.id){
+app.patch("/user/:username", async(req,res)=>{
+    console.log('Received request to update product:', req.body)
+    if(req.params.username){
         try{
-            await Product.updateOne({_id: req.params.id},{$set:{name: req.body.name, price: req.body.price}})
+            await User.updateOne({username: req.params.username},{$set:{  username: req.body.username,
+                pass: req.body.pass,
+                phone: req.body.phone,
+                email: req.body.email,}})
             res.send("Success!!")
-            console.log('zfsdfd')
+   
         }catch(error){
             res.json({Error: error.message})
         }

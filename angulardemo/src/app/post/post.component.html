@@ -1,5 +1,6 @@
 <div class="container my-5">
-    <h3>Hân hạnh chào đón Hân!</h3>
+  
+    <h3>Hân hạnh chào đón {{name}}!</h3>
     <p class="lead">Chia sẻ thông tin về chỗ ở của bạn cho chúng tôi</p>
     <p>Chúng tôi sẽ hỏi xem bạn cho thuê loại chỗ ở nào và bạn muốn cho khách đặt toàn bộ nhà hay chỉ một phòng cụ thể. Sau đó, hãy cho chúng tôi biết vị trí và số lượng khách có thể ở tại đó.</p>
     
@@ -7,30 +8,30 @@
     <form>
         <div class="row">
       <!-- Loại chỗ ở -->
-      <div class="mb-4 col-md-6">
+      <div class="mb-4 col-md-6" [formGroup]="styleForm">
         <label class="form-label">Chỗ ở của bạn là?</label>
         <div class="form-check">
-          <input type="checkbox" class="form-check-input" id="apartment">
+          <input type="checkbox" class="form-check-input" id="apartment" formControlName="canho">
           <label class="form-check-label" for="apartment">Căn hộ</label>
         </div>
         <div class="form-check">
-          <input type="checkbox" class="form-check-input" id="house">
+          <input type="checkbox" class="form-check-input" id="house" formControlName="nha">
           <label class="form-check-label" for="house">Nhà</label>
         </div>
         <div class="form-check">
-          <input type="checkbox" class="form-check-input" id="villa">
+          <input type="checkbox" class="form-check-input" id="villa" formControlName="bietthu">
           <label class="form-check-label" for="villa">Biệt thự</label>
         </div>
         <div class="form-check">
-          <input type="checkbox" class="form-check-input" id="hotel">
+          <input type="checkbox" class="form-check-input" id="hotel" formControlName="khachsan">
           <label class="form-check-label" for="hotel">Khách sạn</label>
         </div>
         <div class="form-check">
-          <input type="checkbox" class="form-check-input" id="guestHouse">
+          <input type="checkbox" class="form-check-input" id="guestHouse" formControlName="nhakhach">
           <label class="form-check-label" for="guestHouse">Nhà khách</label>
         </div>
         <div class="form-check">
-          <input type="checkbox" class="form-check-input" id="rv">
+          <input type="checkbox" class="form-check-input" id="rv" formControlName="camtraiVR">
           <label class="form-check-label" for="rv">Xe cắm trại/RV</label>
         </div>
       </div>
@@ -56,19 +57,23 @@
   
       <!-- Địa chỉ chỗ ở -->
       <div class="mb-4">
-        <label class="form-label" for="address">Chỗ ở của bạn nằm ở đâu?</label>
-        <input type="text" class="form-control" id="address" placeholder="Nhập địa chỉ của bạn">
-
-        <div>
-            <img src="assets/images/ggmap.jpg" alt="">
-        </div>
+        <label class="form-label" for="address">Hãy đặt tên cho căn nhà của bạn?</label>
+        <input type="text" class="form-control" id="address" placeholder="Nhập tên" [(ngModel)]="homestayInfo.ten" name="ten">
+       
+        <label class="form-label" for="address">Chỗ ở của bạn nằm ở đâu trên bản đồ ?</label><br>
+        <input style="display: inline; width: 40%;" type="number" class="form-control" id="address" placeholder="Nhập tọa độ X" [(ngModel)]="homestayInfo.toado[0]" name="x" #x>
+        <input style="display: inline; width: 40%; margin-left: 100px;" type="number" class="form-control" id="address" placeholder="Nhập tọa độ Y" [(ngModel)]="homestayInfo.toado[1]" name="y" #y>
+        <button class="btn btn-primary " (click)="check(x,y)">Kiểm tra trên bản đồ</button>
+        <div>  
+          <div id="map" style="height: 300px; width: 100%; margin-bottom: 100px;"></div>
+         </div>
       </div>
 
        <!-- Xác nhận địa chỉ của bạn -->
     <label class="form-label">Xác nhận địa chỉ của bạn</label>
     <div class="mb-3">
       <label for="country" class="form-label">Quốc gia</label>
-      <input type="text" class="form-control" id="country" placeholder="Nhập quốc gia">
+      <input type="text" class="form-control" id="country" placeholder="Nhập quốc gia" [(ngModel)]="homestayInfo.country" name="country">
     </div>
     <div class="mb-3">
       <label for="address" class="form-label">Địa chỉ đường/phố</label>
@@ -80,11 +85,11 @@
     </div>
     <div class="mb-3">
       <label for="city" class="form-label">Thành phố/Quận/Thị xã</label>
-      <input type="text" class="form-control" id="city" placeholder="Nhập thành phố">
+      <input type="text" class="form-control" id="city" placeholder="Nhập thành phố" [(ngModel)]="homestayInfo.city" name="city">
     </div>
     <div class="mb-3">
       <label for="state" class="form-label">Tỉnh</label>
-      <input type="text" class="form-control" id="state" placeholder="Nhập tỉnh">
+      <input type="text" class="form-control" id="state" placeholder="Nhập tỉnh" [(ngModel)]="homestayInfo.provin" name="provin">
     </div>
   
 
@@ -97,15 +102,15 @@
     </div>
   </div>
   <div class="mb-3">
-    <label class="form-label">Giường</label>
+    <label class="form-label" >Giường</label>
     <div>
-      <input type="number" min="1" max="10" step="1" value="1" class="form-control small-input">
+      <input type="number" min="1" max="10" step="1" value="1" class="form-control small-input" [(ngModel)]="homestayInfo.giuong" name="giuong">
     </div>
   </div>
   <div class="mb-3">
     <label class="form-label">Phòng tắm</label>
     <div>
-      <input type="number" min="1" max="10" step="1" value="1" class="form-control small-input">
+      <input type="number" min="1" max="10" step="1" value="1" class="form-control small-input" [(ngModel)]="homestayInfo.phongtam" name="phongtam">
     </div>
   </div>
 
@@ -115,49 +120,49 @@
   
   <!-- Cho khách biết chỗ ở của bạn có những gì -->
   <h4>Cho khách biết chỗ ở của bạn có những gì</h4>
-  <div class="row">
-    <div class="col-md-4">
+  <div class="row" [formGroup]="tienichForm">
+    <div class="col-md-4" >
         <h6>Những tiện nghi yêu thích của khách?</h6>
       <div class="form-check">
-        <input class="form-check-input" type="checkbox" id="wifi">
+        <input class="form-check-input" type="checkbox" id="wifi" formControlName="wifi">
         <label class="form-check-label" for="wifi">Wifi</label>
       </div>
       <div class="form-check">
-        <input class="form-check-input" type="checkbox" id="tv">
+        <input class="form-check-input" type="checkbox" id="tv" formControlName="tv">
         <label class="form-check-label" for="tv">TV</label>
       </div>
       <div class="form-check">
-        <input class="form-check-input" type="checkbox" id="kitchen">
+        <input class="form-check-input" type="checkbox" id="kitchen" formControlName="bep">
         <label class="form-check-label" for="kitchen">Bếp</label>
       </div>
     </div>
     <div class="col-md-4">
         <h6>Những tiện nghi nổi bật</h6>
       <div class="form-check">
-        <input class="form-check-input" type="checkbox" id="airConditioning">
+        <input class="form-check-input" type="checkbox" id="airConditioning" formControlName="dieuhoa">
         <label class="form-check-label" for="airConditioning">Điều hòa</label>
       </div>
       <div class="form-check">
-        <input class="form-check-input" type="checkbox" id="dryer">
+        <input class="form-check-input" type="checkbox" id="dryer" formControlName="maysay">
         <label class="form-check-label" for="dryer">Máy sấy</label>
       </div>
       <div class="form-check">
-        <input class="form-check-input" type="checkbox" id="freeParking">
+        <input class="form-check-input" type="checkbox" id="freeParking" formControlName="doxe">
         <label class="form-check-label" for="freeParking">Đỗ xe miễn phí</label>
       </div>
     </div>
     <div class="col-md-4">
         <h6>Tiện nghi đảm bảo an toàn</h6>
       <div class="form-check">
-        <input class="form-check-input" type="checkbox" id="pool">
+        <input class="form-check-input" type="checkbox" id="pool" formControlName="beboi">
         <label class="form-check-label" for="pool">Bể bơi</label>
       </div>
       <div class="form-check">
-        <input class="form-check-input" type="checkbox" id="gym">
+        <input class="form-check-input" type="checkbox" id="gym" formControlName="thethao">
         <label class="form-check-label" for="gym">Phòng tập thể thao</label>
       </div>
       <div class="form-check">
-        <input class="form-check-input" type="checkbox" id="spa">
+        <input class="form-check-input" type="checkbox" id="spa" formControlName="spa">
         <label class="form-check-label" for="spa">Spa</label>
       </div>
     </div>
@@ -256,12 +261,12 @@
     
       <h5 class="mb-3">Bây giờ, hãy đặt tiêu đề cho chỗ ở thuộc danh mục căn hộ của bạn</h5>
       <div class="mb-3">
-        <input type="text" class="form-control" placeholder="Tiêu đề" />
+        <input type="text" class="form-control" placeholder="Tiêu đề" [(ngModel)]="homestayInfo.title" name="title"/>
       </div>
 
       <h5 class="mb-3">Mô tả phòng của bạn</h5>
       <div class="mb-3">
-        <textarea class="form-control" rows="5" placeholder="Tạo mô tả chi tiết cho phòng của bạn"></textarea>
+        <textarea class="form-control" rows="5" placeholder="Tạo mô tả chi tiết cho phòng của bạn" [(ngModel)]="homestayInfo.mota" name="mota"></textarea>
       </div>
   
   
@@ -269,20 +274,22 @@
       <p>Cuối cùng, bạn sẽ chọn cài đặt phòng, thiết lập giá và đăng mục cho thuê.</p>
       <div class="mb-3">
         <label for="priceInput" class="form-label">Bây giờ, hãy đặt mức giá mà bạn muốn</label>
-        <input type="number" id="priceInput" class="form-control" placeholder="2.000.000" value="2000000"/>
+        <input type="number" id="priceInput" class="form-control" placeholder="nhập giá" [(ngModel)]="homestayInfo.gia" name="gia"/>
+        <button class="btn btn-primary " (click)="confirm()">xác nhận</button>
       </div>
   
       <div class="d-flex justify-content-between bg-secondary p-3 rounded">
         <div>Giá cho thuê</div>
-        <div>2.000.000</div>
+        <div >{{homestayInfo.gia}}</div>
+       
       </div>
       <div class="d-flex justify-content-between bg-secondary p-3 rounded mt-2">
         <div>Phí dịch vụ</div>
-        <div>200.000</div>
+        <div>{{phi}} </div>
       </div>
       <div class="d-flex justify-content-between bg-secondary p-3 rounded mt-2">
         <div>Bạn kiếm được</div>
-        <div>1.800.000</div>
+        <div>{{tong}}</div>
       </div>
   
       <div class="mt-4">
@@ -329,7 +336,7 @@
       </div>
   
       <div class="mt-4 text-center">
-        <button class="btn btn-primary w-100">Hoàn tất và đăng phòng</button>
+        <button class="btn btn-primary w-100" (click)="onSubmit()">Hoàn tất và đăng phòng</button>
       </div>
   
  
@@ -337,5 +344,6 @@
 
   <!---->
 </form>
+
   </div>
   
