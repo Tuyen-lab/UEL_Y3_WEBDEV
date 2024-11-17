@@ -6,7 +6,7 @@ const Product = new Schema(
     toado: { type: [Number], required: true }, // Tọa độ vị trí [latitude, longitude]
     chuho: { type: String, required: true }, // Chủ hộ
     title: { type: String }, // Tiêu đề
-    style: { type: String }, // Phong cách
+    style: { type: [String] }, // Phong cách
     ten: { type: String }, // Tên homestay
     country: { type: String }, // Quốc gia
     provin: { type: String }, // Tỉnh/Thành phố

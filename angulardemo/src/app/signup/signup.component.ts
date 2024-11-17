@@ -28,6 +28,7 @@ export class SignupComponent {
       
     })}
 submit(username:HTMLInputElement,pass:HTMLInputElement, phone:HTMLInputElement,email:HTMLInputElement){
+  console.log(this.userwarehouse)
   this.user.username=username.value
   this.user.pass=pass.value
   this.user.phone=phone.value
@@ -68,7 +69,7 @@ submit(username:HTMLInputElement,pass:HTMLInputElement, phone:HTMLInputElement,e
       }
     
     }
-    if(this.nameagain==true){
+    if(this.nameagain==true && this.name==true && this.phone1==true && this.pass==true && this.email1==true ){
       alert('đăng kí thành công')
       
       this._service.adduser(this.user).subscribe({

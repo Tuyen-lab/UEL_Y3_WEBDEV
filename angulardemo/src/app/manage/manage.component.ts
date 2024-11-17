@@ -3,11 +3,12 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { ExampleService } from '../service/sp.service';
 import { flatMap } from 'rxjs';
-
+import { FormsModule } from '@angular/forms';
+import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 @Component({
   selector: 'app-manage',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule,ReactiveFormsModule],
   templateUrl: './manage.component.html',
   styleUrl: './manage.component.css'
 })
@@ -24,9 +25,30 @@ export class ManageComponent {
   wishlist: any
   wished: any[]=[]
   wishhouse: any[]=[]
-
+  u:any
+  user={ username:'',pass:'', phone:'',email:'' }
+name1=true
+  pass=true
+  phone1=true
+  email1=true
+  nameagain=true
+  userwarehouse:any
   ngOnInit(): void {
-    
+    this._service.getuser().subscribe({
+      next: (data) => {this.u = data
+          for(let i of this.u){
+            if(i.username==this.name){
+              this.user.username=i.username
+              this.user.pass=i.pass
+              this.user.phone=i.phone
+              this.user.email=i.email
+        console.log(this.user)
+            }
+          }
+      },
+      error: (err) => (this.errMsg= err.message)
+      
+    })
     this._service.getrWish().subscribe({
       next: (data) => {this.wishlist = data;
         for(let i of this.wishlist){
@@ -44,7 +66,7 @@ export class ManageComponent {
       next: (data) => {
         this.house = data
         for(let i of this.wished){
-          console.log(i.manha+'sfdfa')
+    
           for(let p of this.house){
             if(i.manha==p.ma){
               this.wishhouse.push(p)
@@ -106,4 +128,62 @@ toggleActive() {
       })
     }
 }
+OnitemClick1(p: any){
+  this.router.navigate (['/home',p.ma])
+}
+submit(username:HTMLInputElement,pass:HTMLInputElement, phone:HTMLInputElement,email:HTMLInputElement){
+  this.user.username=username.value
+  this.user.pass=pass.value
+  this.user.phone=phone.value
+  this.user.email=email.value
+  
+  if(phone.value==''){
+    this.phone1=false
+
+  }
+  else{this.phone1=true}
+
+  if(email.value==''){
+    this.email1=false
+  }
+  else{this.email1=true}
+
+  if(username.value==''){
+    this.name1=false
+  }
+  else{this.name1=true}
+
+  if(pass.value==''){
+    this.pass=false
+  }
+  else{this.pass=true}
+
+ 
+  if(username.value!='' && pass.value!='' && phone.value!=''&& email.value!=''){
+    for(let u of this.u){
+      if(u.username==username.value && (u.username!=localStorage.getItem('user'))){
+        this.nameagain=false
+        break
+      }
+      else{
+        this.nameagain=true
+        
+        }
+      }
+    
+    }
+    if(this.nameagain==true && pass.value!='' && phone.value!=''&& email.value!=''){
+      console.log(this.user)
+      this._service.updateUser(this.user.username,this.user).subscribe({
+        
+        next: (response) =>{
+          alert('Cập nhật thành công');
+        },
+        error: (err) => (this.errMsg= err.message)
+      })
+    }
+  
+
+}
+emailFormControl = new FormControl('', [Validators.required, Validators.email]);
 }

@@ -10,17 +10,43 @@
       <button (click)="currentView = 'ongoingBookings'" [class.active]="currentView === 'ongoingBookings'">
         Phòng đang đặt
       </button>
+      <button (click)="currentView = 'myinfo'" [class.active]="currentView === 'myinfo'">
+        Thông tin tài khoản
+      </button>
    
     </div>
   
     <div class="content ">
+      <ng-container *ngIf="currentView === 'myinfo'">
+        <form>
+          <label for="username" >Tên đăng nhập:</label>
+          <input type="text"  #username name="username" required  [ngClass]="{ 'invalid-input': !name || !nameagain }" [value]="user.username">
+          <p *ngIf="!name" class="error-message">nhập tên người dùng</p>
+          <p *ngIf="!nameagain" class="error-message">Tên đăng nhập đã được sử dụng</p>
+
+          <label for="password"  >Mật khẩu:</label>
+          <input type="tẽt" id="password" #password required [ngClass]="{ 'invalid-input': !pass }"  [value]="user.pass">
+          <p *ngIf="!pass" class="error-message">nhập  mật khẩu</p>
+          <label for="phone">Số điện thoại</label>
+          <input type="text" #phone  required [ngClass]="{ 'invalid-input': !phone1 }" name="phone"  [value]="user.phone">
+          <p *ngIf="!phone1" style="color: red;">nhập số điện thoại</p>
+
+          <label for="password" >Địa chỉ Email</label>
+          <input type="text" #email name="password"  [ngClass]="{'invalid-input': emailFormControl.invalid && emailFormControl.touched || !email1}"  [value]="user.email">
+       
+          <div *ngIf="emailFormControl.invalid && emailFormControl.touched || !email1" style="color: red;">
+              Địa chỉ email không hợp lệ.
+            </div>
+          <button type="button" (click)="submit(username,password,phone,email)">Sửa thông tin</button>
+      </form>
+      </ng-container>
       <ng-container *ngIf="currentView === 'myRooms'">
         <!-- Nội dung cho "Phòng của bạn" -->
         <div class="row">
           <!-- Card 1 -->
           <div *ngIf="wishhouse.length==0" style="color: red; font-weight: bolder;">Bạn chưa thích phòng nào cả</div>
           <div class="col-md-3 mb-4" *ngFor="let i of wishhouse">
-            <div class="card">
+            <div class="card" (click)="OnitemClick1(i)">
               <img src={{i.thumnail}} class="card-img-top" alt="Homestay Đà Lạt Màu Đen">
               <div class="card-body">
                 <h5 class="card-title">{{i.title}}</h5>

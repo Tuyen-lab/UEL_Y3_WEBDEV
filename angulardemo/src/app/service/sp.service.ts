@@ -25,6 +25,11 @@ api: string='http://localhost:3000'
       retry(2),
       catchError(this.handleError))
   }
+  getImg(): Observable<any> {
+    return this._http.get<any>(`${this.api}/upload`).pipe(
+      retry(2),
+      catchError(this.handleError))
+  }
   getrental(): Observable<any> {
     return this._http.get<any>(`${this.api}/rented`).pipe(
       retry(2),
@@ -35,7 +40,7 @@ api: string='http://localhost:3000'
       retry(2),
       catchError(this.handleError))
   }
-  addSP(product: { name: string; price: number }): Observable<any>{
+  addSP(product:any): Observable<any>{
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     return this._http.post<any>( `${this.api}/product`,product, { headers }).pipe(
       catchError(this.handleError))
@@ -80,9 +85,9 @@ api: string='http://localhost:3000'
     console.log(url)
     return this._http.delete(url);
   }
-  updatePartialBeer(id: string, updateData: Partial<{ name: string; price: number }>): Observable<any> {
-    const url = `${this.api}/${id}`; // Tạo endpoint cho yêu cầu PATCH
-  
+  updateUser(user: string, updateData: Partial<{ username: string; pass: string; phone: string; email: string }>): Observable<any> {
+    const url = `${this.api}/user/${user}`; // Tạo endpoint cho yêu cầu PATCH
+
     return this._http.patch(url, updateData); 
   }
 
@@ -94,5 +99,14 @@ api: string='http://localhost:3000'
   isLoggedIn(): boolean {
     return !!localStorage.getItem('user'); // Kiểm tra token để xác định đăng nhập
     
+  }
+  uploadImage(file: File, description: string = ''): Observable<any> {
+    const formData = new FormData();
+    formData.append('image', file, file.name);
+    formData.append('description', description);
+
+    const headers = new HttpHeaders();
+    
+    return this._http.post(`${this.api}/upload`, formData, { headers });
   }
 }
