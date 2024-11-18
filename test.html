@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Disable Fixed Date Range</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+</head>
+<body>
+    <input type="text" id="datepicker">
+
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script>
+      flatpickr("#datepicker", {
+        mode: "range", // Chế độ chọn khoảng ngày
+        dateFormat: "Y-m-d",
+        
+        disable: [
+          // Cố định các ngày riêng lẻ
+          "2024-11-20", 
+          "2024-11-21",
+          "2024-11-22",
+
+          // Cố định một khoảng ngày
+          {
+            from: "2024-11-20", // Ngày bắt đầu bị vô hiệu hóa
+            to: "2024-11-25"   // Ngày kết thúc bị vô hiệu hóa
+          },
+          
+          {
+            from: "2024-11-12", // Ngày bắt đầu bị vô hiệu hóa
+            to: "2024-11-15"   // Ngày kết thúc bị vô hiệu hóa
+          }
+          
+        ]
+      })
+      ;
+      
+    </script>
+</body>
+</html>

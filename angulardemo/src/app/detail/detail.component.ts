@@ -4,12 +4,14 @@ import { ExampleService } from '../service/sp.service';
 import { FormsModule } from '@angular/forms';
 
 import { ActivatedRoute,Router } from '@angular/router';
+import { FlatpickrDirective, FlatpickrModule } from 'angularx-flatpickr';
 import * as L from 'leaflet';
+import flatpickr from 'flatpickr';
 
 @Component({
   selector: 'app-detail',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule,  FlatpickrModule],
   templateUrl: './detail.component.html',
   styleUrl: './detail.component.css'
 })
@@ -38,6 +40,7 @@ export class DetailComponent implements OnInit {
     ngaythue: '',
     ngaytra: '',
     detail: {}}
+    disabledRanges: { from: string, to: string }[]= [{from:'', to: ''}]
   day1= true
   day2= true
   nha: any
@@ -46,11 +49,10 @@ export class DetailComponent implements OnInit {
   id: any
   mota=''
   map: L.Map | undefined;
+  dathue: any
   
-
   ngOnInit(): void {
-    this.isLoggedIn=this._service.isLoggedIn()
-  
+    
     this._service.getSP().subscribe({
       next: (data) => {this.SP = data
         if (this.SP && this.SP.length > 1) { 
@@ -79,10 +81,29 @@ export class DetailComponent implements OnInit {
       
       error: (err) => (this.errMsg= err.message)
     });
-  
+    this.isLoggedIn=this._service.isLoggedIn()
     this.activate.paramMap.subscribe(param => {
       this.id = param.get('id');
       if (this.id != null) this.selectedId= parseInt(this.id)
+    })
+    this._service.getrental().subscribe({
+      next: (data) => {this.dathue = data
+        for(let i of this.dathue){
+          if(i.manha==this.id){
+            let a={from: i.ngaythue, to: i.ngaytra}
+            this.disabledRanges.push(a)
+          }
+        }
+   
+        flatpickr('#datepicker', {
+          enableTime: true,
+          mode: 'range',
+          dateFormat: 'Y-m-d',
+          disable: this.disabledRanges, // Gán danh sách khoảng ngày
+        });
+      },
+      error: (err) => (this.errMsg= err.message)
+      
     })
     
   }
@@ -128,19 +149,23 @@ export class DetailComponent implements OnInit {
     marker.bindPopup(this.nha.ten + " xin chào <br>"+ this.nha.city +', '+ this.nha.provin).openPopup();
   }
   
- 
-  submitData(date1: HTMLInputElement,date2:HTMLInputElement) {
+  
+  submitData(date1: HTMLInputElement) {
+
     if(this.isLoggedIn==false){
-      alert('Bạn cần đăng nhập để thanh toán')
+      alert('Bạn cần đăng nhập để đặt phòng')
     }
     else{
-      if(date1.value!='' && date2.value !=''){
+      if(date1.value!=''){
         // Chuyển đến trang đăng ký
-      const d1 = new Date(date1.value);
-    const d2 = new Date(date2.value);
+      const d1 = new Date(date1.value.substring(0, 10));
+    const d2 = new Date(date1.value.slice(-10));
+
       if (d1.getTime() < d2.getTime()) {
-        localStorage.setItem('ngaynhan',date1.value)
-        localStorage.setItem('ngaytra',date2.value)
+        
+        localStorage.setItem('ngaynhan',date1.value.substring(0, 10))
+        localStorage.setItem('ngaytra',date1.value.slice(-10))
+   
         this.router.navigate([`/home/${this.id}/book`]);
     } else if (d1.getTime() > d2.getTime()) {
         alert("ngày trả phải sau ngày nhận")
@@ -151,9 +176,7 @@ export class DetailComponent implements OnInit {
       else if(date1.value!=''){ 
         this.day1= false
       }
-      else if(date2.value!=''){ 
-        this.day2= false
-      }
+    
       else{
         this.day1= false
         this.day2= false

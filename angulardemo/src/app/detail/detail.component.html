@@ -64,16 +64,11 @@
           <h4>₫{{nha.gia}} / đêm</h4>
           <form>
             <div class="mb-3">
-              <label for="checkin" class="form-label" >Ngày nhận phòng</label>
-              <input #nhan type="date"  class="form-control"  [ngClass]="{ 'error': !day1 }">
+              <label for="checkin" class="form-label" >Ngày nhận phòng và trả phòng</label>
+              <input #nhan type="text" id="datepicker" >
               <p *ngIf="!day1" style="color: red;">Hãy nhập ngày</p>
             </div>
-            <div class="mb-3">
-              <label for="checkout" class="form-label" >Ngày trả phòng</label>
-              <input #tra  type="date" class="form-control" [ngClass]="{ 'error': !day2 }"  id="checkout">
-              <p *ngIf="!day2" style="color: red;">Hãy nhập ngày</p>
-            </div>
-            <button type="submit" class="btn btn-primary w-100" (click)="submitData(nhan,tra)">Đặt phòng</button>
+            <button type="submit" class="btn btn-primary w-100" (click)="submitData(nhan)">Đặt phòng</button>
           </form>
         </div>
       </div>

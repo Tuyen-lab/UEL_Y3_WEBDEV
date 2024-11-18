@@ -95,13 +95,7 @@ export class BookComponent implements OnInit {
       },
       error: (err) => (this.errMsg= err.message)
     })
-    this._service.deleteSP(this.nhathue.ma).subscribe({
-      
-      next: (response) =>{
-        alert('Product delete successfully');
-      },
-      error: (err) => (this.errMsg= err.message)
-    })
+    
   
   
     alert('Đặt phòng thành công')
