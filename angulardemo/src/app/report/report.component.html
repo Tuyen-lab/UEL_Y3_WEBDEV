@@ -1,0 +1,221 @@
+<div class="container-fluid text-light mode pt-5 pb-5">
+    <div class="row">
+      <!-- Bộ lọc -->
+      <div class="col-2 border-end border-secondary ">
+        <h3 class="mb-4">Bộ lọc</h3>
+  
+        <!-- Ngày -->
+        <div class="mb-3">
+          <h6>Ngày</h6>
+          <div class="dropdown">
+            <button
+              class="btn btn-outline-light dropdown-toggle w-100"
+              type="button"
+              id="dropdownDay"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              Chọn ngày
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownDay">
+              <li><a class="dropdown-item" href="#">Ngày</a></li>
+              <li><a class="dropdown-item" href="#">Tuần</a></li>
+              <li><a class="dropdown-item" href="#">Tháng</a></li>
+            </ul>
+          </div>
+        </div>
+  
+        <!-- Phân loại -->
+        <div class="mb-3">
+          <h6>Phân loại</h6>
+          <div class="dropdown">
+            <button
+              class="btn btn-outline-light dropdown-toggle w-100"
+              type="button"
+              id="dropdownType"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              Chọn loại
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownType">
+              <li><a class="dropdown-item" href="#">Căn hộ</a></li>
+              <li><a class="dropdown-item" href="#">Nhà</a></li>
+              <li><a class="dropdown-item" href="#">Biệt thự</a></li>
+              <li><a class="dropdown-item" href="#">Khách sạn</a></li>
+              <li><a class="dropdown-item" href="#">Nhà container</a></li>
+              <li><a class="dropdown-item" href="#">Nhà khách</a></li>
+              <li><a class="dropdown-item" href="#">Xe cắm trại/RV</a></li>
+            </ul>
+          </div>
+        </div>
+  
+        <!-- Chủ nhà -->
+        <div class="mb-3">
+          <h6>Chủ nhà</h6>
+          <div class="dropdown">
+            <button
+              class="btn btn-outline-light dropdown-toggle w-100"
+              type="button"
+              id="dropdownHost"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              Chọn chủ nhà
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownHost">
+              <li><a class="dropdown-item" href="#">Chủ mới nổi</a></li>
+              <li><a class="dropdown-item" href="#">Chủ nhà siêu cấp</a></li>
+            </ul>
+          </div>
+        </div>
+  
+        <!-- Chỗ ở -->
+        <div class="mb-3">
+          <h6>Chỗ ở</h6>
+          <div class="dropdown">
+            <button
+              class="btn btn-outline-light dropdown-toggle w-100"
+              type="button"
+              id="dropdownPlace"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              Chọn chỗ ở
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownPlace">
+              <li><a class="dropdown-item" href="#">Được yêu thích</a></li>
+              <li><a class="dropdown-item" href="#">Được đặt nhiều nhất</a></li>
+            </ul>
+          </div>
+        </div>
+  
+        <!-- Đánh giá -->
+        <div class="mb-3">
+          <h6>Đánh giá</h6>
+          <div class="dropdown">
+            <button
+              class="btn btn-outline-light dropdown-toggle w-100"
+              type="button"
+              id="dropdownRating"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              Chọn đánh giá
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownRating">
+              <li><a class="dropdown-item" href="#">1 sao</a></li>
+              <li><a class="dropdown-item" href="#">2 sao</a></li>
+              <li><a class="dropdown-item" href="#">3 sao</a></li>
+              <li><a class="dropdown-item" href="#">4 sao</a></li>
+              <li><a class="dropdown-item" href="#">5 sao</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Danh sách Homestay -->
+      <div class="col-10">
+        <table class="table table-light table-hover align-middle text-center">
+          <thead>
+            <tr>
+              <th>Hạng</th>
+              <th>Chỗ ở</th>
+              <th>Giá</th>
+              <th>Đánh giá</th>
+              <th>Thuê</th>
+              <th>Thích</th>
+              <th>Lượt xem</th>
+              <th>Doanh thu</th>
+              <th>Xu hướng</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Dữ liệu mẫu, có thể thay đổi -->
+            <tr>
+              <td>1</td>
+              <td>
+                <img src="assets/images/dl.jpg" alt="Homestay Đà Lạt" class="img-thumbnail" />
+                <div>Homestay Đà Lạt Màu Đen</div>
+                <small>Đà Lạt, Lâm Đồng, Việt Nam</small>
+              </td>
+              <td>1.900.000</td>
+              <td>⭐ 4.8 (30)</td>
+              <td>265</td>
+              <td>357</td>
+              <td>898</td>
+              <td>687.000.000</td>
+              <td><img src="assets/images/xh1.png" alt="Xu hướng" class="img-fluid" style="height: 40px;" /></td>
+            </tr>
+
+            <tr>
+                <td>2</td>
+                <td>
+                  <img src="assets/images/dn.jpg" alt="Homestay Đà Lạt" class="img-thumbnail" />
+                  <div>Homestay Đà Lạt Màu Đen</div>
+                  <small>Đà Lạt, Lâm Đồng, Việt Nam</small>
+                </td>
+                <td>1.900.000</td>
+                <td>⭐ 4.8 (30)</td>
+                <td>265</td>
+                <td>357</td>
+                <td>898</td>
+                <td>687.000.000</td>
+                <td><img src="assets/images/xh2.jpg" alt="Xu hướng" class="img-fluid" style="height: 40px;" /></td>
+              </tr>
+
+              <tr>
+                <td>3</td>
+                <td>
+                  <img src="assets/images/htb.jpg" alt="Homestay Đà Lạt" class="img-thumbnail" />
+                  <div>Homestay Đà Lạt Màu Đen</div>
+                  <small>Đà Lạt, Lâm Đồng, Việt Nam</small>
+                </td>
+                <td>1.900.000</td>
+                <td>⭐ 4.8 (30)</td>
+                <td>265</td>
+                <td>357</td>
+                <td>898</td>
+                <td>687.000.000</td>
+                <td><img src="assets/images/xh3.jpg" alt="Xu hướng" class="img-fluid" style="height: 40px;" /></td>
+              </tr>
+
+              <tr>
+                <td>4</td>
+                <td>
+                  <img src="assets/images/lhb.jpg" alt="Homestay Đà Lạt" class="img-thumbnail" />
+                  <div>Homestay Đà Lạt Màu Đen</div>
+                  <small>Đà Lạt, Lâm Đồng, Việt Nam</small>
+                </td>
+                <td>1.900.000</td>
+                <td>⭐ 4.8 (30)</td>
+                <td>265</td>
+                <td>357</td>
+                <td>898</td>
+                <td>687.000.000</td>
+                <td><img src="assets/images/xh4.jpg" alt="Xu hướng" class="img-fluid" style="height: 40px;" /></td>
+              </tr>
+
+              <tr>
+                <td>5</td>
+                <td>
+                  <img src="assets/images/vtb.jpg" alt="Homestay Đà Lạt" class="img-thumbnail" />
+                  <div>Homestay Đà Lạt Màu Đen</div>
+                  <small>Đà Lạt, Lâm Đồng, Việt Nam</small>
+                </td>
+                <td>1.900.000</td>
+                <td>⭐ 4.8 (30)</td>
+                <td>265</td>
+                <td>357</td>
+                <td>898</td>
+                <td>687.000.000</td>
+                <td><img src="assets/images/xh5.jpg" alt="Xu hướng" class="img-fluid" style="height: 40px;" /></td>
+              </tr>
+
+
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  

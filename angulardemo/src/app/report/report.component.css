@@ -1,0 +1,25 @@
+.mode {
+    background-color: #0d1b2a;
+    color: white;
+  }
+  
+  h5,
+  h6 {
+    color: #adb5bd;
+  }
+  
+  
+  
+  .img-thumbnail {
+    border: none;
+    width: 200px;
+    height: 100px;
+  }
+  
+  .img-fluid {
+    display: block;
+    margin: auto;
+    width: 100px;
+    height: 50px;
+  }
+  

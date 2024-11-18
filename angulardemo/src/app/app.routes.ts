@@ -12,6 +12,7 @@ import { HostComponent } from './host/host.component';
 import { PostComponent } from './post/post.component';
 import { ManageComponent } from './manage/manage.component';
 import { LookDetailComponent } from './lookdetail/lookdetail.component';
+import { ReportComponent } from './report/report.component';
 
 export const routes: Routes = [
     {path:'',redirectTo:'/home', pathMatch:'full'},
@@ -27,7 +28,8 @@ export const routes: Routes = [
     {path: "all", component: HomeComponent},
     {path: "post", component: PostComponent},
     {path: "manage", component: ManageComponent},
-    {path: "manage/:id",component: LookDetailComponent}
+    {path: "manage/:id",component: LookDetailComponent},
+    {path: "report", component: ReportComponent}
     
 
     
