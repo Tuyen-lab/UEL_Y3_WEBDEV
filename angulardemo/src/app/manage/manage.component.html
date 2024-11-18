@@ -10,13 +10,94 @@
       <button (click)="currentView = 'ongoingBookings'" [class.active]="currentView === 'ongoingBookings'">
         Phòng đang đặt
       </button>
+      <button (click)="currentView = 'myStaying'" [class.active]="currentView === 'myStaying'">
+        Phòng đang ở
+      </button> 
+      <button (click)="currentView = 'waitting'" [class.active]="currentView === 'waitting'">
+        Đang chờ đánh giá
+      </button> 
+      <button (click)="currentView = 'myHistory'" [class.active]="currentView === 'myHistory'">
+        Lịch sử thuê phòng
+      </button> 
       <button (click)="currentView = 'myinfo'" [class.active]="currentView === 'myinfo'">
         Thông tin tài khoản
       </button>
+
+      
    
     </div>
   
     <div class="content ">
+      <ng-container *ngIf="currentView === 'waitting'">
+        <div class="row">
+          <!-- Card 1 -->
+          <div *ngIf="waitCommentdetail.length==0" style="color: red; font-weight: bolder;">Bạn chưa thích phòng nào cả</div>
+          <div class="col-md-3 mb-4" *ngFor="let i of waitCommentdetail">
+            <div class="card" style="height: 380px;" >
+              <img (click)="OnitemClick1(i)" src={{i.thumnail}} class="card-img-top" alt="Homestay Đà Lạt Màu Đen">
+              <div class="card-body">
+                <h5 class="card-title" (click)="OnitemClick1(i)">{{i.title}}</h5>
+                <p class="card-text" (click)="OnitemClick1(i)">{{i.city}}, {{i.provin}}, {{i.contry}}</p>
+                <p class="card-text">⭐ 4.8 (30)</p>
+                <div class="content-wrapper">
+                  <div class="info-column" (click)="OnitemClick(i)">
+                    
+                    <p (click)="OnitemClick1(i)" class="price"><strong>{{i.gia}} VND</strong></p>
+                  </div>
+                  <div class="button-column">
+                    <button style="height: 40px; width: 150px;  ; background-color: rgb(15, 115, 246);" type="submit" class="btn btn-primary" value="Đã Checkin" (click)='openPopup()'>Thêm đánh giá</button>
+                    <!-- Popup -->
+<div class="popup" *ngIf="isPopupVisible" (click)="closePopup($event)">
+  <div class="popup-content">
+    <h3>Đánh giá của bạn</h3>
+    <textarea placeholder="Nhập đánh giá của bạn..." rows="5" style="width: 100%;"></textarea>
+    <div class="popup-actions">
+      <button class="btn" (click)="submitRating()">Gửi</button>
+      <button class="btn" (click)="closePopup()">Đóng</button>
+    </div>
+  </div>
+</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+      <ng-container *ngIf="currentView === 'myHistory'">
+        <div class="row">
+          <!-- Card 1 -->
+          <div *ngIf="historydetail.length==0" style="color: red; font-weight: bolder;">Bạn chưa thích phòng nào cả</div>
+          <div class="col-md-3 mb-4" *ngFor="let i of historydetail">
+            <div class="card" (click)="OnitemClick1(i)">
+              <img src={{i.thumnail}} class="card-img-top" alt="Homestay Đà Lạt Màu Đen">
+              <div class="card-body">
+                <h5 class="card-title">{{i.title}}</h5>
+                <p class="card-text">{{i.city}}, {{i.provin}}, {{i.contry}}</p>
+                <p class="card-text">⭐ 4.8 (30)</p>
+                <p class="card-text"><strong>{{i.gia}} VND</strong></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+      <ng-container *ngIf="currentView === 'myStaying'">
+        <div class="row">
+          <!-- Card 1 -->
+          <div *ngIf="staying.length==0" style="color: red; font-weight: bolder;">Bạn chưa thích phòng nào cả</div>
+          <div class="col-md-3 mb-4" *ngFor="let i of staying">
+            <div class="card" (click)="OnitemClick1(i)">
+              <img src={{i.thumnail}} class="card-img-top" alt="Homestay Đà Lạt Màu Đen">
+              <div class="card-body">
+                <h5 class="card-title">{{i.title}}</h5>
+                <p class="card-text">{{i.city}}, {{i.provin}}, {{i.contry}}</p>
+                <p class="card-text">⭐ 4.8 (30)</p>
+                <p class="card-text"><strong>{{i.gia}} VND</strong></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ng-container>
       <ng-container *ngIf="currentView === 'myinfo'">
         <form>
           <label for="username" >Tên đăng nhập:</label>

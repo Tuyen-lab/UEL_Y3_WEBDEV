@@ -32,8 +32,17 @@ name1=true
   phone1=true
   email1=true
   nameagain=true
+  history: any
+  historydetail: any[]=[]
   userwarehouse:any
+  stayinged: any
+  staying: any[]=[]
+  allComment: any
+  cusComment: any[]=[]
+  waitComment: any[]=[]
+  waitCommentdetail: any[]=[]
   ngOnInit(): void {
+    
     this._service.getuser().subscribe({
       next: (data) => {this.u = data
           for(let i of this.u){
@@ -49,6 +58,51 @@ name1=true
       error: (err) => (this.errMsg= err.message)
       
     })
+    this._service.getStaying().subscribe({
+      next: (data) => {this.stayinged = data
+        console.log(this.stayinged)
+        for( let i of this.stayinged){
+          if (i.host==this.name){
+            this.staying.push(i.detail)
+          }
+        }
+      },
+      error: (err) => (this.errMsg= err.message)
+      
+    })
+    this._service.getHistory().subscribe({
+      next: (data) => {this.history = data
+        console.log(this.history)
+        this.waitComment=this.history
+        for( let i of this.history){
+          if (i.host==this.name){
+            this.historydetail.push(i.detail)
+          }
+        }
+        this._service.getComment().subscribe({
+          next: (data) => {this.allComment = data
+            for( let h of this.waitComment){
+              for(let i of this.allComment){
+                if(i.cus==h.cus && i.manha==h.manha){this.waitComment=this.waitComment.filter(item => !(item.manha === i.manha && item.cus === i.cus))}
+                
+                }
+              }
+              for(let i of this.waitComment){
+                this.waitCommentdetail.push(i.detail)
+              }
+      
+            }
+            
+            
+          })
+         
+        
+        
+      },
+      error: (err) => (this.errMsg= err.message)
+      
+    })
+    
     this._service.getrWish().subscribe({
       next: (data) => {this.wishlist = data;
         for(let i of this.wishlist){
@@ -104,6 +158,24 @@ OnitemClick(p: any){
   }
   
   this.router.navigate (['/manage',p.ma])
+}
+isPopupVisible: boolean = false; // Trạng thái hiển thị popup
+
+openPopup() {
+  this.isPopupVisible = true;
+}
+
+closePopup(event?: MouseEvent) {
+  // Đóng popup khi nhấn ngoài nội dung
+  if (!event || (event.target as HTMLElement).classList.contains('popup')) {
+    this.isPopupVisible = false;
+  }
+}
+
+submitRating() {
+  // Logic gửi đánh giá (bạn có thể thêm xử lý gửi lên server tại đây)
+  console.log('Đánh giá đã được gửi!');
+  this.isPopupVisible = false; // Đóng popup sau khi gửi
 }
 toggleActive() {
   this.isActive = !this.isActive; // Đảo ngược trạng thái khi nhấn

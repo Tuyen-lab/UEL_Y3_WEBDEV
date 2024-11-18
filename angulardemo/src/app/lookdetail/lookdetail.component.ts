@@ -179,7 +179,7 @@ console.log(this.nhadathue)
   })
 
 
-  this._service.deleteRented(this.rental1.manha).subscribe({
+  this._service.deleteRented(this.rental1.manha,this.rental1.cus ).subscribe({
     
     next: (response) =>{
       alert('Product delete successfully');

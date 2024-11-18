@@ -62,7 +62,8 @@
       <div class="col-md-4">
         <div class="price-box">
           <h4>₫{{nha.gia}} / đêm</h4>
-          <form>
+          <i *ngIf="!datlai" style="color: red; ">Bạn đã đặt phòng này và đang chờ tới ngày checkin</i>
+          <form *ngIf="datlai">
             <div class="mb-3">
               <label for="checkin" class="form-label" >Ngày nhận phòng và trả phòng</label>
               <input #nhan type="text" id="datepicker" >

@@ -9,12 +9,41 @@
         Phòng của bạn
       </button>
       <button (click)="currentView = 'ongoingBookings'" [class.active]="currentView === 'ongoingBookings'">
+        Đã được đặt
+      </button>
+      <button (click)="currentView = 'onStaying'" [class.active]="currentView === 'onStaying'">
         Đang tiếp đón
       </button>
     <i class="bi bi-plus-circle mode " (click)="toPost()"></i>
     </div>
   
     <div class="content ">
+      <ng-container *ngIf="currentView === 'onStaying'">
+        <div class="row">
+          <!-- Card 1 -->
+           <div *ngIf="staying.length==0" style="color: red; font-weight: bolder;">Chưa có phòng nào đang tiếp đón</div>
+          <div class="col-md-3 mb-4"  *ngFor="let i of staying">
+            <div style="height: 380px;" class="card" (click)="OnitemClick2(i)" >
+              <img src={{i.thumnail}} class="card-img-top" alt="Homestay Đà Lạt Màu Đen">
+              <div class="card-body">
+                <h5 class="card-title">{{i.title}}</h5>
+                <p class="card-text">{{i.city}}, {{i.provin}}, {{i.contry}}</p>
+                <p class="rating">⭐ 4.8 (30)</p>
+                <div class="content-wrapper">
+                  <div class="info-column" (click)="OnitemClick(i)">
+                    
+                    <p class="price"><strong>{{i.gia}} VND</strong></p>
+                  </div>
+                  <div class="button-column">
+                    <button style="height: 40px; width: 100px;  ; background-color: rgb(15, 115, 246);" type="submit" class="btn btn-primary" value="Đã Checkin" (click)="OnitemClick5(i)">Đã checkout</button>
+                    
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>    
+        </div>
+      </ng-container>
       <ng-container *ngIf="currentView === 'myRooms'">
         <!-- Nội dung cho "Phòng của bạn" -->
         <div class="row">
@@ -40,13 +69,21 @@
             <!-- Card 1 -->
             <div *ngIf="rented.length==0" style="color: red; font-weight: bolder;">Chưa có phòng nào của bạn được đặt</div>
             <div class="col-md-3 mb-4" *ngFor="let i of rented">
-              <div class="card" (click)="OnitemClick(i)">
-                <img src={{i.thumnail}} class="card-img-top" alt="Homestay Đà Lạt Màu Đen">
+              <div class="card" style="height: 380px;" >
+                <img  (click)="OnitemClick(i)" src={{i.thumnail}} class="card-img-top" alt="Homestay Đà Lạt Màu Đen">
                 <div class="card-body">
-                  <h5 class="card-title">{{i.title}}</h5>
+                  <h5 class="card-title" (click)="OnitemClick(i)">{{i.title}}</h5>
                   <p class="card-text">{{i.city}}, {{i.provin}}, {{i.contry}}</p>
-                  <p class="card-text">⭐ 4.8 (30)</p>
-                  <p class="card-text"><strong>{{i.gia}} VND</strong></p>
+                  <div class="content-wrapper">
+                    <div class="info-column" (click)="OnitemClick(i)">
+                      <p class="rating">⭐ 4.8 (30)</p>
+                      <p class="price"><strong>{{i.gia}} VND</strong></p>
+                    </div>
+                    <div class="button-column">
+                      <button style="height: 40px; width: 100px;  ; background-color: rgb(15, 115, 246);" type="submit" class="btn btn-primary" value="Đã Checkin" (click)="OnitemClick3(i)">Đã Checkin</button>
+                      <button style="height: 40px; width: 100px;  ; background-color: rgb(15, 115, 246);" type="submit" class="btn btn-primary" value="Hủy" (click)="OnitemClick4(i)">Hủy</button>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>

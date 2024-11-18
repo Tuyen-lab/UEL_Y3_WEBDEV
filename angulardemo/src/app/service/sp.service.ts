@@ -35,14 +35,34 @@ api: string='http://localhost:3000'
       retry(2),
       catchError(this.handleError))
   }
+  getStaying(): Observable<any> {
+    return this._http.get<any>(`${this.api}/staying`).pipe(
+      retry(2),
+      catchError(this.handleError))
+  }
+  getHistory(): Observable<any> {
+    return this._http.get<any>(`${this.api}/history`).pipe(
+      retry(2),
+      catchError(this.handleError))
+  }
   getrWish(): Observable<any> {
     return this._http.get<any>(`${this.api}/wish`).pipe(
+      retry(2),
+      catchError(this.handleError))
+  }
+  getComment(): Observable<any> {
+    return this._http.get<any>(`${this.api}/comment`).pipe(
       retry(2),
       catchError(this.handleError))
   }
   addSP(product:any): Observable<any>{
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     return this._http.post<any>( `${this.api}/product`,product, { headers }).pipe(
+      catchError(this.handleError))
+  }
+  addComment(product:any): Observable<any>{
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    return this._http.post<any>( `${this.api}/comment`,product, { headers }).pipe(
       catchError(this.handleError))
   }
   addwish(product: { cus: string; manha: string }): Observable<any>{
@@ -67,6 +87,30 @@ api: string='http://localhost:3000'
     return this._http.post<any>( `${this.api}/rented`,rental, { headers}).pipe(
       catchError(this.handleError))
   }
+  addHistory(
+    rental: { manha: string,
+      gia: string,
+      host: string,
+      cus:string,
+      ngaythue: string,
+      ngaytra:  string,
+      detail: any }): Observable<any>{
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    return this._http.post<any>( `${this.api}/history`,rental, { headers}).pipe(
+      catchError(this.handleError))
+  }
+  addStaying(
+    staying: { manha: string,
+      gia: string,
+      host: string,
+      cus:string,
+      ngaythue: string,
+      ngaytra:  string,
+      detail: any }): Observable<any>{
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    return this._http.post<any>( `${this.api}/staying`,staying, { headers}).pipe(
+      catchError(this.handleError))
+  }
   deleteSP(id: string): Observable<any> {
     
     const url = `${this.api}/${id}`;
@@ -79,10 +123,14 @@ api: string='http://localhost:3000'
     console.log(url)
     return this._http.delete(url);
   }
-  deleteRented(id: string): Observable<any> {
+  deleteRented(id: string, cus: string): Observable<any> {
     
-    const url = `${this.api}/rented/${id}`;
+    const url = `${this.api}/rented/${id}/${cus}`;
     console.log(url)
+    return this._http.delete(url);
+  }
+  deleteStaying(id: string, cus: string): Observable<any> {
+    const url = `${this.api}/staying/${id}/${cus}`;
     return this._http.delete(url);
   }
   updateUser(user: string, updateData: Partial<{ username: string; pass: string; phone: string; email: string }>): Observable<any> {

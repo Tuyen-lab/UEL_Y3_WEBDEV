@@ -24,7 +24,50 @@
     border-radius: 50px;
     border: 1px solid white;
   }
+  .card-body {
+    display: flex;
+    flex-direction: column;
+  }
   
+  .content-wrapper {
+    margin-top: 0px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start; /* Căn trên cùng */
+    gap: 20px; /* Khoảng cách giữa hai cột */
+
+  }
+  
+  .info-column {
+    display: flex;
+    flex-direction: column; /* Các phần tử trong cột xếp chồng lên nhau */
+    gap: 5px; /* Khoảng cách giữa ngôi sao và giá */
+  }
+  
+  .rating {
+    font-size: 14px;
+    color: #f39c12;
+  }
+  
+  .price {
+    font-size: 16px;
+    font-weight: bold;
+    color: #2c3e50;
+  }
+  
+  .button-column .btn {
+    width: 100%; /* Đảm bảo nút chiếm toàn bộ chiều rộng cột */
+    white-space: normal; /* Cho phép chữ trong nút xuống dòng */
+    overflow: hidden; /* Đảm bảo không có thanh cuộn xuất hiện */
+    text-align: center; /* Căn giữa chữ trong nút */
+    word-wrap: break-word; /* Tự động ngắt dòng nếu quá dài */
+    padding: 8px 10px; /* Điều chỉnh khoảng cách trong nút để tránh chữ quá sát */
+    font-size: 14px; /* Đảm bảo chữ không quá lớn */
+  }
+  
+  .button-column .btn {
+    width: 100%; /* Nút chiếm toàn bộ chiều rộng cột */
+  }
   button.active {
     background-color: white;
     color: black;

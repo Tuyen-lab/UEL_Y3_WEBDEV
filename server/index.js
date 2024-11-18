@@ -14,11 +14,21 @@ const Rented = require('./models/rented_home')
 const User  = require('./models/user')
 const Wish  = require('./models/wishlist')
 const Image = require('./models/images');
+const Staying = require('./models/staying');
+const History = require('./models/history');
+const Comment = require('./models/comment');
+const comment = require('./models/comment')
 db.connect()
 //API
 app.get("/product",cors(), (req, res)=>(
     Product.find({})
     .then(product => res.json(product))
+    .catch(err => res.status(500).json({error:err.message}))
+    )
+)
+app.get("/comment",cors(), (req, res)=>(
+    Comment.find({})
+    .then(comment => res.json(comment))
     .catch(err => res.status(500).json({error:err.message}))
     )
 )
@@ -50,6 +60,12 @@ app.get("/rented",cors(), (req, res)=>(
     .catch(err => res.status(500).json({error:err.message}))
     )
 )
+app.get("/staying",cors(), (req, res)=>(
+    Staying.find({})
+    .then(staying => res.json(staying))
+    .catch(err => res.status(500).json({error:err.message}))
+    )
+)
 app.get("/user",cors(), (req, res)=>(
     User.find({})
     .then(user => res.json(user))
@@ -65,6 +81,12 @@ app.get("/wish",cors(), (req, res)=>(
 app.get("/upload",cors(), (req, res)=>(
     Image.find({})
     .then(image => res.json(image))
+    .catch(err => res.status(500).json({error:err.message}))
+    )
+)
+app.get("/history",cors(), (req, res)=>(
+    History.find({})
+    .then(history => res.json(history))
     .catch(err => res.status(500).json({error:err.message}))
     )
 )
@@ -101,6 +123,65 @@ app.post("/rented",cors(), async(req, res)=> {
     }
 
 })
+app.post("/staying",cors(), async(req, res)=> {
+    // console.log(req.body);
+    console.log('Received request to add product:', req.body)
+    const staying = new Staying ({
+        manha: req.body.manha,
+        gia: req.body.gia,
+        host: req.body.host,
+        cus: req.body.cus,
+        ngaythue: req.body.ngaythue,
+        ngaytra:  req.body.ngaytra,
+        detail:  req.body.detail,
+    });
+    try {
+        await staying.save()
+        res.send("Success!")
+    } catch (err){
+        res.json({message: err.message})
+    }
+
+})
+app.post("/cmment",cors(), async(req, res)=> {
+    // console.log(req.body);
+    console.log('Received request to add product:', req.body)
+    const comment = new Comment ({
+        manha: req.body.manha,
+        host: req.body.host,
+        cus: req.body.cus,
+        sao: req.body.sao,
+        comment:  req.body.comment,
+      
+    });
+    try {
+        await staying.save()
+        res.send("Success!")
+    } catch (err){
+        res.json({message: err.message})
+    }
+
+})
+app.post("/history",cors(), async(req, res)=> {
+    // console.log(req.body);
+    console.log('Received request to add product:', req.body)
+    const history = new History ({
+        manha: req.body.manha,
+        gia: req.body.gia,
+        host: req.body.host,
+        cus: req.body.cus,
+        ngaythue: req.body.ngaythue,
+        ngaytra:  req.body.ngaytra,
+        detail:  req.body.detail,
+    });
+    try {
+        await history.save()
+        res.send("Success!")
+    } catch (err){
+        res.json({message: err.message})
+    }
+
+})
 app.post("/user",cors(), async(req, res)=> {
     // console.log(req.body);
     console.log('Received request to add product:', req.body)
@@ -119,7 +200,8 @@ app.post("/user",cors(), async(req, res)=> {
     }
 
 })
-app.post("/wish",cors(), async(req, res)=> {
+
+app.post("/staying",cors(), async(req, res)=> {
     console.log('Received request to add product:', req.body)
     const wish  = new Wish ({
     cus: req.body.cus,
@@ -222,11 +304,23 @@ app.delete('/:ma', async(req, res) =>{
         }
     }
 })
-app.delete('/rented/:manha', async(req, res) =>{
+app.delete('/rented/:manha/:cus', async(req, res) =>{
     console.log('sdfsdfsdf')
-    if (req.params.manha){
+    if (req.params.manha &&  req.params.cus){
         try{
-            await Rented.deleteOne({manha: req.params.manha})
+            await Rented.deleteOne({manha: req.params.manha,cus: req.params.cus,})
+            res.json({status: 'success'});
+            
+        } catch (err) {
+            res.json({message: err.message})
+        }
+    }
+})
+app.delete('/staying/:manha/:cus', async(req, res) =>{
+    console.log('sdfsdfsdf')
+    if (req.params.manha &&  req.params.cus){
+        try{
+            await Staying.deleteOne({manha: req.params.manha,cus: req.params.cus,})
             res.json({status: 'success'});
             
         } catch (err) {

@@ -50,7 +50,7 @@ export class DetailComponent implements OnInit {
   mota=''
   map: L.Map | undefined;
   dathue: any
-  
+  datlai=true
   ngOnInit(): void {
     
     this._service.getSP().subscribe({
@@ -92,6 +92,9 @@ export class DetailComponent implements OnInit {
           if(i.manha==this.id){
             let a={from: i.ngaythue, to: i.ngaytra}
             this.disabledRanges.push(a)
+          }
+          if(i.manha==this.id && i.cus==localStorage.getItem('user')){
+            this.datlai=false
           }
         }
    
