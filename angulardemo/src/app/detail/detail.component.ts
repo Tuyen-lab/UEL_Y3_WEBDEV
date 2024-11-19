@@ -44,6 +44,7 @@ export class DetailComponent implements OnInit {
   day1= true
   day2= true
   nha: any
+  sao=0
   dateError: boolean = false;
   constructor(private _service: ExampleService,private activate: ActivatedRoute, private router: Router) {}
   id: any
@@ -51,6 +52,8 @@ export class DetailComponent implements OnInit {
   map: L.Map | undefined;
   dathue: any
   datlai=true
+  comment: any
+  usercomment: any[]=[]
   ngOnInit(): void {
     
     this._service.getSP().subscribe({
@@ -65,7 +68,7 @@ export class DetailComponent implements OnInit {
           this.image3 = i.anh[1];
           this.image4 = i.anh[2];
           this.image5 = i.anh[3];
-          this.image6 = i.anh[4];
+          this.image6 = i.anh[1];
           this.nha=i
           console.log(this.nha)
           this.initMap()
@@ -82,6 +85,19 @@ export class DetailComponent implements OnInit {
       
       error: (err) => (this.errMsg= err.message)
     });
+    this._service.getComment().subscribe({
+      next: (data) => {this.comment = data
+        for(let i of this.comment){
+          if(i.manha==this.id){
+            this.usercomment.push(i)
+            this.sao+=i.sao
+          }
+        }
+        this.sao=this.sao/this.usercomment.length
+      },
+      error: (err) => (this.errMsg= err.message)
+      
+    })
     this.isLoggedIn=this._service.isLoggedIn()
     this.activate.paramMap.subscribe(param => {
       this.id = param.get('id');
