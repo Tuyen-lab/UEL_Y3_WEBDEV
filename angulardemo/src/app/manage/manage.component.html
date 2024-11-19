@@ -31,9 +31,9 @@
       <ng-container *ngIf="currentView === 'waitting'">
         <div class="row">
           <!-- Card 1 -->
-          <div *ngIf="waitCommentdetail.length==0" style="color: red; font-weight: bolder;">Bạn chưa thích phòng nào cả</div>
+          <div *ngIf="waitCommentdetail.length==0" style="color: red; font-weight: bolder;">Chưa có chỗ ở nào cần đánh giá</div>
           <div class="col-md-3 mb-4" *ngFor="let i of waitCommentdetail">
-            <div class="card" style="height: 380px;" >
+            <div class="card" style="height: 380px;"  *ngIf="dacomment!=i.ma" >
               <img (click)="OnitemClick1(i)" src={{i.thumnail}} class="card-img-top" alt="Homestay Đà Lạt Màu Đen">
               <div class="card-body">
                 <h5 class="card-title" (click)="OnitemClick1(i)">{{i.title}}</h5>
@@ -45,14 +45,15 @@
                     <p (click)="OnitemClick1(i)" class="price"><strong>{{i.gia}} VND</strong></p>
                   </div>
                   <div class="button-column">
-                    <button style="height: 40px; width: 150px;  ; background-color: rgb(15, 115, 246);" type="submit" class="btn btn-primary" value="Đã Checkin" (click)='openPopup()'>Thêm đánh giá</button>
+                    <button style="height: 40px; width: 150px;  ; background-color: rgb(15, 115, 246);" type="submit" class="btn btn-primary" value="Đã Checkin" (click)='openPopup(i)'>Thêm đánh giá</button>
                     <!-- Popup -->
-<div class="popup" *ngIf="isPopupVisible" (click)="closePopup($event)">
+<div class="popup" *ngIf="popcheck==i.ma" (click)="closePopup($event)">
   <div class="popup-content">
     <h3>Đánh giá của bạn</h3>
-    <textarea placeholder="Nhập đánh giá của bạn..." rows="5" style="width: 100%;"></textarea>
+    <input style="margin-bottom: 10px;"  type="number" placeholder="Số sao đánh giá" #start min="1" max="5">
+    <textarea placeholder="Nhập đánh giá của bạn..." rows="5" style="width: 100%;" #danhgia></textarea>
     <div class="popup-actions">
-      <button class="btn" (click)="submitRating()">Gửi</button>
+      <button class="btn" (click)="submitRating(i, start, danhgia)">Gửi</button>
       <button class="btn" (click)="closePopup()">Đóng</button>
     </div>
   </div>

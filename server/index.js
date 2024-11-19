@@ -143,7 +143,7 @@ app.post("/staying",cors(), async(req, res)=> {
     }
 
 })
-app.post("/cmment",cors(), async(req, res)=> {
+app.post("/comment",cors(), async(req, res)=> {
     // console.log(req.body);
     console.log('Received request to add product:', req.body)
     const comment = new Comment ({
@@ -151,11 +151,11 @@ app.post("/cmment",cors(), async(req, res)=> {
         host: req.body.host,
         cus: req.body.cus,
         sao: req.body.sao,
-        comment:  req.body.comment,
+        comment: req.body.comment,
       
     });
     try {
-        await staying.save()
+        await comment.save()
         res.send("Success!")
     } catch (err){
         res.json({message: err.message})
@@ -201,7 +201,7 @@ app.post("/user",cors(), async(req, res)=> {
 
 })
 
-app.post("/staying",cors(), async(req, res)=> {
+app.post("/wish",cors(), async(req, res)=> {
     console.log('Received request to add product:', req.body)
     const wish  = new Wish ({
     cus: req.body.cus,

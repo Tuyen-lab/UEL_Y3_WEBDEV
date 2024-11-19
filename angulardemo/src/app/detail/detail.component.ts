@@ -54,7 +54,8 @@ export class DetailComponent implements OnInit {
   ngOnInit(): void {
     
     this._service.getSP().subscribe({
-      next: (data) => {this.SP = data
+      next: (data) => {
+        this.SP = data
         if (this.SP && this.SP.length > 1) { 
           for(let i of this.SP){
             if(i.ma==this.id){
@@ -97,18 +98,16 @@ export class DetailComponent implements OnInit {
             this.datlai=false
           }
         }
-   
-        flatpickr('#datepicker', {
-          enableTime: true,
-          mode: 'range',
-          dateFormat: 'Y-m-d',
-          disable: this.disabledRanges, // Gán danh sách khoảng ngày
-        });
+        
+        
       },
       error: (err) => (this.errMsg= err.message)
       
     })
-    
+
+  }
+  ngAfterViewInit(): void {
+    this.initFlatpickday();
   }
 
   openImage(image: string): void {
@@ -126,7 +125,14 @@ export class DetailComponent implements OnInit {
     this.isCollapsed = !this.isCollapsed;
     this.updateDisplayText();
   }
-
+initFlatpickday(): void{
+  flatpickr('#datepicker', {
+    enableTime: true,
+    mode: 'range',
+    dateFormat: 'Y-m-d',
+    disable: this.disabledRanges, // Gán danh sách khoảng ngày
+  });
+}
   updateDisplayText() {
     if (this.isCollapsed) {
       this.mota = this.nha.mota.slice(0, this.showLimit) + '...';

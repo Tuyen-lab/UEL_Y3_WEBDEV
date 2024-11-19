@@ -205,7 +205,9 @@
   transition: color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease; /* Thêm hiệu ứng động cho màu, kích thước và bóng */
   z-index: 1000;
 }
-
+.white{
+  color: white;
+}
 .bi-heart:hover {
   color: red; /* Màu trái tim chuyển sang đỏ khi hover */
   transform: scale(1.2); /* Tăng kích thước trái tim khi hover */

@@ -15,6 +15,7 @@ import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 export class ManageComponent {
   name=localStorage.getItem('user')
   SP: any
+  dacomment=''
   rented: any[]=[]
   errMsg=''
   currentView: string = 'myRooms';
@@ -28,6 +29,7 @@ export class ManageComponent {
   u:any
   user={ username:'',pass:'', phone:'',email:'' }
 name1=true
+popcheck=''
   pass=true
   phone1=true
   email1=true
@@ -161,21 +163,30 @@ OnitemClick(p: any){
 }
 isPopupVisible: boolean = false; // Trạng thái hiển thị popup
 
-openPopup() {
-  this.isPopupVisible = true;
+openPopup(p: any) {
+  this.popcheck=p.ma
+
 }
 
 closePopup(event?: MouseEvent) {
   // Đóng popup khi nhấn ngoài nội dung
   if (!event || (event.target as HTMLElement).classList.contains('popup')) {
-    this.isPopupVisible = false;
+    this.popcheck = 'false';
   }
 }
 
-submitRating() {
-  // Logic gửi đánh giá (bạn có thể thêm xử lý gửi lên server tại đây)
+submitRating(p: any,sao:HTMLInputElement ,comment: HTMLTextAreaElement ) {
+  let nhathue={manha: p.ma, host: p.chuho, cus:this.name , sao: parseInt(sao.value), comment: comment.value}
+  this._service.addComment(nhathue).subscribe({
+  
+    next: (response) =>{
+      alert('Product added successfully');
+    },
+    error: (err) => (this.errMsg= err.message)
+  })
   console.log('Đánh giá đã được gửi!');
-  this.isPopupVisible = false; // Đóng popup sau khi gửi
+  this.popcheck = ''; // Đóng popup sau khi gửi
+  this.dacomment=nhathue.manha
 }
 toggleActive() {
   this.isActive = !this.isActive; // Đảo ngược trạng thái khi nhấn

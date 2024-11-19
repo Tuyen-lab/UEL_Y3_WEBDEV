@@ -104,7 +104,7 @@ toggleActive2(p: any) {
       this._service.deleteWish(this.wish.cus,this.wish.manha).subscribe({
     
         next: (response) =>{
-          alert('Product delete successfully');
+ 
       
         },
         error: (err) => (this.errMsg= err.message)

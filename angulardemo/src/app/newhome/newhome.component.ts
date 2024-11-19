@@ -18,7 +18,7 @@ export class NewhomeComponent {
   keyword=''
   SP : any
   wishlist: any
-  isActive=false
+  isActive: string[]=[]
   wish={cus:'loc',manha:'2'}
   errMsg=''
   selectedId: any
@@ -30,10 +30,17 @@ export class NewhomeComponent {
       
     })
     this._service.getrWish().subscribe({
-      next: (data) => {this.wishlist = data},
+      next: (data) => {this.wishlist = data;
+        for(let i of this.wishlist){{
+          if(i.manha==localStorage.getItem('user')){
+            this.isActive.push(i.manha)
+          }
+        }}
+      },
       error: (err) => (this.errMsg= err.message)
       
     })}
+  
   navigateSearch(key: string) {
 
     this.keyword=key
@@ -84,9 +91,10 @@ export class NewhomeComponent {
     else{
     this.wish.cus=localStorage.getItem('user')||''
     this.wish.manha=p.ma
-    this.isActive = !this.isActive; // Đảo ngược trạng thái khi nhấn
+
     if(!this.check(p))
       {
+        this.isActive.push(p.ma)
         this._service.addwish(this.wish).subscribe({
     
           next: (response) =>{
@@ -96,17 +104,19 @@ export class NewhomeComponent {
         })
       }
       else{
+        this.isActive.filter(item => item !== p.ma)
         this._service.deleteWish(this.wish.cus,this.wish.manha).subscribe({
       
           next: (response) =>{
-            alert('Product delete successfully');
+    
         
           },
           error: (err) => (this.errMsg= err.message)
         })
+        
       }
-  
-  
       window.location.reload();
+  
+     
   }}
 }
