@@ -50,7 +50,7 @@
         </div>
       </div>
       <div class="col-md-6">
-        <img src="assets/images/banner1.png" class="img-fluid rounded" alt="Room Image">
+        <img src="assets/images/homestay.png" class="img-fluid rounded" alt="Room Image">
       </div>
     </div>
   
@@ -60,27 +60,27 @@
     <!-- Section 1: Nhà nghỉ dưỡng cho thuê cho mọi phong cách -->
     <h3 class="mb-4">Nhà nghỉ dưỡng cho thuê cho mọi phong cách</h3>
     <div class="row row-cols-1 row-cols-md-4 g-4" id="bg">
-      <div class="col">
-        <div class="card h-100"  (click)="navigateSearch('nha go')">
-          <img src="assets/images/banner1.png" class="card-img-top" alt="Nhà gỗ chalet">
+      <div class="col" >
+        <div class="card h-100 "  (click)="navigateSearch('nha go')">
+          <img src="assets/images/dao.webp" class="card-img-top" alt="Đảo">
           <div class="card-body">
-            <h5 class="card-title">Nhà gỗ chalet</h5>
-            <p class="card-text">Những ngôi nhà phù hợp cho những chuyến phiêu lưu với hoạt động sau ngày trượt tuyết</p>
+            <h5 class="card-title">Đảo</h5>
+            <p class="card-text">Những ngôi nhà phù hợp cho những chuyến phiêu lưu với hoạt động trên đảo</p>
           </div>
         </div>
       </div>
       <div class="col">
         <div class="card h-100"  (click)="navigateSearch('nha')">
-          <img src="assets/images/banner1.png" class="card-img-top" alt="Nhà">
+          <img src="assets/images/nhano.webp" class="card-img-top" style="height: 223px;" alt="Nhà">
           <div class="card-body">
-            <h5 class="card-title">Nhà</h5>
+            <h5 class="card-title">Nhà nhỏ</h5>
             <p class="card-text">Chỗ ở của riêng bạn, có đủ phòng cho mọi người</p>
           </div>
         </div>
       </div>
       <div class="col">
         <div class="card h-100 "  (click)="navigateSearch('biet thu')">
-          <img src="assets/images/banner1.png" class="card-img-top" alt="Biệt thự">
+          <img src="assets/images/bietthu.webp" class="card-img-top" alt="Biệt thự">
           <div class="card-body">
             <h5 class="card-title">Biệt thự</h5>
             <p class="card-text">Những căn nhà sang trọng cho chuyến đi tuyệt vời</p>
@@ -88,10 +88,10 @@
         </div>
       </div>
       <div class="col">
-        <div class="card h-100 "  (click)="navigateSearch('dai phuoc')">
-          <img src="assets/images/banner1.png" class="card-img-top" alt="Nhà tại Đại Phước">
+        <div class="card h-100 "  (click)="navigateSearch('canh dep')">
+          <img src="assets/images/canhdep.webp" class="card-img-top" alt="">
           <div class="card-body">
-            <h5 class="card-title">Nhà tại Đại Phước</h5>
+            <h5 class="card-title">cảnh đẹp</h5>
             <p class="card-text">SONG Country House</p>
           </div>
         </div>
@@ -194,6 +194,40 @@
       <i class="bi bi-heart fs-1"></i>
       <p>Romance</p>
     </div>
+    <div class="icon-option text-center" (click)="navigateSearch('am thuc')">
+      <i class="bi bi-egg-fried fs-1"></i>
+      <p>Food</p>
+    </div>
+    <div class="icon-option text-center" (click)="navigateSearch('giai tri')">
+      <i class="bi bi-music-note-beamed fs-1"></i>
+      <p>Entertainment</p>
+    </div>
+    <div class="icon-option text-center" (click)="navigateSearch('lich su')">
+      <i class="bi bi-clock-history fs-1"></i>
+      <p>History</p>
+    </div>
+    <div class="icon-option text-center" (click)="navigateSearch('mua sam')">
+      <i class="bi bi-bag fs-1"></i>
+      <p>Shopping</p>
+    </div>
+    <div class="icon-option text-center" (click)="navigateSearch('nghe thuat')">
+      <i class="bi bi-palette fs-1"></i>
+      <p>Art</p>
+    </div>
+    <div class="icon-option text-center" (click)="navigateSearch('dem')">
+      <i class="bi bi-moon-stars fs-1"></i>
+      <p>Nightlife</p>
+    </div>
+    <div class="icon-option text-center" (click)="navigateSearch('phieu luu')">
+      <i class="bi bi-compass fs-1"></i>
+      <p>Adventure</p>
+    </div>
+    <div class="icon-option text-center" (click)="navigateSearch('suc khoe')">
+      <i class="bi bi-heart-pulse fs-1"></i>
+      <p>Wellness</p>
+    </div>
+  
+  
   </div>
 
   <!-- Destination images row -->

@@ -28,7 +28,7 @@
               <div class="card-body">
                 <h5 class="card-title">{{i.title}}</h5>
                 <p class="card-text">{{i.city}}, {{i.provin}}, {{i.contry}}</p>
-                <p class="rating">⭐ 4.8 (30)</p>
+              
                 <div class="content-wrapper">
                   <div class="info-column" (click)="OnitemClick(i)">
                     
@@ -55,8 +55,8 @@
               <div class="card-body">
                 <h5 class="card-title">{{i.title}}</h5>
                 <p class="card-text">{{i.city}}, {{i.provin}}, {{i.contry}}</p>
-                <p class="card-text">⭐ 4.8 (30)</p>
-                <p class="card-text"><strong>{{i.gia}}</strong></p>
+                <p class="rating">⭐ 4.8 (30)</p>
+                <p class="card-text"><strong>{{i.gia}} VNĐ</strong></p>
               </div>
             </div>
           </div>    
@@ -69,15 +69,17 @@
             <!-- Card 1 -->
             <div *ngIf="rented.length==0" style="color: red; font-weight: bolder;">Chưa có phòng nào của bạn được đặt</div>
             <div class="col-md-3 mb-4" *ngFor="let i of rented">
-              <div class="card" style="height: 380px;" >
+              <div class="card" style="height: 400px;" >
                 <img  (click)="OnitemClick(i)" src={{i.thumnail}} class="card-img-top" alt="Homestay Đà Lạt Màu Đen">
                 <div class="card-body">
                   <h5 class="card-title" (click)="OnitemClick(i)">{{i.title}}</h5>
-                  <p class="card-text">{{i.city}}, {{i.provin}}, {{i.contry}}</p>
+                  <p class="card-text" style="margin: 0px;">{{i.city}}, {{i.provin}}, {{i.contry}}</p>
+                  <p class="card-text" >Khách hàng: {{i.cus}}</p>
                   <div class="content-wrapper">
                     <div class="info-column" (click)="OnitemClick(i)">
-                      <p class="rating">⭐ 4.8 (30)</p>
+                      
                       <p class="price"><strong>{{i.gia}} VND</strong></p>
+                      
                     </div>
                     <div class="button-column">
                       <button style="height: 40px; width: 100px;  ; background-color: rgb(15, 115, 246);" type="submit" class="btn btn-primary" value="Đã Checkin" (click)="OnitemClick3(i)">Đã Checkin</button>
@@ -90,29 +92,7 @@
         </div>
       </ng-container>
     </div>
-    <!--Tiếp theo-->
-
-    <div class="container-fluid my-3 modify">
-        <h3>Chúng tôi luôn sẵn sàng trợ giúp</h3>
-        <div class="row mt-4 ma">
-          <!-- Card 1 -->
-          <div class="col-md-4">
-            <div class="help-card p-4">
-              <h5>Liên hệ bộ phận hỗ trợ đặc biệt</h5>
-              <p>Bạn có thể liên hệ bộ phận hỗ trợ cho bất kỳ khó khăn nào đang gặp phải</p>
-            </div>
-          </div>
-          
-          <!-- Card 2 -->
-          <div class="col-md-4">
-            <div class="help-card p-4">
-              <h5>Tìm kiếm các chủ nhà khác gần đó</h5>
-              <p>Bạn có thể tìm kiếm các chủ nhà khác như bạn gần nơi của bạn để kết nối</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      
+   
 
   </div>
   

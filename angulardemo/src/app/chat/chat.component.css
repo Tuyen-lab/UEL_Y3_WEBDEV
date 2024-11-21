@@ -1,0 +1,71 @@
+body {
+    margin: 0;
+    background-color: #1b2a41; /* Màu nền toàn trang */
+}
+
+.sidebar {
+    height: 100vh; /* Chiều cao toàn màn hình */
+    border-right: 1px solid rgba(255, 255, 255, 0.1); /* Đường viền ngăn cách */
+    padding: 20px;
+    overflow-y: auto; /* Cho phép cuộn nếu danh sách quá dài */
+}
+
+.btn-group .btn {
+    width: 100px; /* Độ rộng nút */
+}
+
+.chat-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.chat-list .list-group-item {
+    border: none; /* Loại bỏ viền mặc định */
+    padding: 10px 15px;
+}
+
+.chat-list .list-group-item:hover {
+    background-color: rgba(255, 255, 255, 0.1); /* Hiệu ứng hover */
+    cursor: pointer;
+}
+
+.main-content {
+    background-color: #1b2a41; /* Đồng bộ màu nền */
+    height: 100vh;
+    display: flex;
+    flex-direction: column; /* Sắp xếp theo cột */
+}
+
+.chat-header {
+    background-color: #2e3b52;
+}
+
+.chat-body {
+    flex: 1;
+    overflow-y: auto; /* Cho phép cuộn khi nội dung quá dài */
+}
+
+.message-received {
+    max-width: 60%;
+}
+
+.message-sent {
+    max-width: 60%;
+    margin-left: auto; /* Đẩy tin nhắn của bạn về phía bên phải */
+}
+
+.chat-footer {
+    background-color: #2e3b52;
+}
+
+.chat-footer .form-control {
+    border: none;
+    background-color: #1b2a41;
+    color: white;
+}
+
+.chat-footer .form-control:focus {
+    box-shadow: none;
+    border: 1px solid #555;
+}

@@ -45,13 +45,30 @@ export class LookDetailComponent implements OnInit {
   nhadathue:any
   chixem=''
   dateError: boolean = false;
+  comment: any
+  usercomment: any[]=[]
+  isVisible = true;
   constructor(private _service: ExampleService,private activate: ActivatedRoute, private router: Router) {}
   id: any
   mota=''
   map: L.Map | undefined;
   nha: any
-
+  sao=0
+  
   ngOnInit(): void {
+    this._service.getComment().subscribe({
+      next: (data) => {this.comment = data
+        for(let i of this.comment){
+          if(i.manha==this.id){
+            this.usercomment.push(i)
+            this.sao+=i.sao
+          }
+        }
+        this.sao=this.sao/this.usercomment.length
+      },
+      error: (err) => (this.errMsg= err.message)
+      
+    })
     this.isLoggedIn=this._service.isLoggedIn()
     this.ngaynhan=localStorage.getItem('ngaynhan')||''
     this.chixem=localStorage.getItem('chixem')||''
@@ -130,7 +147,13 @@ export class LookDetailComponent implements OnInit {
     this.isPopupOpen = false;
     this.selectedImage = null;
   }
-  
+  openPopup() {
+    this.isVisible = true;
+  }
+
+  closePopup() {
+    this.isVisible = false;
+  }
   
   toggleCollapse() {
     this.isCollapsed = !this.isCollapsed;
@@ -169,15 +192,6 @@ this.nhadathue = { ...this.rental1.detail }; // Sao chép tất cả các thuộ
 delete this.nhadathue._id; // Xóa thuộc tính _id
 delete this.nhadathue.createdAt; // Xóa thuộc tính _id
 delete this.nhadathue.updatedAt; // Xóa thuộc tính _id
-console.log(this.nhadathue)
-  this._service.addSP(this.nhadathue).subscribe({
-  
-    next: (response) =>{
-      alert('Product added successfully');
-    },
-    error: (err) => (this.errMsg= err.message)
-  })
-
 
   this._service.deleteRented(this.rental1.manha,this.rental1.cus ).subscribe({
     

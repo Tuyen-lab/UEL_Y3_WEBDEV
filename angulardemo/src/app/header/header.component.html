@@ -30,12 +30,12 @@
     </nav>
 
     <ul *ngIf="isListVisible" class="nav-list-small" >
-        <li><a href="#property" class="list-item ">Tin nhắn</a></li>
-        <li><a href="#service" class="list-item  ">Thông báo</a></li>
+        <li><a href="/chat" class="list-item ">Tin nhắn</a></li>
+        <li><a href="/notification" class="list-item  ">Thông báo</a></li>
         <li><a href="#product" class="list-item product">Danh sách yêu thích</a></li>
         <hr class="text-light">
         <li><a (click)="toHost()" class="list-item" >Chuyển đổi vai trò chủ nhà</a></li>
-        <li><a href="#aboutus  " class="list-item">Giới thiệu chủ nhà</a></li>
+        <li *ngIf="!islogin"><a href="/login  " class="list-item">Đăng nhập</a></li>
         <li><a (click)="toUser()" class="list-item contact ">Tài khoản</a></li>
         <hr class="border-light">
         <li><a (click)="toReport()" class="list-item ">Xu hướng nhà ở</a></li>

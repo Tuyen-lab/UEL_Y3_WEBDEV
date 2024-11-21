@@ -30,7 +30,7 @@
       <p style="color: lightgray;">
         {{this.nha.soluong}} &#8901; {{this.nha.giuong}} giường &#8901; {{this.nha.phongtam}} phòng tắm
       </p>
-      <p>★ 4.8 &#8901; <a href="#" style="color: lightgray;">30 đánh giá</a> </p>
+      <p *ngIf="usercomment.length!=0">★ {{sao}} &#8901; <a href="#" style="color: lightgray;">{{usercomment.length}} đánh giá</a> </p>
   </div>
     <div *ngIf="isPopupOpen" class="popup" (click)="closeImage()">
         <span class="close" (click)="closeImage()">&times;</span>
@@ -62,20 +62,8 @@
       <div class="col-md-4">
         <div class="price-box">
           <h4>₫{{this.nha.gia}} / đêm</h4>
-          <form>
-            <div class="mb-3" *ngIf="chixem==''">
-              <label for="checkin" class="form-label" >Ngày nhận phòng</label>
-              <input #nhan type="text"  class="form-control"  [value]="ngaynhan" >
-              
-            </div>
-            <div class="mb-3" *ngIf="chixem==''">
-              <label for="checkout" class="form-label" >Ngày trả phòng</label>
-              <input #tra  type="text" class="form-control"[value]='ngaytra'  id="checkout">
-              <p *ngIf="!day2" style="color: red;">Hãy nhập ngày</p>
-            </div>
-            <button type="submit" *ngIf="chixem==''" class="btn btn-primary w-100" (click)="cancel()">Hủy đặt phòng</button>
           
-          </form>
+         
         </div>
       </div>
     </div>
@@ -84,24 +72,19 @@
   <!-- Reviews Section -->
   <div class="container reviews">
     <h3>Nhận xét</h3>
-    <div class="d-flex mb-3">
+    <p *ngIf="usercomment.length==0">Chưa có nhận xét nào</p>
+    <div class="d-flex mb-3"  *ngFor="let i of usercomment">
+      <div>
       <div>
         <img src="https://via.placeholder.com/50" alt="Avatar" class="rounded-circle">
       </div>
       <div class="ms-3">
-        <h6>James Patrick</h6>
-        <p>Rất đẹp và tiện nghi. Không gian xanh mát và yên tĩnh, hoàn hảo để nghỉ dưỡng.</p>
+        <h6>{{i.cus}} <p>{{i.sao}} ★</p></h6>
+        <p>Nhận xét: {{i.comment}}</p>
+      </div>
       </div>
     </div>
-    <div class="d-flex mb-3">
-      <div>
-        <img src="https://via.placeholder.com/50" alt="Avatar" class="rounded-circle">
-      </div>
-      <div class="ms-3">
-        <h6>Erika</h6>
-        <p>Chủ nhà thân thiện và chỗ ở tuyệt vời, sạch sẽ và đầy đủ tiện nghi.</p>
-      </div>
-    </div>
+   
     <button class="btn btn-secondary">Hiển thị tất cả nhận xét</button>
   </div>
 
@@ -114,13 +97,34 @@
         <p>Top Rated Host</p>
       </div>
     </div>
-    <button class="btn btn-primary w-100 mt-3">Chat với chủ nhà</button>
+    <button *ngIf="chixem==''" class="btn btn-primary w-100 mt-3" (click)="openPopup()">Chat với chủ nhà</button>
   </div>
   <!-- Map Section -->
-   <div>  
+   <div style="margin-top: 10px;">  
     <div id="map" style="height: 300px; width: 100%; margin-bottom: 100px;"></div>
    </div>
-
+   <div class="chat-popup" *ngIf="isVisible">
+    <div class="chat-header d-flex justify-content-between align-items-center  text-white p-2">
+      <span>Chat với {{nha.chuho}}</span>
+      <button class="btn-close btn-close-white" (click)="closePopup()"></button>
+    </div>
+    <div class="chat-body p-2">
+      <div class="message-received mb-3">
+        <p class="bg-secondary text-white p-2 rounded">Xin chào, bạn khỏe không?</p>
+        <small class="text-muted">09:00</small>
+      </div>
+      <div class="message-sent text-end">
+        <p class="bg-primary text-white p-2 rounded">Tôi khỏe, cảm ơn. Còn bạn?</p>
+        <small class="text-muted">09:02</small>
+      </div>
+    </div>
+    <div class="chat-footer p-2">
+      <div class="input-group">
+        <input type="text" class="form-control" placeholder="Nhập tin nhắn...">
+        <button class="btn btn-primary">Gửi</button>
+      </div>
+    </div>
+  </div>
 
   
 

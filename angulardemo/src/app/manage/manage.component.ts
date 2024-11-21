@@ -159,7 +159,7 @@ OnitemClick(p: any){
     }
   }
   
-  this.router.navigate (['/manage',p.ma])
+  this.router.navigate (['/home',p.ma])
 }
 isPopupVisible: boolean = false; // Trạng thái hiển thị popup
 
@@ -174,7 +174,24 @@ closePopup(event?: MouseEvent) {
     this.popcheck = 'false';
   }
 }
+OnitemClick4(p: any){
+  let nhathue : any
+  for(let i of this.SP){
 
+    if(i.manha==p.ma && i.cus==localStorage.getItem('user')){
+     console.log(i)
+      nhathue=i
+    }
+  }
+  this._service.deleteRented(nhathue.manha,nhathue.cus).subscribe({
+
+    next: (response) =>{
+
+    },
+    error: (err) => (this.errMsg= err.message)
+  })
+  window.location.reload();
+}
 submitRating(p: any,sao:HTMLInputElement ,comment: HTMLTextAreaElement ) {
   let nhathue={manha: p.ma, host: p.chuho, cus:this.name , sao: parseInt(sao.value), comment: comment.value}
   this._service.addComment(nhathue).subscribe({

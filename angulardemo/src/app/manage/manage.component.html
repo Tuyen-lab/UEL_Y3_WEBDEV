@@ -38,7 +38,7 @@
               <div class="card-body">
                 <h5 class="card-title" (click)="OnitemClick1(i)">{{i.title}}</h5>
                 <p class="card-text" (click)="OnitemClick1(i)">{{i.city}}, {{i.provin}}, {{i.contry}}</p>
-                <p class="card-text">⭐ 4.8 (30)</p>
+                
                 <div class="content-wrapper">
                   <div class="info-column" (click)="OnitemClick(i)">
                     
@@ -75,7 +75,7 @@
               <div class="card-body">
                 <h5 class="card-title">{{i.title}}</h5>
                 <p class="card-text">{{i.city}}, {{i.provin}}, {{i.contry}}</p>
-                <p class="card-text">⭐ 4.8 (30)</p>
+               
                 <p class="card-text"><strong>{{i.gia}} VND</strong></p>
               </div>
             </div>
@@ -92,7 +92,7 @@
               <div class="card-body">
                 <h5 class="card-title">{{i.title}}</h5>
                 <p class="card-text">{{i.city}}, {{i.provin}}, {{i.contry}}</p>
-                <p class="card-text">⭐ 4.8 (30)</p>
+               
                 <p class="card-text"><strong>{{i.gia}} VND</strong></p>
               </div>
             </div>
@@ -133,7 +133,7 @@
               <div class="card-body">
                 <h5 class="card-title">{{i.title}}</h5>
                 <p class="card-text">{{i.city}}, {{i.provin}}, {{i.contry}}</p>
-                <p class="card-text">⭐ 4.8 (30)</p>
+                
                 <p class="card-text"><strong>{{i.gia}} VND</strong></p>
               </div>
             </div>
@@ -147,56 +147,28 @@
             <!-- Card 1 -->
             <div *ngIf="rented.length==0" style="color: red; font-weight: bolder;">Bạn chưa đặt phòng nào cả</div>
             <div class="col-md-3 mb-4" *ngFor="let i of rented">
-              <div class="card" (click)="OnitemClick(i)">
-                <img src={{i.thumnail}} class="card-img-top" alt="Homestay Đà Lạt Màu Đen">
+              <div class="card" >
+                <img (click)="OnitemClick(i)" src={{i.thumnail}} class="card-img-top" alt="Homestay Đà Lạt Màu Đen">
                 <div class="card-body">
-                  <h5 class="card-title">{{i.title}}</h5>
-                  <p class="card-text">{{i.city}}, {{i.provin}}, {{i.contry}}</p>
-                  <p class="card-text">⭐ 4.8 (30)</p>
-                  <p class="card-text"><strong>{{i.gia}} VND</strong></p>
+                  <h5 class="card-title" (click)="OnitemClick(i)">{{i.title}}</h5>
+                  <p class="card-text" (click)="OnitemClick(i)">{{i.city}}, {{i.provin}}, {{i.contry}}</p>
+                 
+                  <div class="content-wrapper">
+                    <div class="info-column" (click)="OnitemClick(i)">
+                      
+                      <p class="price"><strong>{{i.gia}} VND</strong></p>
+                    </div>
+                    <div class="button-column">
+                      <button style="height: 40px; width: 100px;  ; background-color: rgb(15, 115, 246);" type="submit" class="btn btn-primary" value="Đã Checkin" (click)="OnitemClick4(i)">Hủy</button>
+                    </div>
+                    </div>
                 </div>
               </div>
             </div>
         </div>
       </ng-container>
     </div>
-    <!--Tiếp theo-->
-
-    <div class="container-fluid my-3 modify">
-        <h3>Chúng tôi luôn sẵn sàng trợ giúp</h3>
-        <div class="row mt-4 ma">
-          <!-- Card 1 -->
-          <div class="col-md-4">
-            <div class="help-card p-4">
-              <h5>Liên hệ bộ phận hỗ trợ đặc biệt</h5>
-              <p>Bạn có thể liên hệ bộ phận hỗ trợ cho bất kỳ khó khăn nào đang gặp phải</p>
-            </div>
-          </div>
-          
-          <!-- Card 2 -->
-          <div class="col-md-4">
-            <div class="help-card p-4">
-              <h5>Tìm kiếm các chủ nhà khác gần đó</h5>
-              <p>Bạn có thể tìm kiếm các chủ nhà khác như bạn gần nơi của bạn để kết nối</p>
-            </div>
-          </div>
-        </div>
-      </div>
     
-      <div class="card" style="width: 18rem;">
-        <div class="position-relative">
-          <!-- Hình ảnh trong card -->
-          <img src="assets\images\tphcm.jpg" class="card-img-top" alt="Image">
-          <!-- Biểu tượng trái tim -->
-          <i class=" bi-heart position-absolute top-0 end-0 p-2" id="heart-icon" [ngClass]="{'active': isActive} " 
-          (click)="toggleActive()" ></i>
-        </div>
-        <div class="card-body">
-          <h5 class="card-title">Tiêu đề Card</h5>
-          <p class="card-text">Một vài mô tả về card này.</p>
-        </div>
-      </div>
-      
-
+  
   </div>
   

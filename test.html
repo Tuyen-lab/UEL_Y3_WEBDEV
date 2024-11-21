@@ -3,90 +3,77 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Popup Đánh Giá</title>
+  <title>Bộ lọc</title>
   <style>
-    /* Nút chung */
-.btn {
-  padding: 10px 20px;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.btn:hover {
-  background-color: #0056b3;
-}
-
-/* Popup nền */
-.popup {
-  display: none; /* Mặc định ẩn */
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  justify-content: center;
-  align-items: center;
-}
-
-/* Nội dung popup */
-.popup-content {
-  background-color: white;
-  padding: 20px;
-  border-radius: 8px;
-  width: 400px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-.popup-actions {
-  margin-top: 15px;
-  display: flex;
-  justify-content: space-between;
-}
-
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    .filter {
+      max-width: 400px;
+      margin: 0 auto;
+    }
+    .filter-item {
+      margin-bottom: 20px;
+    }
+    label {
+      font-weight: bold;
+      display: block;
+      margin-bottom: 5px;
+    }
+    input[type="range"] {
+      width: 100%;
+    }
+    select, input[type="text"] {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    .output {
+      margin-top: 10px;
+      font-size: 14px;
+      color: #333;
+    }
   </style>
 </head>
 <body>
-  <!-- Nút mở popup -->
-  <button id="openPopupBtn" class="btn">Đánh giá</button>
+  <div class="filter">
+    <h3>Bộ lọc</h3>
 
-  <!-- Popup -->
-  <div id="popup" class="popup">
-    <div class="popup-content">
-      <h3>Đánh giá của bạn</h3>
-      <textarea placeholder="Nhập đánh giá của bạn..." rows="5" style="width: 100%;"></textarea>
-      <div class="popup-actions">
-        <button id="submitBtn" class="btn">Gửi</button>
-        <button id="closePopupBtn" class="btn">Đóng</button>
-      </div>
+    <!-- Bộ lọc Giá -->
+    <div class="filter-item">
+      <label for="price">Giá</label>
+      <input type="range" id="price" min="0" max="5000000" step="100000" />
+      <div class="output">Giá hiện tại: <span id="price-output">2,500,000</span> VND</div>
+    </div>
+
+    <!-- Bộ lọc Khoảng giá -->
+    <div class="filter-item">
+      <label for="price-range">Khoảng giá</label>
+      <select id="price-range">
+        <option value="low-high">Thấp đến cao</option>
+        <option value="high-low">Cao đến thấp</option>
+      </select>
+    </div>
+
+    <!-- Bộ lọc Tìm kiếm -->
+    <div class="filter-item">
+      <label for="search">Tìm kiếm</label>
+      <input type="text" id="search" placeholder="Nhập từ khóa tìm kiếm..." />
     </div>
   </div>
 
   <script>
-    // Lấy các phần tử
-const openPopupBtn = document.getElementById('openPopupBtn');
-const closePopupBtn = document.getElementById('closePopupBtn');
-const popup = document.getElementById('popup');
+    // Cập nhật giá trị khi kéo thanh slider
+    const priceSlider = document.getElementById('price');
+    const priceOutput = document.getElementById('price-output');
 
-// Mở popup
-openPopupBtn.addEventListener('click', () => {
-  popup.style.display = 'flex';
-});
-
-// Đóng popup
-closePopupBtn.addEventListener('click', () => {
-  popup.style.display = 'none';
-});
-
-// Đóng popup khi nhấn ngoài vùng popup
-popup.addEventListener('click', (event) => {
-  if (event.target === popup) {
-    popup.style.display = 'none';
-  }
-});
+    priceSlider.addEventListener('input', function () {
+      const formattedPrice = new Intl.NumberFormat('vi-VN').format(this.value);
+      priceOutput.textContent = formattedPrice;
+    });
   </script>
 </body>
 </html>

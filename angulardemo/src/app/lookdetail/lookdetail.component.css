@@ -13,6 +13,43 @@ body {
     text-align: center;
     color: #ffffff;
   }
+  .chat-popup {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 300px;
+    background-color: #1b2a41;
+    color: white;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+    z-index: 1050;
+    border-radius: 2%;
+  }
+  
+  .chat-header {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 2%;
+    
+  }
+  
+  .chat-body {
+    max-height: 250px;
+    overflow-y: auto;
+  }
+  
+  .chat-footer .input-group input {
+    border-radius: 5px;
+    background-color: #1b2a41;
+    color: white;
+  }
+  
+  .chat-footer .input-group button {
+    border-radius: 5px;
+  }
+  
+
   .price-box {
     background-color: #1b2a41;
     color: #ffffff;

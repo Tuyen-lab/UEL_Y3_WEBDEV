@@ -7,7 +7,7 @@ import { ActivatedRoute,Router } from '@angular/router';
 import { FlatpickrDirective, FlatpickrModule } from 'angularx-flatpickr';
 import * as L from 'leaflet';
 import flatpickr from 'flatpickr';
-
+import {  EventEmitter, Output } from '@angular/core';
 @Component({
   selector: 'app-detail',
   standalone: true,
@@ -54,6 +54,7 @@ export class DetailComponent implements OnInit {
   datlai=true
   comment: any
   usercomment: any[]=[]
+  isVisible: boolean = false;
   ngOnInit(): void {
     
     this._service.getSP().subscribe({
@@ -106,12 +107,16 @@ export class DetailComponent implements OnInit {
     this._service.getrental().subscribe({
       next: (data) => {this.dathue = data
         for(let i of this.dathue){
+          
           if(i.manha==this.id){
             let a={from: i.ngaythue, to: i.ngaytra}
             this.disabledRanges.push(a)
           }
           if(i.manha==this.id && i.cus==localStorage.getItem('user')){
+            this.rental1.manha=i.manha
             this.datlai=false
+            this.ngaynhan=i.ngaythue
+            this.ngaytra=i.ngaytra
           }
         }
         
@@ -122,6 +127,19 @@ export class DetailComponent implements OnInit {
     })
 
   }
+  cancel(){
+  
+
+      this._service.deleteRented(this.rental1.manha, localStorage.getItem('user')||'' ).subscribe({
+        
+        next: (response) =>{
+          alert('Đã hủy thành công');
+      
+        },
+        error: (err) => (this.errMsg= err.message)
+      })
+      window.location.reload()
+    }
   ngAfterViewInit(): void {
     this.initFlatpickday();
   }
@@ -129,6 +147,13 @@ export class DetailComponent implements OnInit {
   openImage(image: string): void {
     this.selectedImage = image;
     this.isPopupOpen = true;
+  }
+  openPopup() {
+    this.isVisible = true;
+  }
+
+  closePopup() {
+    this.isVisible = false;
   }
 
   closeImage(): void {

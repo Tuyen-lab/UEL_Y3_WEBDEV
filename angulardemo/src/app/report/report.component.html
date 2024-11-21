@@ -130,87 +130,25 @@
               <th>Xu hướng</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody *ngFor="let i of SP; let index = index">
             <!-- Dữ liệu mẫu, có thể thay đổi -->
-            <tr>
-              <td>1</td>
+            <tr (click)="OnitemClick(i)">
+              <td>{{index+1}}</td>
               <td>
-                <img src="assets/images/dl.jpg" alt="Homestay Đà Lạt" class="img-thumbnail" />
-                <div>Homestay Đà Lạt Màu Đen</div>
-                <small>Đà Lạt, Lâm Đồng, Việt Nam</small>
+                <img src={{i.thumnail}} alt="Homestay Đà Lạt" class="img-thumbnail" />
+                <div>{{i.title}}</div>
+                <small>{{i.city}},{{i.provin}},{{i.country}}</small>
               </td>
-              <td>1.900.000</td>
-              <td>⭐ 4.8 (30)</td>
-              <td>265</td>
-              <td>357</td>
-              <td>898</td>
-              <td>687.000.000</td>
+              <td>{{i.gia}}</td>
+              <td>⭐ 4.8 ({{30+index*10}})</td>
+              <td>{{265-index*20}}</td>
+              <td>{{375-index*30}}</td>
+              <td>{{898-index*40}}</td>
+              <td>{{687-index*40}}.000.000</td>
               <td><img src="assets/images/xh1.png" alt="Xu hướng" class="img-fluid" style="height: 40px;" /></td>
             </tr>
 
-            <tr>
-                <td>2</td>
-                <td>
-                  <img src="assets/images/dn.jpg" alt="Homestay Đà Lạt" class="img-thumbnail" />
-                  <div>Homestay Đà Lạt Màu Đen</div>
-                  <small>Đà Lạt, Lâm Đồng, Việt Nam</small>
-                </td>
-                <td>1.900.000</td>
-                <td>⭐ 4.8 (30)</td>
-                <td>265</td>
-                <td>357</td>
-                <td>898</td>
-                <td>687.000.000</td>
-                <td><img src="assets/images/xh2.jpg" alt="Xu hướng" class="img-fluid" style="height: 40px;" /></td>
-              </tr>
-
-              <tr>
-                <td>3</td>
-                <td>
-                  <img src="assets/images/htb.jpg" alt="Homestay Đà Lạt" class="img-thumbnail" />
-                  <div>Homestay Đà Lạt Màu Đen</div>
-                  <small>Đà Lạt, Lâm Đồng, Việt Nam</small>
-                </td>
-                <td>1.900.000</td>
-                <td>⭐ 4.8 (30)</td>
-                <td>265</td>
-                <td>357</td>
-                <td>898</td>
-                <td>687.000.000</td>
-                <td><img src="assets/images/xh3.jpg" alt="Xu hướng" class="img-fluid" style="height: 40px;" /></td>
-              </tr>
-
-              <tr>
-                <td>4</td>
-                <td>
-                  <img src="assets/images/lhb.jpg" alt="Homestay Đà Lạt" class="img-thumbnail" />
-                  <div>Homestay Đà Lạt Màu Đen</div>
-                  <small>Đà Lạt, Lâm Đồng, Việt Nam</small>
-                </td>
-                <td>1.900.000</td>
-                <td>⭐ 4.8 (30)</td>
-                <td>265</td>
-                <td>357</td>
-                <td>898</td>
-                <td>687.000.000</td>
-                <td><img src="assets/images/xh4.jpg" alt="Xu hướng" class="img-fluid" style="height: 40px;" /></td>
-              </tr>
-
-              <tr>
-                <td>5</td>
-                <td>
-                  <img src="assets/images/vtb.jpg" alt="Homestay Đà Lạt" class="img-thumbnail" />
-                  <div>Homestay Đà Lạt Màu Đen</div>
-                  <small>Đà Lạt, Lâm Đồng, Việt Nam</small>
-                </td>
-                <td>1.900.000</td>
-                <td>⭐ 4.8 (30)</td>
-                <td>265</td>
-                <td>357</td>
-                <td>898</td>
-                <td>687.000.000</td>
-                <td><img src="assets/images/xh5.jpg" alt="Xu hướng" class="img-fluid" style="height: 40px;" /></td>
-              </tr>
+            
 
 
           </tbody>

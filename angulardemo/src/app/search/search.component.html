@@ -10,19 +10,18 @@
     <!-- Navbar -->
     <div class="d-flex justify-content-between align-items-center mb-4 border-nav text-center mode ">
       <nav class="nav h5">
-        <a class="nav-link text-light" href="#">Hướng biển</a>
-        <a class="nav-link text-light" href="#">Được ưa chuộng</a>
-        <a class="nav-link text-light" href="#">Công viên</a>
-        <a class="nav-link text-light" href="#">Nông thôn</a>
-        <a class="nav-link text-light" href="#">Nhà nhỏ</a>
-        <a class="nav-link text-light" href="#">Biệt thự</a>
-        <a class="nav-link text-light" href="#">Hồ bơi</a>
-        <a class="nav-link text-light" href="#">Phục vụ bữa sáng</a>
-        <a class="nav-link text-light" href="#">Spa & xông hơi</a>
-        <a class="nav-link text-light" href="#">Phòng gym</a>
-        <a class="nav-link text-light" href="#">Dịch vụ massage</a>
+        <a class="nav-link text-light" (click)="navigateSearch2('bien')">Hướng biển</a>
+        <a class="nav-link text-light" (click)="navigateSearch2('cong vien')">Công viên</a>
+        <a class="nav-link text-light" (click)="navigateSearch2('nong thon')">Nông thôn</a>
+        <a class="nav-link text-light" (click)="navigateSearch2('nha nho')">Nhà nhỏ</a>
+        <a class="nav-link text-light" (click)="navigateSearch2('biet thu')">Biệt thự</a>
+        <a class="nav-link text-light" (click)="navigateSearch2('be boi')">Hồ bơi</a>
+        <a class="nav-link text-light"(click)="navigateSearch2('bua sang')">Phục vụ bữa sáng</a>
+        <a class="nav-link text-light" (click)="navigateSearch2('spa')">Spa & xông hơi</a>
+        <a class="nav-link text-light" (click)="navigateSearch2('gym')">Phòng gym</a>
+        <a class="nav-link text-light" (click)="navigateSearch2('massage')">Dịch vụ massage</a>
         
-        <a class="nav-link text-light" href="#">&#10140;</a>
+     
       </nav>
     </div>
 
@@ -54,9 +53,72 @@
         </div>
       <!-- Khu Vực Bản Đồ -->
        <div >
-      <div id="map" *ngIf="!notification" class="col-md-3 mt-4 sticky-top map-container  bg-light" style="height: 500px; width: 400px; float: right;margin-left: 50px;" ></div></div>
-      
+      <div id="map" *ngIf="!notification" class="col-md-3 mt-4 sticky-top map-container  bg-light" style="height: 500px; width: 400px; float: right;margin-left: 50px; margin-right: 50PX;"  ></div>
+    </div>
+
+  
+    <div class="filter-menu sticky-top">
+      <h3>Bộ lọc</h3>
+      <!-- Bộ lọc Giá -->
+      <div class="filter-item">
+        <label for="price">Giá</label>
+        <input
+          type="range"
+          id="price"
+          min="0"
+          max="5000000"
+          step="100000"
+          [(ngModel)]="price"
+        />
+        <div class="output">Giá hiện tại: <span>{{ formatPrice(price) }}</span> VND</div>
+      </div>
+    
+      <!-- Bộ lọc Khoảng giá -->
+      <div class="filter-item">
+        <label for="price-range">Khoảng giá</label>
+        <select id="price-range" [(ngModel)]="priceRange">
+          <option value="low-high">Thấp đến cao</option>
+          <option value="high-low">Cao đến thấp</option>
+        </select>
+      </div>
+    
+      <!-- Chỗ ở -->
+      <div class="filter-section">
+        <h4>Chỗ ở</h4>
+        <select class="filter-dropdown" >
+          <option value="favorite">Được yêu thích</option>
+          <option value="most-booked">Được đặt nhiều nhất</option>
+        </select>
+      </div>
+    
+      <!-- Đánh giá -->
+      <div class="filter-section">
+        <h4>Đánh giá</h4>
+        <select class="filter-dropdown">
+          <option value="1">1 sao</option>
+          <option value="2">2 sao</option>
+          <option value="3">3 sao</option>
+          <option value="4">4 sao</option>
+          <option value="5">5 sao</option>
+        </select>
+      </div>
+    
+      <!-- Phân loại -->
+      <div class="filter-section">
+        <h4>Phân loại</h4>
+        <select class="filter-dropdown" >
+          <option value="apartment">Căn hộ</option>
+          <option value="house">Nhà</option>
+          <option value="villa">Biệt thự</option>
+          <option value="hotel">Khách sạn</option>
+          <option value="container-house">Nhà container</option>
+          <option value="guest-house">Nhà khách</option>
+          <option value="rv">Xe cắm trại/RV</option>
+        </select>
+      </div>
+      <button class="btn btn-primary" (click)="filter()" >Lọc</button>
     </div>
     
+
   </div>
   

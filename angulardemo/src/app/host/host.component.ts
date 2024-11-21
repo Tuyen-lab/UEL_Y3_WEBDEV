@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ExampleService } from '../service/sp.service';
 
@@ -10,7 +10,7 @@ import { ExampleService } from '../service/sp.service';
   templateUrl: './host.component.html',
   styleUrl: './host.component.css'
 })
-export class HostComponent {
+export class HostComponent implements OnInit {
   name=localStorage.getItem('user')
   SPrent: any
   rented: any[]=[]
@@ -19,6 +19,8 @@ export class HostComponent {
   SP: any
   added: any[]=[]
   errMsg=''
+  comment: any
+  usercomment: any[]=[]
   currentView: string = 'myRooms';
   constructor (private router: Router,private _service:ExampleService){}
   ngOnInit(): void {
@@ -26,7 +28,9 @@ export class HostComponent {
       next: (data) => {this.SPrent = data;
         for(let i of this.SPrent){
           if (i.host==this.name){
-            this.rented.push(i.detail)
+   
+            this.rented.push({...i.detail, cus:i.cus })
+            
           }
         }
       },
@@ -56,8 +60,8 @@ export class HostComponent {
       error: (err) => (this.errMsg= err.message)
       
     })
-  }
     
+  }
   toPost(){
     this.router.navigate(['/post'])
   }
@@ -134,8 +138,15 @@ export class HostComponent {
     this.currentView='onStaying'
   }
   OnitemClick4(p: any){
-    let cus= localStorage.getItem('user')||''
-    this._service.deleteRented(p.manha,cus).subscribe({
+    let nhathue : any
+    for(let i of this.SPrent){
+
+      if(i.manha==p.ma && i.host==localStorage.getItem('user')){
+       console.log(i)
+        nhathue=i
+      }
+    }
+    this._service.deleteRented(nhathue.manha,nhathue.cus).subscribe({
   
       next: (response) =>{
         alert('Product delete successfully');

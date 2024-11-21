@@ -3,7 +3,9 @@
 
 
   <!-- Property Header -->
- 
+
+  <div>
+
   <div class="container">
     <div class="property-header">
       <h1>{{nha.ten}}</h1>
@@ -63,11 +65,12 @@
       <div class="col-md-4">
         <div class="price-box">
           <h4>₫{{nha.gia}} / đêm</h4>
-          <i *ngIf="!datlai" style="color: red; ">Bạn đã đặt phòng này và đang chờ tới ngày checkin</i>
+          <i *ngIf="!datlai" style="color: red; ">Bạn đã đặt phòng này  từ ngày {{ngaynhan}} đến {{ngaytra}}  đang chờ tới ngày checkin</i>
+          <button *ngIf="!datlai" style="height: 40px; width: 200px;  ; background-color: rgb(15, 115, 246);" type="submit" class="btn btn-primary" value="Đã Checkin" (click)="cancel()">Hủy phòng đã đặt </button>
           <div *ngIf="datlai">
             <div class="mb-3">
               <label for="checkin" class="form-label" >Ngày nhận phòng và trả phòng</label>
-              <input #nhan type="text" id="datepicker" >
+              <input #nhan type="text" id="datepicker" placeholder="nhập khoản ngày" >
               <p *ngIf="!day1" style="color: red;">Hãy nhập ngày</p>
             </div>
             <button type="submit" class="btn btn-primary w-100" (click)="submitData(nhan)">Đặt phòng</button>
@@ -105,14 +108,37 @@
         <p>Top Rated Host</p>
       </div>
     </div>
-    <button class="btn btn-primary w-100 mt-3">Chat với chủ nhà</button>
+    <button class="btn btn-primary w-100 mt-3" (click)="openPopup()">Chat với chủ nhà</button>
+    
   </div>
+  
   <!-- Map Section -->
    <div>  
     <div id="map" style="height: 300px; width: 100%; margin-bottom: 100px;"></div>
    </div>
 
+   <div class="chat-popup" *ngIf="isVisible">
+    <div class="chat-header d-flex justify-content-between align-items-center  text-white p-2">
+      <span>Chat với {{nha.chuho}}</span>
+      <button class="btn-close btn-close-white" (click)="closePopup()"></button>
+    </div>
+    <div class="chat-body p-2">
+      <div class="message-received mb-3">
+        <p class="bg-secondary text-white p-2 rounded">Xin chào, bạn khỏe không?</p>
+        <small class="text-muted">09:00</small>
+      </div>
+      <div class="message-sent text-end">
+        <p class="bg-primary text-white p-2 rounded">Tôi khỏe, cảm ơn. Còn bạn?</p>
+        <small class="text-muted">09:02</small>
+      </div>
+    </div>
+    <div class="chat-footer p-2">
+      <div class="input-group">
+        <input type="text" class="form-control" placeholder="Nhập tin nhắn...">
+        <button class="btn btn-primary">Gửi</button>
+      </div>
+    </div>
+  </div>
 
-  
-
+</div>
 
